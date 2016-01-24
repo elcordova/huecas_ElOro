@@ -1,8 +1,8 @@
 <?php
 
-	$servidor = "localhost";
+	$servidor = "127.0.0.1";
 	$usuario = "root";
 	$contrasena = "";
-	$basededatos = "tiendaonline";
+	$basededatos = "huecas";
 
 ?>

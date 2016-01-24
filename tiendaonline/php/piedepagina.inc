@@ -13,11 +13,11 @@
 
 $conexion = mysqli_connect($servidor,$usuario,$contrasena,$basededatos);
 mysqli_set_charset($conexion, "utf8");
-$peticion = "SELECT * FROM categorias";
+$peticion = "SELECT * FROM categoria";
 $resultado = mysqli_query($conexion, $peticion);
 	echo "<ul>";
 while($fila = mysqli_fetch_array($resultado)) {
-	echo "<li>".$fila['detalle']."</li>";
+	echo "<li>".$fila['cat_nombre']."</li>";
 	} 
 	echo "</ul>";
 
