@@ -161,7 +161,7 @@ if(!isset($_SESSION['contador'])){$_SESSION['contador'] = 0;}
       </div>
     </div>
     <div class="item">
-      <img src="img/Captura.PNG">
+      <img src="img/banner.png">
       <div class="carousel-caption">
       </div>
     </div>

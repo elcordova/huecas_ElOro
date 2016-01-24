@@ -10,11 +10,11 @@ $resultado = mysqli_query($conexion, $peticion);
 
 while($fila = mysqli_fetch_array($resultado)) {
 	echo "<article>";
-	echo "<img src='galeria/logos/".$fila['hue_logo']."' width=100px>";
+	echo "<img src='galeria/logos/".$fila['hue_logo']."' width=100px   class='img-circle'   >   ";
 	
 	
-	// echo "<a href='hueca.php?id=".$fila['hue_id']."'><h3>".$fila['nombre']."</h3></a>";
-	echo "<h1>".$fila['hue_nombre']."</h1>";
+	 echo "<a href='hueca.php?id=".$fila['hue_id']."'><h1>".$fila['hue_nombre']."</h1></a>";
+
 	echo "<p>Horario de Atencion: ".$fila['hue_horario']."</p>";
 	
 	echo "<br>";
