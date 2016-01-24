@@ -8,7 +8,7 @@ $peticion = "SELECT * FROM hueca ";
 $resultado = mysqli_query($conexion, $peticion);
 while($fila = mysqli_fetch_array($resultado)) {
 	echo "<article>";
-	echo "<img src='photo/".$fila['hue_banner']."' width=100px>";
+	echo "<img src='galeria/logos/".$fila['hue_banner']."' width=100px>";
 	
 	
 	echo "<a href='hueca.php?id=".$fila['hue_id']."'><h3>".$fila['nombre']."</h3></a>";
@@ -17,7 +17,6 @@ while($fila = mysqli_fetch_array($resultado)) {
 	
 	echo "<br>";
 	echo "<a href='hueca.php?id=".$fila['hue_id']."'><button class='btn-info'>Más información</button></a>";
-	echo "<button value='".$fila['id']."' class='botoncompra'>Comprar ahora</button>";
 	echo "</article>";
 } 
 mysqli_close($conexion);
