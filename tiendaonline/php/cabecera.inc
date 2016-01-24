@@ -8,7 +8,8 @@ if(!isset($_SESSION['contador'])){$_SESSION['contador'] = 0;}
 		<title>Tienda</title>
 		<link rel=Stylesheet href="css/bootstrap.css"></script>
 		<link rel=Stylesheet href="css/cabecera.css"></script>
-		<link rel=Stylesheet href="css/movil.css" media='screen and (min-width: 1px) and (max-width: 800px)'>
+		<link rel="stylesheet" type="text/css" href="css/imagenes.css">
+    <link rel=Stylesheet href="css/movil.css" media='screen and (min-width: 1px) and (max-width: 800px)'>
 		<link rel=Stylesheet href="css/pcmac.css" media='screen and (min-width: 801px) and (max-width: 4000px)'>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -35,7 +36,7 @@ if(!isset($_SESSION['contador'])){$_SESSION['contador'] = 0;}
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Oro Huecas</a>
+      <a class="navbar-brand" href="//localhost/huecas_ElOro/tiendaonline">Oro Huecas</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
