@@ -4,20 +4,15 @@
 
 $conexion = mysqli_connect($servidor,$usuario,$contrasena,$basededatos);
 mysqli_set_charset($conexion, "utf8");
-$peticion = "SELECT * FROM productos WHERE id=".$_GET['hue_id']."";
+$peticion = "SELECT * FROM plato WHERE hue_id=".$_GET['id'];
 $resultado = mysqli_query($conexion, $peticion);
 while($fila = mysqli_fetch_array($resultado)) {
 	echo "<article>";
-	echo "<a href='producto.php?id=".$fila['id']."'><h3>".$fila['nombre']."</h3></a>";
-	echo "<p>".$fila['descripcion']."</p>";
-	echo "<p>Precio: ".$fila['precio']." €</p>";
-	$peticion2 = "SELECT * FROM imagenesproductos WHERE idproducto = ".$fila['id']."";
-	$resultado2 = mysqli_query($conexion, $peticion2);
-	while($fila2 = mysqli_fetch_array($resultado2)) {
-		echo "<img src='photo/".$fila2['imagen']."' width=100px>";
-	}
+	echo "<a href='plato.php?id=".$fila['pla_id']."'><h3>".$fila['pla_nombre']."</h3></a>";
+	echo "<p>Precio: ".$fila['pla_precio']." €</p>";
+	echo "<img src='galeria/platos/".$fila['pla_foto']."' width=100px>";
 	echo "<br>";
-	echo "<a href='producto.php?id=".$fila['id']."'><button>Más información</button></a>";
+	echo "<a href='plato.php?id=".$fila['pla_id']."'><button>Más información</button></a>";
 	echo "<button>Comprar ahora</button>";
 	echo "</article>";
 } 
