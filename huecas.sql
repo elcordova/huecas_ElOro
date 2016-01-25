@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-01-2016 a las 19:48:37
+-- Tiempo de generación: 25-01-2016 a las 06:06:19
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.5.12
 
@@ -31,14 +31,20 @@ CREATE TABLE IF NOT EXISTS `categoria` (
   `cat_nombre` varchar(60) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `cat_descripcion` varchar(60) COLLATE utf8_spanish2_ci DEFAULT NULL,
   PRIMARY KEY (`cat_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=8 ;
 
 --
 -- Volcado de datos para la tabla `categoria`
 --
 
 INSERT INTO `categoria` (`cat_id`, `cat_nombre`, `cat_descripcion`) VALUES
-(1, 'mariscos', 'los mejores mariscos de EL Oro para tu paladar');
+(1, 'Comida de Mar', 'los mejores mariscos de EL Oro para tu paladar'),
+(2, 'Piqueo', 'Tacos, Hamburguesas, Hot Dog, Papas Fritas, etc'),
+(3, 'Pizza', 'La mejor pizza de El Oro'),
+(4, 'Frutas', 'Los mejores jugos'),
+(5, 'Comida Tipica', 'La mejor comida tipica ecuatoriana'),
+(6, 'Parrilladas', 'Las mejores parrilladas'),
+(7, 'Helados', 'Los mejores helados');
 
 -- --------------------------------------------------------
 
@@ -96,24 +102,28 @@ CREATE TABLE IF NOT EXISTS `galeria` (
 CREATE TABLE IF NOT EXISTS `hueca` (
   `hue_id` int(11) NOT NULL AUTO_INCREMENT,
   `hue_nombre` varchar(45) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `hue_descripcion` varchar(100) COLLATE utf8_spanish2_ci NOT NULL,
   `hue_direccion` varchar(45) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `hue_horario` varchar(45) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `hue_logo` varchar(80) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `hue_banner` varchar(80) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `hue_menu` varchar(80) COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `hue_abre` time(6) DEFAULT NULL,
-  `hue_cierra` time(6) DEFAULT NULL,
+  `hue_video` varchar(100) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `hue_abre` time DEFAULT NULL,
+  `hue_cierra` time DEFAULT NULL,
   `cat_id` int(11) NOT NULL,
   PRIMARY KEY (`hue_id`),
   KEY `fk_hueca_categoria_idx` (`cat_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=9 ;
 
 --
 -- Volcado de datos para la tabla `hueca`
 --
 
-INSERT INTO `hueca` (`hue_id`, `hue_nombre`, `hue_direccion`, `hue_horario`, `hue_logo`, `hue_banner`, `hue_menu`, `hue_abre`, `hue_cierra`, `cat_id`) VALUES
-(1, 'El Buen Sabor', 'palmeras y cir. sur', '8:00 - 20:00', 'logotipo_elbuensabor.png', NULL, NULL, NULL, NULL, 1);
+INSERT INTO `hueca` (`hue_id`, `hue_nombre`, `hue_descripcion`, `hue_direccion`, `hue_horario`, `hue_logo`, `hue_banner`, `hue_menu`, `hue_video`, `hue_abre`, `hue_cierra`, `cat_id`) VALUES
+(1, 'El Buen Sabor', '', 'palmeras y cir. sur', '08:00 - 20:00', 'logotipo_elbuensabor.png', NULL, NULL, NULL, '08:00:00', '20:00:00', 1),
+(2, 'Don Hugo', '', 'Calle Colon frente a la Bahía', '07:00 - 14:30', 'logo-DonHugo.png', 'Banner Cevicheria.png', NULL, NULL, '07:00:00', '14:30:00', 1),
+(3, 'El Diamante Dorado', '', 'Urdesa Este Cuba e/ 7ma y 8va', '08:00 - 13:00', 'LogoCevicheria-dorado.png', 'banner_diamante_dorado.png', NULL, NULL, '08:00:00', '13:00:00', 1);
 
 -- --------------------------------------------------------
 
