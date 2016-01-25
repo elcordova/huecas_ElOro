@@ -182,9 +182,7 @@ if(!isset($_SESSION['contador'])){$_SESSION['contador'] = 0;}
   </a>
 </div> <!-- Carousel -->
 
-					<a href="index.php"><h1>Tienda</h1></a>
-					<h2>Subtítulo de la tienda</h2>
-
+					
 				</header>
 
 			
