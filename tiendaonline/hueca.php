@@ -7,6 +7,7 @@
   <li class='active'><a href='#'>PLATOS</a></li>
   <li><a href='videos.php?id=".$_GET['id']."'>VIDEOS</a></li>
   <li><a href='galeria.php?id=".$_GET['id']."'>GALERIA</a></li>
+  <li><a href='comollegar.php?id=".$_GET['id']."'>COMO LLEGAR</a></li>
 
 		</ul>
 

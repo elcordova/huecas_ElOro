@@ -1,0 +1,28 @@
+<?php include "php/cabecera.inc" ?>
+<?php include "php/config.inc" ?>
+<?php
+$conexion = mysqli_connect($servidor,$usuario,$contrasena,$basededatos);
+mysqli_set_charset($conexion, "utf8");
+$peticion = "SELECT * FROM hueca WHERE cat_id=".$_GET['id'].";";
+$resultado = mysqli_query($conexion, $peticion);
+
+
+while($fila = mysqli_fetch_array($resultado)) {
+	echo "<article>";
+	echo "<img src='galeria/logos/".$fila['hue_logo']."' width=100px   class='img-circle'   >   ";
+	
+	
+	 echo "<a href='hueca.php?id=".$fila['hue_id']."'><h1>".$fila['hue_nombre']."</h1></a>";
+
+	echo "<p>Horario de Atencion: ".$fila['hue_horario']."</p>";
+	
+	echo "<br>";
+	// echo "<a href='hueca.php?id=".$fila['hue_id']."'><button class='btn-info'>Más información</button></a>";
+	echo "</article>";
+
+	
+}
+mysqli_close($conexion);
+?>
+
+<?php include "php/piedepagina.inc" ?>

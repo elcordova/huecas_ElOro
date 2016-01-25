@@ -4,26 +4,27 @@
 
 $conexion = mysqli_connect($servidor,$usuario,$contrasena,$basededatos);
 mysqli_set_charset($conexion, "utf8");
-$peticion = "SELECT * FROM hueca WHERE hue_id=1";
+$peticion = "SELECT * FROM hueca";
 $resultado = mysqli_query($conexion, $peticion);
 
 
 while($fila = mysqli_fetch_array($resultado)) {
-	echo "<article>";
-	echo "<img src='galeria/logos/".$fila['hue_logo']."' width=100px   class='img-circle'   >   ";
+	echo "<div class='row'>";
+	echo "<div class='col-md-6'>";
+	echo "<img src='galeria/logos/".$fila['hue_logo']."' width=200px   class='img-responsive'   >   ";
 	
-	
-	 echo "<a href='hueca.php?id=".$fila['hue_id']."'><h1>".$fila['hue_nombre']."</h1></a>";
+	echo "</div><div class='col-md-6'>";
+	 echo "<a href='hueca.php?id=".$fila['hue_id']."' class='text-center'><h3>".$fila['hue_nombre']."</h3></a>";
 
 	echo "<p>Horario de Atencion: ".$fila['hue_horario']."</p>";
-	
-	echo "<br>";
+	echo "</div>";
 	// echo "<a href='hueca.php?id=".$fila['hue_id']."'><button class='btn-info'>Más información</button></a>";
-	echo "</article>";
-
+	
+	echo "</div>";
 	
 }
 mysqli_close($conexion);
 ?>
 
 <?php include "php/piedepagina.inc" ?>
+<button class="img-responsive"></button>
