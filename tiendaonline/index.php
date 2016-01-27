@@ -18,8 +18,6 @@ while($fila = mysqli_fetch_array($resultado)) {
 
 	echo "<p>Horario de Atencion: ".$fila['hue_horario']."</p>";
 	echo "</div>";
-	// echo "<a href='hueca.php?id=".$fila['hue_id']."'><button class='btn-info'>Más información</button></a>";
-	
 	echo "</div>";
 	
 }

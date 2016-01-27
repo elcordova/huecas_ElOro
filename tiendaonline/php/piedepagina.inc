@@ -5,6 +5,20 @@
 			</div>
 <?php include "php/config.inc" ?>
  <div class="col-md-2">.
+
+<a class='flotante' href='#' ><img src='boton-flotante.png' border="0"/></a>
+
+<style type="text/css">
+	.flotante {
+display:scroll;
+position:fixed;
+bottom:320px;
+right:0px;
+}
+
+</style>
+
+
 <blockquote>
  
 

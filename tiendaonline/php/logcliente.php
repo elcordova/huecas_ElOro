@@ -6,18 +6,18 @@ include "cabecera.inc";
 $contador = 0;
 $conexion = mysqli_connect($servidor,$usuario,$contrasena,$basededatos);
 mysqli_set_charset($conexion, "utf8");
-$peticion = "SELECT * FROM clientes WHERE usuario = '".$_POST['usuario']."' AND contrasena = '".$_POST['contrasena']."'";
+$peticion = "SELECT * FROM cliente WHERE cli_correo = '".$_POST['usuario']."' AND cli_contrasena = '".$_POST['contrasena']."'";
 $resultado = mysqli_query($conexion, $peticion);
 while($fila = mysqli_fetch_array($resultado)) {
 	$contador++;
-	$_SESSION['usuario'] = $fila['id'];
+	$_SESSION['usuario'] = $fila['cli_cedula'];
 } 
 if($contador > 0){
 	
-	$peticion = "INSERT INTO pedidos VALUES (NULL,".$_SESSION['usuario'].",'".date('U')."','0')";
+	$peticion = "INSERT INTO pedido VALUES (NULL,".$_SESSION['usuario'].",'".date('U')."','0')";
 	$resultado = mysqli_query($conexion, $peticion);
 
-	$peticion = "SELECT * FROM pedidos WHERE idcliente = '".$_SESSION['usuario']."' ORDER BY fecha DESC LIMIT 1";
+	$peticion = "SELECT * FROM pedido WHERE cli_cedula = '".$_SESSION['usuario']."' ORDER BY fecha DESC LIMIT 1";
 	$resultado = mysqli_query($conexion, $peticion);
 	while($fila = mysqli_fetch_array($resultado)) {
 	$_SESSION['idpedido'] = $fila['id'];

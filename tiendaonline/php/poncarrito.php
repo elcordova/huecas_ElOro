@@ -2,28 +2,85 @@
 <?php 
 
 session_start();
-$suma = 0;
-if(isset($_GET['p'])){
-	$_SESSION['producto'][$_SESSION['contador']] = $_GET['p'];
-	$_SESSION['contador']++;
-}
 
 $conexion = mysqli_connect($servidor,$usuario,$contrasena,$basededatos);
 mysqli_set_charset($conexion, "utf8");
  
+$suma = 0;
+if(isset($_GET['p']))
+{
+	if(isset($_SESSION['carrito'])){
+		$arreglo=$_SESSION['carrito'];
+		$encontro=false;
+		$numero=0;
+		for ($i=0; $i <count($arreglo) ; $i++) { 
+			if ($arreglo[$i]['Id']==$_GET['p']){
+				$encontro=true;
+				$numero=$i;
+				}
+			}
 
-echo "<table>";
-for($i = 0;$i< $_SESSION['contador'];$i++){
-	//echo "Producto: ".$_SESSION['producto'][$i]."<br>";
-	$peticion = "SELECT * FROM plato WHERE pla_id=".$_SESSION['producto'][$i]."";
-	$resultado = mysqli_query($conexion, $peticion);
-	while($fila = mysqli_fetch_array($resultado)) {
-		echo "<tr><td>".$fila['pla_nombre']."</td><td> ".$fila['pla_precio']."</td></tr>";
-	$suma += $fila['pla_precio'];
+			if ($encontro) {
+				$arreglo[$numero]['Cantidad']=$arreglo[$numero]['Cantidad']+1;				
+				$_SESSION['carrito']=$arreglo;
+			}else{
+				$nombre="";
+		$precio="";
+		$peticion="SELECT * FROM plato WHERE pla_id=".$_GET['p'];
+		$re=mysqli_query($conexion, $peticion);
+		while($f=mysqli_fetch_array($re)) {
+			$nombre=$f['pla_nombre'];
+			$precio=$f['pla_precio'];
+				
+		}
+			$arreglo_nuevo=array('Id'=>$_GET['p'],
+				'Nombre'=>$nombre,
+				'Precio'=>$precio,
+				'Cantidad'=>1);
+			array_push($arreglo,$arreglo_nuevo);
+			$_SESSION['carrito']=$arreglo;
+
+
+			}
+	}else{
+
+		$nombre="";
+		$precio="";
+		$peticion="SELECT * FROM plato WHERE pla_id=".$_GET['p'];
+		$re=mysqli_query($conexion, $peticion);
+		while($f=mysqli_fetch_array($re)) {
+			$nombre=$f['pla_nombre'];
+			$precio=$f['pla_precio'];
+				
+		}
+			$arreglo[]=array('Id'=>$_GET['p'],
+				'Nombre'=>$nombre,
+				'Precio'=>$precio,
+				'Cantidad'=>1);
+			$_SESSION['carrito']=$arreglo;
 	}
+	
 }
-echo "<tr><td>Subtotal</td><td>".number_format($suma,2)."</td></tr>";
-echo "</table>";
-mysqli_close($conexion);
+
+
+
+		echo "<table class='table text-center'>";
+if(isset($_SESSION['carrito'])){
+	$datos=$_SESSION['carrito'];
+		echo "<tr><td>Detalle</td><td> Precio. U.</td><td> Cant.</td><td> Total </td></tr>";
+			
+
+		for($i = 0;$i< count($datos);$i++){
+			echo "<tr><td>".$datos[$i]['Nombre']."</td><td> ".$datos[$i]['Precio']."</td><td> ".$datos[$i]['Cantidad']."</td><td> ".$datos[$i]['Precio']*$datos[$i]['Cantidad']."</td></tr>";
+			$suma += $datos[$i]['Precio']*$datos[$i]['Cantidad']+$suma;
+			}
+		echo "<tr><td>Subtotal</td><td>".number_format($suma,2)."</td></tr>";
+		
+}else{
+	echo '<tr><td><center>Sin platos en su lista</center></td><td>';
+
+}
+		echo "</table>";
+
 
 ?>

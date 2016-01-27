@@ -25,7 +25,17 @@ if(!isset($_SESSION['contador'])){$_SESSION['contador'] = 0;}
 		
 	</head>
 		<body>
+<a class='flotante' href='#' ><img src='img/shopping.png' class="img-rounded" border="0" width=200px/></a>
 
+<style type="text/css">
+  .flotante {
+display:scroll;
+position:fixed;
+bottom:320px;
+right:0px;
+}
+
+</style>
 <nav class="navbar navbar-default navbar-inverse" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -124,13 +134,13 @@ if(!isset($_SESSION['contador'])){$_SESSION['contador'] = 0;}
    <div class="container">
   	
 
-					<div id="contienecarrito">
+					<div id="contienecarrito" class="center text-center">
 						<div id="carrito" style="background:rgb(200,200,200);color:black;">
 				
 							Carrito
 						</div>
-						<a href='php/destruir.php'><button>Vaciar carrito</button></a>
-						<a href='confirmar.php'><button>Confirmar compra</button></a>
+						<a href='php/destruir.php'><button class="btn">Vaciar carrito</button></a>
+						<a href='confirmar.php'><button class="btn">Confirmar compra</button></a>
 					</div>
 
 
