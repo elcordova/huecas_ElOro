@@ -9,7 +9,6 @@ if(!isset($_SESSION['contador'])){$_SESSION['contador'] = 0;}
 		<link rel=Stylesheet href="css/bootstrap.css"></script>
 		<link rel=Stylesheet href="css/cabecera.css"></script>
 		<link rel="stylesheet" type="text/css" href="css/imagenes.css">
-    <link rel=Stylesheet href="css/movil.css" media='screen and (min-width: 1px) and (max-width: 800px)'>
 		<link rel=Stylesheet href="css/pcmac.css" media='screen and (min-width: 801px) and (max-width: 4000px)'>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -18,14 +17,15 @@ if(!isset($_SESSION['contador'])){$_SESSION['contador'] = 0;}
 		<script src="js/bootstrap.min.js"></script>
 
 
-
+    <script type="text/javascript" src="js/script.js"></script>
+    
 
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="js/codigo.js"></script>
 		
 	</head>
 		<body>
-<a class='flotante' href='#' ><img src='img/shopping.png' class="img-rounded" border="0" width=200px/></a>
+<a class='flotante' href='carrito.php' ><img src='img/shopping.png' class="img-rounded" border="0" width=200px/></a>
 
 <style type="text/css">
   .flotante {
@@ -153,7 +153,7 @@ right:0px;
 
 
 		
-			<div id="contenedor" class="col-md-8" >
+			<div id="contenedor" class="col-md-7" >
 
 					<header>	
 						<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">

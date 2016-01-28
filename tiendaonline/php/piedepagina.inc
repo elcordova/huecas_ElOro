@@ -4,15 +4,15 @@
 			</footer>
 			</div>
 <?php include "php/config.inc" ?>
- <div class="col-md-2">.
+ <div class="col-md-2 col-xs-2 col-sm-2">.
 
 
 
 
 <blockquote>
- 
 
-<?php
+<?php 
+
 
 $conexion = mysqli_connect($servidor,$usuario,$contrasena,$basededatos);
 mysqli_set_charset($conexion, "utf8");

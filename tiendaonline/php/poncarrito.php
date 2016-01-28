@@ -31,11 +31,12 @@ if(isset($_GET['p']))
 		while($f=mysqli_fetch_array($re)) {
 			$nombre=$f['pla_nombre'];
 			$precio=$f['pla_precio'];
-				
+			$imagen=$f['pla_foto'];
 		}
 			$arreglo_nuevo=array('Id'=>$_GET['p'],
 				'Nombre'=>$nombre,
 				'Precio'=>$precio,
+				'Foto'=>$imagen,
 				'Cantidad'=>1);
 			array_push($arreglo,$arreglo_nuevo);
 			$_SESSION['carrito']=$arreglo;
@@ -51,11 +52,12 @@ if(isset($_GET['p']))
 		while($f=mysqli_fetch_array($re)) {
 			$nombre=$f['pla_nombre'];
 			$precio=$f['pla_precio'];
-				
+			$imagen=$f['pla_foto'];		
 		}
 			$arreglo[]=array('Id'=>$_GET['p'],
 				'Nombre'=>$nombre,
 				'Precio'=>$precio,
+				'Foto'=>$imagen,
 				'Cantidad'=>1);
 			$_SESSION['carrito']=$arreglo;
 	}
@@ -72,7 +74,7 @@ if(isset($_SESSION['carrito'])){
 
 		for($i = 0;$i< count($datos);$i++){
 			echo "<tr><td>".$datos[$i]['Nombre']."</td><td> ".$datos[$i]['Precio']."</td><td> ".$datos[$i]['Cantidad']."</td><td> ".$datos[$i]['Precio']*$datos[$i]['Cantidad']."</td></tr>";
-			$suma += $datos[$i]['Precio']*$datos[$i]['Cantidad']+$suma;
+			$suma += $datos[$i]['Precio']*$datos[$i]['Cantidad'];
 			}
 		echo "<tr><td>Subtotal</td><td>".number_format($suma,2)."</td></tr>";
 		
