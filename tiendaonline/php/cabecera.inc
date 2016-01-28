@@ -81,7 +81,7 @@ right:0px;
       
 
       <ul class="nav navbar-nav navbar-right">
-
+      
         <li><p class="navbar-text">ya tienes una cuenta?</p></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Registro</b> <span class="caret"></span></a>
