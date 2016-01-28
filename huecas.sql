@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-01-2016 a las 06:19:59
+-- Tiempo de generación: 28-01-2016 a las 06:36:03
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.5.12
 
@@ -151,12 +151,20 @@ CREATE TABLE IF NOT EXISTS `pedido` (
 CREATE TABLE IF NOT EXISTS `plato` (
   `pla_id` int(11) NOT NULL AUTO_INCREMENT,
   `pla_nombre` varchar(45) COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `pla_precio` decimal(2,0) DEFAULT NULL,
+  `pla_precio` double DEFAULT NULL,
   `pla_foto` varchar(80) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `hue_id` int(11) NOT NULL,
   PRIMARY KEY (`pla_id`,`hue_id`),
   KEY `fk_plato_hueca1_idx` (`hue_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=3 ;
+
+--
+-- Volcado de datos para la tabla `plato`
+--
+
+INSERT INTO `plato` (`pla_id`, `pla_nombre`, `pla_precio`, `pla_foto`, `hue_id`) VALUES
+(1, 'ceviche de camaron', 3.3, 'El Diamante Dorado/plato1.png', 3),
+(2, 'encebollado sencillo', 2.5, 'El Diamante Dorado/plato2.png', 3);
 
 --
 -- Restricciones para tablas volcadas
