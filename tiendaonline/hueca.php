@@ -52,7 +52,7 @@ while($hueca=mysqli_fetch_array($resultado1)){
 	<img src='galeria/banners/".$hueca['hue_banner']." ' width=750px   class='img-rounded'   > </div>  ";
 	echo "</div>
 	
-	<div class='row center'>
+	<div class='row center' id='reloj'>
 	
 	<div align='center' class='col-md-12 text-center'>";
 	
@@ -165,6 +165,9 @@ mysqli_close($conexion);
 
 		// Comparar 
 		if (hh1 >= hh2 && hh1 <= hh3){ 
+		
+		
+		$('#reloj').hide(); //oculto mediante id
 		 
 		}else {
 			
