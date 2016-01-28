@@ -191,6 +191,10 @@ mysqli_close($conexion);
 			//alert("fin"+finall);
 			
 			if(dia > diaMaximo){
+				
+				
+				
+				
 				mes = mes + 1;
 				dia = 1
 				if (diaa >= finall){ 
@@ -205,6 +209,11 @@ mysqli_close($conexion);
 					
 				}
 			}else{
+				
+				if (hh1 >= 00 && hh1 <= hh2){ 
+				dia = dia - 1;
+				}
+				
 				//alert("segundo"+ano+" "+mes+" "+dia);
 				if (diaa >= finall){ 
 				//alert("priemro"+ano+" "+mes+" "+dia);
