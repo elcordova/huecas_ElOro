@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-01-2016 a las 06:36:03
+-- Tiempo de generación: 28-01-2016 a las 07:01:51
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.5.12
 
@@ -163,8 +163,8 @@ CREATE TABLE IF NOT EXISTS `plato` (
 --
 
 INSERT INTO `plato` (`pla_id`, `pla_nombre`, `pla_precio`, `pla_foto`, `hue_id`) VALUES
-(1, 'ceviche de camaron', 3.3, 'El Diamante Dorado/plato1.png', 3),
-(2, 'encebollado sencillo', 2.5, 'El Diamante Dorado/plato2.png', 3);
+(1, 'ceviche de camaron', 3.3, 'El Diamente Dorado/plato1.png', 3),
+(2, 'encebollado sencillo', 2.5, 'El Diamente Dorado/plato2.png', 3);
 
 --
 -- Restricciones para tablas volcadas
