@@ -170,7 +170,7 @@ mysqli_close($conexion);
 			mes = fecha.getMonth();
 			dia = fecha.getDate() + 1;
 			diaa = fecha.getDay();
-			alert(diaa);
+			alert("diaaa"+diaa);
 			
 			var diasMes = new Array(31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
 			var diaMaximo = diasMes[mes];

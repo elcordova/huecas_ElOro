@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-01-2016 a las 06:06:19
+-- Tiempo de generación: 28-01-2016 a las 06:19:59
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.5.12
 
@@ -111,19 +111,20 @@ CREATE TABLE IF NOT EXISTS `hueca` (
   `hue_video` varchar(100) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `hue_abre` time DEFAULT NULL,
   `hue_cierra` time DEFAULT NULL,
+  `dias` varchar(10) COLLATE utf8_spanish2_ci NOT NULL,
   `cat_id` int(11) NOT NULL,
   PRIMARY KEY (`hue_id`),
   KEY `fk_hueca_categoria_idx` (`cat_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=4 ;
 
 --
 -- Volcado de datos para la tabla `hueca`
 --
 
-INSERT INTO `hueca` (`hue_id`, `hue_nombre`, `hue_descripcion`, `hue_direccion`, `hue_horario`, `hue_logo`, `hue_banner`, `hue_menu`, `hue_video`, `hue_abre`, `hue_cierra`, `cat_id`) VALUES
-(1, 'El Buen Sabor', '', 'palmeras y cir. sur', '08:00 - 20:00', 'logotipo_elbuensabor.png', NULL, NULL, NULL, '08:00:00', '20:00:00', 1),
-(2, 'Don Hugo', '', 'Calle Colon frente a la Bahía', '07:00 - 14:30', 'logo-DonHugo.png', 'Banner Cevicheria.png', NULL, NULL, '07:00:00', '14:30:00', 1),
-(3, 'El Diamante Dorado', '', 'Urdesa Este Cuba e/ 7ma y 8va', '08:00 - 13:00', 'LogoCevicheria-dorado.png', 'banner_diamante_dorado.png', NULL, NULL, '08:00:00', '13:00:00', 1);
+INSERT INTO `hueca` (`hue_id`, `hue_nombre`, `hue_descripcion`, `hue_direccion`, `hue_horario`, `hue_logo`, `hue_banner`, `hue_menu`, `hue_video`, `hue_abre`, `hue_cierra`, `dias`, `cat_id`) VALUES
+(1, 'El Buen Sabor', '', 'palmeras y cir. sur', '08:00 - 20:00', 'logotipo_elbuensabor.png', NULL, NULL, NULL, '08:00:00', '20:00:00', '1-6', 1),
+(2, 'Don Hugo', '', 'Calle Colon frente a la Bahía', '07:00 - 14:30', 'logo-DonHugo.png', 'Banner Cevicheria.png', NULL, NULL, '07:00:00', '14:30:00', '', 1),
+(3, 'El Diamante Dorado', '', 'Urdesa Este Cuba e/ 7ma y 8va', '08:00 - 13:00', 'LogoCevicheria-dorado.png', 'banner_diamante_dorado.png', NULL, NULL, '08:00:00', '13:00:00', '', 1);
 
 -- --------------------------------------------------------
 
@@ -165,8 +166,8 @@ CREATE TABLE IF NOT EXISTS `plato` (
 -- Filtros para la tabla `detallepedido`
 --
 ALTER TABLE `detallepedido`
-  ADD CONSTRAINT `fk_plato_has_pedido_plato1` FOREIGN KEY (`pla_id`) REFERENCES `plato` (`pla_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_plato_has_pedido_pedido1` FOREIGN KEY (`ped_id`) REFERENCES `pedido` (`ped_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_plato_has_pedido_pedido1` FOREIGN KEY (`ped_id`) REFERENCES `pedido` (`ped_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_plato_has_pedido_plato1` FOREIGN KEY (`pla_id`) REFERENCES `plato` (`pla_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `galeria`
