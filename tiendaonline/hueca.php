@@ -13,7 +13,7 @@
 
 	";
 	
-	echo "<style type='text/css'>#countdown_container{font-size:13px;width:200px;height:160px;}.countdown_square_container{color:#333;float:left;}.countdown_number{-webkit-box-shadow:0px 5px 10px 0px #444;box-shadow:0px 5px 10px 0px #444;-webkit-border-radius:10px 10px 10px 10px;border-radius:10px 10px 10px 10px;background:#FFF;width:50px;height:65px;font-size:30px;text-align:center;padding-top:15px;}.countdown_number_name{margin-top:10px;font-size:11px;text-transform:uppercase;text-align:center;text-shadow:1px 1px 0px #fff;}#countdown_toppart{height:115px;width:210px;margin:0px auto;}#countdown_bottompart{text-align:center;font-size:16px;text-shadow:1px 1px 0px #fff;max-height:55px;max-width:200px;overflow:hidden;}</style>";
+	echo "<style type='text/css'>#countdown_container{font-size:13px;width:770px;height:100px;}.countdown_square_container{color:#333;float:left;}.countdown_number{-webkit-box-shadow:0px 5px 10px 0px #444;box-shadow:0px 5px 10px 0px #444;-webkit-border-radius:10px 10px 10px 10px;border-radius:10px 10px 10px 10px;background:#FFF;width:50px;height:65px;font-size:30px;text-align:center;padding-top:15px;}.countdown_number_name{margin-top:10px;font-size:11px;text-transform:uppercase;text-align:center;text-shadow:1px 1px 0px #fff;}#countdown_toppart{height:115px;width:210px;margin:0px auto;}#countdown_bottompart{text-align:center;font-size:16px;text-shadow:1px 1px 0px #fff;max-height:55px;max-width:200px;overflow:hidden;}</style>";
 	
 
 
@@ -46,8 +46,15 @@ while($hueca=mysqli_fetch_array($resultado1)){
 			echo "<p> Direccion : ".$hueca['hue_direccion']." </p>
 	</div>
 	</div>
+	
 	<div class='row center'>
-	<div class='col-md-12 text-center'>";
+	<div class='col-md-12 text-center'>
+	<img src='galeria/logos/".$hueca['hue_logo']." ' width=200px   class='img-circle'   > </div>  ";
+	echo "</div>
+	
+	<div class='row center'>
+	
+	<div align='center' class='col-md-12 text-center'>";
 	
 	
 	
@@ -67,16 +74,13 @@ while($hueca=mysqli_fetch_array($resultado1)){
 	
 	echo "</div>
 	
+	
+	
+	</div>";
 
 	
-	</div>
-
-	<div class='row center'>
-	<div class='col-md-12 text-center'>
-	<img src='galeria/logos/".$hueca['hue_logo']." ' width=200px   class='img-circle'   > </div>  ";
-
 }
-echo "</div>";
+
 
 
 
