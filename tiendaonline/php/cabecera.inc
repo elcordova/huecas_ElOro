@@ -2,6 +2,7 @@
 session_start();
 if(!isset($_SESSION['contador'])){$_SESSION['contador'] = 0;}
 ?>
+<?php include "php/config.inc" ?>
 <!doctype html>
 <html lang="es">
 	<head>
@@ -26,7 +27,7 @@ if(!isset($_SESSION['contador'])){$_SESSION['contador'] = 0;}
 		
 	</head>
 		<body>
-<a class='flotante' href='carrito.php' ><img src='img/shopping.png' class="img-rounded" border="0" width=200px/></a>
+
 
 <style type="text/css">
   .flotante {
@@ -37,7 +38,7 @@ right:0px;
 }
 
 </style>
-<nav class="navbar navbar-default navbar-inverse" role="navigation">
+<nav class=" navbar-fixed-top navbar-default navbar-inverse" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -85,7 +86,7 @@ right:0px;
         <li><p class="navbar-text">ya tienes una cuenta?</p></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Registro</b> <span class="caret"></span></a>
-			<ul id="login-dp" class="dropdown-menu">
+			   <ul id="login-dp" class="dropdown-menu">
 				<li>
 					 <div class="row">
 							<div class="col-md-12">
@@ -120,8 +121,13 @@ right:0px;
 							</div>
 					 </div>
 				</li>
-			</ul>
+			     </ul>
         </li>
+    <li><a href="./carrito.php" title="ver carrito de compras">
+      <img src="./img/carrito.png" class="img-rounded" width=50px>
+      </a>
+    </li>
+
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -131,28 +137,36 @@ right:0px;
 
 <div class="row">
 
-  <div class="col-md-3">
-   <div class="container">
-  	
+   <div class="col-md-2 col-xs-2 col-sm-2">.
+<blockquote>
 
-					<div id="contienecarrito" class="center text-center">
-						<div id="carrito" style="background:rgb(200,200,200);color:black;">
-				
-							Carrito
-						</div>
-						<a href='php/destruir.php'><button class="btn">Vaciar carrito</button></a>
-						<a href='confirmar.php'><button class="btn">Confirmar compra</button></a>
-					</div>
+<?php 
 
 
-
-
-  		</div>
-
-  	</div>
+$conexion = mysqli_connect($servidor,$usuario,$contrasena,$basededatos);
+mysqli_set_charset($conexion, "utf8");
+$peticion = "SELECT * FROM categoria";
+$resultado = mysqli_query($conexion, $peticion);
+  echo "<table class='table table-hover'> <thead>
+        <tr>
+            <th>CATEGORIAS</th>
+        </tr>
+    </thead> 
+    <tbody>";
   
+  
+while($fila = mysqli_fetch_array($resultado)) {
+  echo "<tr>";
+  echo "<td><a href='categoria.php?id=".$fila['cat_id']."'>".$fila['cat_nombre']."</a></td>";
+  echo "</tr>";
+  } 
+  echo "</tbody>";
+  echo "</table>";
+mysqli_close($conexion);
+?>
 
-
+</blockquote>
+ </div>
 		
 			<div id="contenedor" class="col-md-7" >
 

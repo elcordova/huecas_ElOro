@@ -3,40 +3,23 @@
 				<h6>(c) Universidad Tecnica de  Machala -12 ava Promoción - Ingenieria de Sistemas</h6>
 			</footer>
 			</div>
-<?php include "php/config.inc" ?>
- <div class="col-md-2 col-xs-2 col-sm-2">.
 
 
 
 
-<blockquote>
+<div class="col-md-3">
+   <div class="container">
+			<div id="contienecarrito" class="center text-center">
+				<div id="carrito" style="background:rgb(200,200,200);color:black;">
+					Carrito
+				</div>
+					<a href='php/destruir.php'><button class="btn">Vaciar carrito</button></a>
+					<a href='confirmar.php'><button class="btn">Confirmar compra</button></a>
+			</div>
+   
+  </div>
 
-<?php 
 
-
-$conexion = mysqli_connect($servidor,$usuario,$contrasena,$basededatos);
-mysqli_set_charset($conexion, "utf8");
-$peticion = "SELECT * FROM categoria";
-$resultado = mysqli_query($conexion, $peticion);
-	echo "<table class='table table-hover'> <thead>
-        <tr>
-            <th>CATEGORIAS</th>
-        </tr>
-    </thead> 
-    <tbody>";
-	
-	
-while($fila = mysqli_fetch_array($resultado)) {
-	echo "<tr>";
-	echo "<td><a href='categoria.php?id=".$fila['cat_id']."'>".$fila['cat_nombre']."</a></td>";
-	echo "</tr>";
-	} 
-	echo "</tbody>";
-	echo "</table>";
-mysqli_close($conexion);
-?>
-
-</blockquote>
 
 
 

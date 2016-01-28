@@ -49,14 +49,14 @@ while($hueca=mysqli_fetch_array($resultado1)){
 	
 	<div class='row center'>
 	<div class='col-md-12 text-center'>
-	<img src='galeria/logos/".$hueca['hue_logo']." ' width=200px   class='img-circle'   > </div>  ";
+	<img src='galeria/banners/".$hueca['hue_banner']." ' width=750px   class='img-rounded'   > </div>  ";
 	echo "</div>
 	
 	<div class='row center'>
 	
 	<div align='center' class='col-md-12 text-center'>";
 	
-	
+
 	
 	echo "
 			
