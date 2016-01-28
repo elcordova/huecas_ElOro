@@ -124,7 +124,7 @@ mysqli_close($conexion);
 	s=checkTime(s); 
 	hora1 = h+":"+m;
 	
-	alert(hora1);
+	//alert(hora1);
 	
 	z = CompararHoras(hora1,hora2,hora3);
 	
@@ -157,7 +157,7 @@ mysqli_close($conexion);
 		var hh3 = parseInt(arHora3[0],10); 
 		var mm3 = parseInt(arHora3[1],10); 
 		
-		alert(hh1+" "+hh2+" "+hh3);
+		//alert(hh1+" "+hh2+" "+hh3);
 
 		// Comparar 
 		if (hh1 >= hh2 && hh1 <= hh3){ 
@@ -170,7 +170,7 @@ mysqli_close($conexion);
 			mes = fecha.getMonth();
 			dia = fecha.getDate() + 1;
 			diaa = fecha.getDay();
-			alert("diaaa"+diaa);
+			//alert("diaaa"+diaa);
 			
 			var diasMes = new Array(31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
 			var diaMaximo = diasMes[mes];
@@ -183,8 +183,8 @@ mysqli_close($conexion);
 			var inicial = parseInt(rangodias[0],10);
 			var finall = parseInt(rangodias[1],10); 			
 			
-			alert("ini"+inicial);
-			alert("fin"+finall);
+			//alert("ini"+inicial);
+			//alert("fin"+finall);
 			
 			if(dia > diaMaximo){
 				mes = mes + 1;
