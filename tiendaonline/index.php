@@ -16,6 +16,7 @@ while($fila = mysqli_fetch_array($resultado)) {
 	
 	echo "<input type='hidden' name='hora2' id='hora2' value=".$fila['hue_abre'].">";
 	echo "<input type='hidden' name='hora3' id='hora3' value=".$fila['hue_cierra'].">";
+	echo "<input type='hidden' name='dias' id='dias' value=".$fila['dias'].">";
 	
 	echo "</div><div class='col-md-6'>";
 	echo "<a href='hueca.php?id=".$fila['hue_id']."' class='text-center'><h3>".$fila['hue_nombre']."</h3></a>";
@@ -29,9 +30,9 @@ while($fila = mysqli_fetch_array($resultado)) {
 			
 			<div class='add-info'>
 				 
-				<p style='color:#D06E6D; font-size: 17px; padding-top: 10px;'>Este establecimiento se encuentra cerrado.</p>
-								<p style='color:#EBADAC;'>ABRE EN</p>
-								<div id='countdown_container'><div id='countdown_toppart'><div class='countdown_square_container'><div class='countdown_number' id='countdown_days'></div><div class='countdown_number_name'>Days</div></div><div class='countdown_square_container'><div class='countdown_number' id='countdown_hours'></div><div class='countdown_number_name'>Hours</div></div><div class='countdown_square_container'><div class='countdown_number' id='countdown_mins'></div><div class='countdown_number_name'>Mins</div></div><div class='countdown_square_container'><div class='countdown_number' id='countdown_secs'></div><div class='countdown_number_name'>Secs</div></div></div></div>";
+				<p style='color:#D06E7D; font-size: 17px; padding-top: 10px;'>La hueca se encuentra cerrada</p>
+								<p style='color:#EBADAB;'>ABRE EN:</p>
+								<div id='countdown_container'><div id='countdown_toppart'><div class='countdown_square_container'><div class='countdown_number' id='countdown_days'></div><div class='countdown_number_name'>Dias</div></div><div class='countdown_square_container'><div class='countdown_number' id='countdown_hours'></div><div class='countdown_number_name'>Horas</div></div><div class='countdown_square_container'><div class='countdown_number' id='countdown_mins'></div><div class='countdown_number_name'>Min</div></div><div class='countdown_square_container'><div class='countdown_number' id='countdown_secs'></div><div class='countdown_number_name'>Seg</div></div></div></div>";
 		
 				
 		echo "</div>";
@@ -112,70 +113,103 @@ mysqli_close($conexion);
 		alert(hh1+" "+hh2+" "+hh3);
 
 		// Comparar 
-		if (hh3 < hh1 > hh2){ 
-			alert ("abierto"); 
+		if (hh1 >= hh2 && hh1 <= hh3){ 
+		 
 		}else {
-			alert ("cerrado");
 			
-			countdown_UpdateCount();
 			
-			alert(hh2);
+			fecha=new Date();
+			ano = fecha.getFullYear();
+			mes = fecha.getMonth();
+			dia = fecha.getDate() + 1;
+			diaa = fecha.getDay();
+			alert(diaa);
 			
-				var countdown_dateFuture=new Date(2016,0,27,hh2,0,0);
-				function countdown_UpdateCount(){
-					 var dateNow=new Date();
-					 
-					 timediff=Math.abs(countdown_dateFuture.getTime() - dateNow.getTime());
-					 alert(timediff);
-					 delete dateNow;
-					 if(timediff<0){
-						 
-						 document.getElementById('countdown_container').style.display="none";
-						 }else {
-							 
-							 days=0;
-							 hours=0;
-							 mins=0;
-							 secs=0;
-							 out="";
-							 timediff=Math.floor(timediff/1000);
-							 days=Math.floor(timediff/86400);
-							 timediff=timediff % 86400;
-							 hours=Math.floor(timediff/3600);
-							 timediff=timediff % 3600;
-							 mins=Math.floor(timediff/60);
-							 timediff=timediff % 60;
-							 secs=Math.floor(timediff);
-							 if(document.getElementById('countdown_container')){
-								 document.getElementById('countdown_days').innerHTML=days;
-								 document.getElementById('countdown_hours').innerHTML=hours;
-								 document.getElementById('countdown_mins').innerHTML=mins;
-								 document.getElementById('countdown_secs').innerHTML=secs;
-							}
-								 setTimeout("countdown_UpdateCount()", 1000);
-						}
-					}
+			var diasMes = new Array(31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+			var diaMaximo = diasMes[mes];
+			
+			var dias = document.getElementById('dias').value;
+			
+			var rangodias = dias.split("-");	
+		 
+		// Obtener horas y minutos (hora 1) 
+			var inicial = parseInt(rangodias[0],10);
+			var finall = parseInt(rangodias[1],10); 			
+			
+			alert("ini"+inicial);
+			alert("fin"+finall);
+			
+			if(dia > diaMaximo){
+				mes = mes + 1;
+				dia = 1
+				if (diaa >= finall){ 
+				//alert("priemro"+ano+" "+mes+" "+dia);
+					var diferencia = 7 - finall;
+					dia = dia + diferencia;
+					countdown_dateFuture=new Date(ano,mes,dia,hh2,0,0);
+					countdown_UpdateCount();
+				}else{
+					countdown_dateFuture=new Date(ano,mes,dia,hh2,0,0);
+					countdown_UpdateCount();
 					
-					function getTime(zone, success) {
-						var url = 'http://json-time.appspot.com/time.json?tz=' + zone,
-							ud = 'json' + (+new Date());
-						window[ud]= function(o){
-							success && success(new Date(o.datetime));
-						};
-						document.getElementsByTagName('head')[0].appendChild((function(){
-							var s = document.createElement('script');
-							s.type = 'text/javascript';
-							s.src = url + '&callback=' + ud;
-							return s;
-						})());
-					}
-				
-				
+				}
+			}else{
+				//alert("segundo"+ano+" "+mes+" "+dia);
+				if (diaa >= finall){ 
+				//alert("priemro"+ano+" "+mes+" "+dia);
+					var diferencia = 7 - finall;
+					dia = dia + diferencia;
+					countdown_dateFuture=new Date(ano,mes,dia,hh2,0,0);
+					countdown_UpdateCount();
+				}else{
+					countdown_dateFuture=new Date(ano,mes,dia,hh2,0,0);
+					countdown_UpdateCount();
+					
+				}
 			}
+			
+			
+			
+			
+							
+								
+		}
 	}
 
 	
-	
+	function countdown_UpdateCount(){
+				dateNow=new Date();
+				timediff=Math.abs(countdown_dateFuture.getTime() - dateNow.getTime());
+				delete dateNow;
+				if(timediff<0){
+					
+					document.getElementById('countdown_container').style.display="none";
+					}else {
+						
+						days=0;
+						hours=0;
+						mins=0;
+						secs=0;
+						out="";
+						timediff=Math.floor(timediff/1000);
+						days=Math.floor(timediff/86400);
+						timediff=timediff % 86400;
+						hours=Math.floor(timediff/3600);
+						timediff=timediff % 3600;
+						mins=Math.floor(timediff/60);
+						timediff=timediff % 60;
+						secs=Math.floor(timediff);
+						if(document.getElementById('countdown_container')){
+							document.getElementById('countdown_days').innerHTML=days;
+							document.getElementById('countdown_hours').innerHTML=hours;
+							document.getElementById('countdown_mins').innerHTML=mins;
+							document.getElementById('countdown_secs').innerHTML=secs;
+						}
+						
+						setTimeout("countdown_UpdateCount()", 1000);
+					
+					}
+			}
 
  
 	
