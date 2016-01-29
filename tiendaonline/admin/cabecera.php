@@ -60,7 +60,7 @@
       
 
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Registro</b> <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Notificaciones</b> <span class="caret"></span></a>
          <ul id="login-dp" class="dropdown-menu">
         <li>
            <div class="row">
