@@ -86,15 +86,18 @@ while($hueca=mysqli_fetch_array($resultado1)){
 
 $peticion = "SELECT * FROM plato WHERE hue_id=".$_GET['id'];
 $resultado = mysqli_query($conexion, $peticion);
+	echo "<div class='container-fluid text-center'>";
+	echo "<pre><h4> <strong> Selecciona tu plato: </strong></h4></pre>";
+	echo "</div>";
 while($fila = mysqli_fetch_array($resultado)) {
 	echo "<div class='container-fluid text-center' >";
-	echo "<pre><a href='plato.php?id=".$fila['pla_id']."'><h3 > <strong> ".$fila['pla_nombre']." </strong></h3></a></pre>";
+	echo "<pre><a href='plato.php?id=".$fila['pla_id']."'><h3> <strong> ".$fila['pla_nombre']." </strong></h3></a></pre>";
 	
 	echo "<img src='galeria/platos/".$fila['pla_foto']."' width=200px class='text-center'>";
 	echo "<br>";
 	echo "<p class='lead'>Precio: ".$fila['pla_precio']." $</p>";
 	echo "<a href='plato.php?id=".$fila['pla_id']."'><button class='btn btn-primary'>Más información</button></a>";
-	echo "<button value='".$fila['pla_id']."' class='botoncompra btn btn-primary'>Comprar ahora</button>";
+	echo "<button id='boton".$fila['pla_id']."' value='".$fila['pla_id']."' class='botoncompra btn btn-primary'>Comprar ahora</button>";
 	echo "</div>";
 	echo "<br>";
 	
@@ -168,9 +171,11 @@ mysqli_close($conexion);
 		
 		
 		$('#reloj').hide(); //oculto mediante id
+		
 		 
 		}else {
 			
+			$("button[id^='boton']").hide();
 			
 			fecha=new Date();
 			ano = fecha.getFullYear();
