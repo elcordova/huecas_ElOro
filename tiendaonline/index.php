@@ -32,10 +32,6 @@ while($fila = mysqli_fetch_array($resultado)) {
 	echo "<p class='text-center'>Horario de Atencion: ".$fila['hue_horario']."</p>";
 	echo "<p class='text-center'>Telefono: ".$fila['hue_telefono']."</p>";
 	
-	
-	
-	
-	
 	echo "</div>";
 	echo "</div>";
 	

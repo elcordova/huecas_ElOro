@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-01-2016 a las 22:09:57
+-- Tiempo de generación: 30-01-2016 a las 00:09:33
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.5.12
 
@@ -98,7 +98,16 @@ CREATE TABLE IF NOT EXISTS `galeria` (
   `hue_id` int(11) NOT NULL,
   PRIMARY KEY (`gal_id`,`hue_id`),
   KEY `fk_galeria_hueca1_idx` (`hue_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=4 ;
+
+--
+-- Volcado de datos para la tabla `galeria`
+--
+
+INSERT INTO `galeria` (`gal_id`, `gal_foto`, `gal_tipo`, `hue_id`) VALUES
+(1, 'foto1.jpg', 'h', 13),
+(2, 'foto2.jpg', 'h', 13),
+(3, 'foto5.jpg', 'h', 13);
 
 -- --------------------------------------------------------
 
