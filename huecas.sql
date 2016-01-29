@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-01-2016 a las 02:42:53
+-- Tiempo de generación: 29-01-2016 a las 08:27:25
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.5.12
 
@@ -63,6 +63,13 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   PRIMARY KEY (`cli_cedula`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
+--
+-- Volcado de datos para la tabla `cliente`
+--
+
+INSERT INTO `cliente` (`cli_cedula`, `cli_nombre`, `cli_apellido`, `cli_direccion`, `cli_telefono`, `cli_correo`, `cli_contrasena`) VALUES
+('0706764115', 'Andres', 'Aguilar', 'Pasaje', '0987259406', 'carlos.andres.1994@hotmail.com', '1234');
+
 -- --------------------------------------------------------
 
 --
@@ -117,20 +124,29 @@ CREATE TABLE IF NOT EXISTS `hueca` (
   `cat_id` int(11) NOT NULL,
   PRIMARY KEY (`hue_id`),
   KEY `fk_hueca_categoria_idx` (`cat_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=17 ;
 
 --
 -- Volcado de datos para la tabla `hueca`
 --
 
 INSERT INTO `hueca` (`hue_id`, `hue_nombre`, `hue_descripcion`, `hue_direccion`, `hue_horario`, `hue_logo`, `hue_banner`, `hue_menu`, `hue_video`, `hue_abre`, `hue_cierra`, `dias`, `latitud`, `longitud`, `cat_id`) VALUES
-(1, 'El Bollo que Arde', '', 'palmeras y cir. sur', '08:00 - 20:00', 'logoBollo.png', 'BannerBollo.png', NULL, NULL, '08:00:00', '19:00:00', '1-6', '-3.267559', '-79.927255', 5),
-(2, 'Don Hugo', '', 'Calle Colon frente a la Bahía', '07:00 - 14:30', 'logo-DonHugo.png', 'Banner Cevicheria.png', NULL, NULL, '07:00:00', '14:30:00', '', '', '', 1),
-(3, 'El Diamante Dorado', '', 'Urdesa Este Cuba e/ 7ma y 8va', '08:00 - 13:00', 'LogoCevicheria-dorado.png', 'banner_diamante_dorado.png', NULL, NULL, '08:00:00', '13:00:00', '', '', '', 1),
-(4, 'Hornado al Paso', 'El mejor hornado de Machala', 'Guayas e/ Bolívar y Pichincha', '08:00 - 15:00', 'Fritada.png', 'Banner-HP2.png', NULL, NULL, '08:00:00', '15:00:00', '1-7', '', '', 5),
-(5, 'Las Delicias de Miss', 'La mejor comida típica ', 'Municipalidad e/ Bolívar y Av. Azuay', '15:00 - 00:00', 'LOGOya.png', 'bannerDeliciasMiss.png', 'MenuMiss.png', NULL, '15:00:00', '00:00:00', '1-6', '', '', 5),
+(1, 'El Bollo que Arde', 'El mejor bollo de Machala', 'Guayas y Boyaca', '07:00 - 14:00', 'logoBollo.png', 'BannerBollo.png', 'Menubollo.png', NULL, '07:00:00', '13:00:00', '1-7', '-3.2558962', '-79.957277', 5),
+(2, 'Don Hugo', 'Ceviches - Guatita', 'Calle Colon frente a la Bahía', '07:00 - 14:30', 'logo-DonHugo.png', 'Banner Cevicheria.png', 'menudonhugo.png', NULL, '07:00:00', '13:30:00', '1-7', '', '', 1),
+(3, 'El Diamante Dorado', 'Ceviche Camaron y Pescado - Casuelas', 'Urdesa Este Cuba e/ 7ma y 8va', '08:00 - 13:00', 'LogoCevicheria-dorado.png', 'banner_diamante_dorado.png', 'menu_diamante_dorado.png', NULL, '08:00:00', '13:00:00', '1-7', '-3,265336', '-79,935703', 1),
+(4, 'Hornado al Paso', 'El mejor hornado de Machala', 'Guayas e/ Bolívar y Pichincha', '08:00 - 15:00', 'Fritada.png', 'Banner-HP2.png', NULL, NULL, '08:00:00', '15:00:00', '1-7', '-3.259855', '-79.960888', 5),
+(5, 'Las Delicias de Miss', 'La mejor comida típica ', 'Municipalidad e/ Bolívar y Av. Azuay', '15:00 - 00:00', 'LOGOya.png', 'bannerDeliciasMiss.png', 'MenuMiss.png', NULL, '15:00:00', '23:00:00', '1-6', '-3.328222', '-79.807272', 5),
 (6, 'El Sorbetazo', 'Bocadillos que quitan el estrés.', '9 de Octubre y Bolívar (Esquina) ', '09:00 - 20:00', 'logoSorbetazo.png', 'bannerSorbetazo.png', 'MENUSorbetazo.png', NULL, '09:00:00', '20:00:00', '1-6', '-3.326343', '-79.805877', 4),
-(7, 'El Sabor de Carrillo', 'Caldo de Tubo - Fritada', 'Machala e/ Pichincha y Buenavista', '09:00 - 12:00', 'logoCarrillo.png', 'bannerCarrillo.png', 'menuCarrillo.png', NULL, '09:00:00', '12:00:00', '1-7', '-3.262029', '-79.959825', 5);
+(7, 'El Sabor de Carrillo', 'Caldo de Tubo - Fritada', 'Machala e/ Pichincha y Buenavista', '09:00 - 12:00', 'logoCarrillo.png', 'bannerCarrillo.png', 'menuCarrillo.png', NULL, '09:00:00', '12:00:00', '1-7', '-3.262029', '-79.959825', 5),
+(8, 'Sabrosito', 'Batidos - Tostadas', 'Colon y Bolívar ', '07:00 - 19:00', 'logoSabrosito.png', 'bannerSabrosito.png', 'menuSabrosito.png', NULL, '07:00:00', '19:00:00', '1-7', '-3.2628553', '-79.9571722', 4),
+(9, 'Parrilladas Melanie', 'Carne - Pollo - Chuleta - Ternera - Mixta', 'Parque Lineal - Circunvalación Sur', '19:00 - 00:00', 'logo-asado.png', 'banner-asados.png', 'menu-asados.png', NULL, '19:00:00', '23:00:00', '1-7', '-3.266058', '-79.974268', 6),
+(10, 'El Rico Yapingacho', 'Yapingacho - Hornado - Chuleta', 'Parque Lineal', '19:00 - 23:00', 'logo-hornado.png', 'banner-hornado.png', 'menu-hornado.png', NULL, '19:00:00', '23:00:00', '1-7', '-3.263770', '-79.272112', 5),
+(11, 'Frutas Tropicales', 'Batidos - Jugos - Ensaladas', 'Parque Lineal', '08:00 - 12:00', 'logoFT.png', 'BannerFT.png', 'MenuFT.png', NULL, '08:00:00', '12:00:00', '1-7', '-3.264745', '-79.973190', 4),
+(12, 'Shola''o', 'Granizados - Hamburguesas', 'Parque Lineal', '16:00 - 22:00', 'logoSholaoF.png', 'bannerSh.png', 'menus.png', NULL, '16:00:00', '21:00:00', '1-7', '-3.264745', '-79.973190', 7),
+(13, 'Risto Pizza', 'Pizza - Lasagna', 'Arizaga y 10ma Este', '05:00 - 23:00', 'LogoPizzaRisto.png', 'BaneRisto.png', 'menuRisto.png', NULL, '05:00:00', '22:00:00', '1-7', '-3.269792', '-79.952536', 3),
+(14, 'Frutilandia', 'Buffete de Frutas', 'Babahoyo y 25 de Junio', '10:00 - 22:00', 'logoFrutilandia.png', 'banerFrutilandia.png', 'menuFrutilandia2.png', NULL, '10:00:00', '21:00:00', '1-7', '-3.269792', '-79.952536', 4),
+(15, 'Caldo de Tubo Luisin', 'Caldo de Tubo', 'Ayacuho e/ Kleber Franco y Guabo (Frente a Wa', '08:00 - 13:00', 'logoCerdo.png', 'bannercorregido.png', 'menuCaldoTubo.png', NULL, '08:00:00', '12:00:00', '1-7', '-3.254160', '-79.957389', 5),
+(16, 'El Buen Sabor', 'Ceviche Blanco - Rojo - Mixto', 'Boyaca e/ Guayas y 9 de Mayo', '09:00 - 00:00', 'logotipo_elbuensabor.png', 'banner_elbuensabor.png', 'menubuensabor.png', NULL, '09:00:00', '23:00:00', '1-7', '-3.256426', '-79.957440', 1);
 
 -- --------------------------------------------------------
 
@@ -140,8 +156,7 @@ INSERT INTO `hueca` (`hue_id`, `hue_nombre`, `hue_descripcion`, `hue_direccion`,
 
 CREATE TABLE IF NOT EXISTS `pedido` (
   `ped_id` int(11) NOT NULL AUTO_INCREMENT,
-  `ped_preciot` decimal(10,0) DEFAULT NULL,
-  `ped_subt` decimal(10,0) DEFAULT NULL,
+  `ped_preciot` double DEFAULT NULL,
   `ped_fecha` date DEFAULT NULL,
   `cli_cedula` varchar(13) COLLATE utf8_spanish2_ci NOT NULL,
   PRIMARY KEY (`ped_id`,`cli_cedula`),
