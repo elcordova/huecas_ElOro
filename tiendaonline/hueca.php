@@ -41,11 +41,7 @@ while($hueca=mysqli_fetch_array($resultado1)){
 		<p><strong><h3> ".$hueca['hue_nombre']."</h3></strong> </p>
 		</div>
 	</div>
-	<div class='row center'>
-		<div class='col-md-12 text-center'>";
-			echo "<p> Direccion : ".$hueca['hue_direccion']." </p>
-	</div>
-	</div>
+	
 	
 	<div class='row center'>
 	<div class='col-md-12 text-center'>

@@ -33,6 +33,7 @@ while($fila = mysqli_fetch_array($resultado)) {
 	echo "<a href='hueca.php?id=".$fila['hue_id']."'><h3>".$fila['hue_nombre']."</h3></a>";
 
 	echo "<p class='text-center'>".$fila['hue_descripcion']."</p>";
+	echo "<p class='text-center'>Direccion: ".$fila['hue_direccion']."</p>";
 	echo "<p class='text-center'>Horario de Atencion: ".$fila['hue_horario']."</p>";
 	echo "<p class='text-center'>Telefono: ".$fila['hue_telefono']."</p>";
 	
