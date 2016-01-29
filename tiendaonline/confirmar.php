@@ -47,15 +47,37 @@
       text-align: center; 
   } 
 </style> 
-  
+
+<?php
+if(isset($_SESSION['carrito'])){
+
+?>
+
+<div class="text-center">
 <h3>¿ya tienes Cuenta?</h3>
 <form class="login" action="php/logcliente.php" method="POST">
-    <div><label>Username</label><input type="text" name="usuario" placeholder="Introduce tu nombre de usuario"></div> 
-    <div><label>Password</label><input type="text" name="contrasena" placeholder="Introduce tu contraseña"></div> 
-    <div><input name="login" type="submit" value="login"></div> 
+    <div><label>Numero de Cédula</label><input type="text" class="input-append" name="usuario" placeholder="ejm: 0705295863"></div> 
+    <div><label>Contraseña</label><input type="password" class="input-append" name="contrasena" placeholder="*********"></div> 
+    <div><input name="login" class="password" type="submit" value="login"></div> 
 </form> 
+</div>
 
+<?php
 
+}else{
+
+  ?>
+<hr>
+<div class="text-center">
+<h3 class="text-center">debes agregar algo a tu pedido primero</h3>
+</button>
+</div>
+
+  <?php
+}
+  
+
+?>
 <!-- registro modal -->
 
 
@@ -80,22 +102,23 @@
                   <label>APELLIDOS</label>
                   <input name="apellidos" class="form-control" required>
                 </div>
-
-                <div class="form-group">
+                <div class="row">
+                <div class="form-group col-xs-6">
                   <label>NUMERO DE CEDULA </label>
                   <input name="cedula" class="form-control" required>
                 </div>
+                <div class="form-group col-xs-6">
+                  <label>TELEFONO</label>
+                  <input name="telefono" class="form-control" required>
+                </div>
 
+                </div>
                 <div class="form-group">
                   <label>DIRECCIÓN</label>
                   <input name="direccion" class="form-control" required>
                 </div>
 
-                <div class="form-group">
-                  <label>TELEFONO</label>
-                  <input name="telefono" class="form-control" required>
-                </div>
-
+                
                 <div class="form-group">
                   <label>CORREO ELECTRONICO</label>
                   <input name="correo" class="form-control" required>
@@ -131,13 +154,13 @@
 
 
 
-
-
-<h3>¿Eres nuevo usuario?</h3>
+<hr>
+<div class="text-center">
+<h3 class="text-center">¿Eres nuevo usuario?</h3>
 <button class="btn btn-inverse" onclick="Nuevo();">
 <a href="#">REGISTRATE</a>
 </button>
-
+</div>
 
 
 

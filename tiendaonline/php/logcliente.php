@@ -1,8 +1,6 @@
 <?php include "config.inc" ?>
 <?php
 
-include "cabecera.inc";
-
 $contador = 0;
 $conexion = mysqli_connect($servidor,$usuario,$contrasena,$basededatos);
 mysqli_set_charset($conexion, "utf8");
@@ -13,21 +11,23 @@ while($fila = mysqli_fetch_array($resultado)) {
 	$_SESSION['usuario'] = $fila['cli_cedula'];
 } 
 $total=0;
+session_start();
 if(isset($_SESSION['carrito'])){
-$datos=$_SESSION['carrito'];
+	$datos=$_SESSION['carrito'];
 		for($i = 0;$i< count($datos);$i++){
 			$total+= $datos[$i]['Precio']*$datos[$i]['Cantidad'];
 		}
 
-}	
-	
+}
 
+echo "-".$total."-";	
+echo "-".$contador."-";	
 if($contador > 0){
 	
-	$peticion = "INSERT INTO pedido VALUES (NULL,".$total.",'".date('U')."',".$_SESSION['usuario'].")";
+	$peticion = "INSERT INTO pedido VALUES (NULL,'".$total."','".date('U')."','".$_SESSION['usuario']."')";
 	$resultado = mysqli_query($conexion, $peticion);
 
-	$peticion = "SELECT * FROM pedido WHERE cli_cedula = '".$_SESSION['usuario']."' ORDER BY fecha DESC LIMIT 1";
+	$peticion = "SELECT * FROM pedido WHERE cli_cedula = '".$_SESSION['usuario']."' ORDER BY ped_fecha DESC LIMIT 1";
 	$resultado = mysqli_query($conexion, $peticion);
 	while($fila = mysqli_fetch_array($resultado)) {
 	$_SESSION['idpedido'] = $fila['ped_id'];

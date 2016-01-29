@@ -54,7 +54,9 @@ right:0px;
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="//localhost/huecas_ElOro/tiendaonline">Oro Huecas</a>
+      <a class="navbar-brand" href="//localhost/huecas_ElOro/tiendaonline" title="Volver al inicio">
+      <img src="./img/logo.png" class="img-rounded" width=100px>
+      </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
