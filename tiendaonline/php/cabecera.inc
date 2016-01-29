@@ -45,27 +45,48 @@ right:0px;
 
 </style>
 <nav class=" navbar-fixed-top navbar-default navbar-inverse" role="navigation">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="//localhost/huecas_ElOro/tiendaonline" title="Volver al inicio">
-      <img src="./img/logohuecas.png" class="img-rounded" width=100px>
-      </a>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
+  
+	
+  
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li><a href="#">Link</a></li>
-        <li><a href="./admin/index.php">Administrar</a></li>
+      
+       
+	    <ul class="nav navbar-nav navbar-left ">
+	   <li><a href="//localhost/huecas_ElOro/tiendaonline" title="Volver al inicio">
+		  <img src="./img/logohuecas.png" class="img-rounded" width=110px>
+		  </a>
+		</li>
+		</ul>
+      
+
+      <ul class="nav navbar-nav navbar-right ">
+	  
+		
+	
+		<form class="nav navbar-nav" role="search">
+      
+          <div class="form-group">
+          <input type="text" class="form-control" placeholder="Ingresar dato">
+        </div>
+     
+
+        </form>
+		
+		<form class="nav navbar-nav" role="search">
+      
+          <div class="form-group">
+          
+     
+        <button type="submit" class="btn btn-default">Buscar</button>
+		
+		</div>
+
+        </form>
+	  
+	  
+        <li><a href="./admin/index.php"><b>Administrar</b></a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">SOPORTE <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Soporte </b><span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
@@ -76,22 +97,9 @@ right:0px;
             <li><a href="#">One more separated link</a></li>
           </ul>
         </li>
-      </ul>
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-
-        </form>
-         
-					
-
       
+		<li><a href=""><b>¿Ya tienes una Cuenta?</b></a></li>
 
-      <ul class="nav navbar-nav navbar-right">
-      
-        <li><p class="navbar-text">ya tienes una cuenta?</p></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Registro</b> <span class="caret"></span></a>
 			   <ul id="login-dp" class="dropdown-menu">
@@ -132,7 +140,7 @@ right:0px;
 			     </ul>
         </li>
     <li><a href="./carrito.php" title="ver carrito de compras">
-      <img src="./img/carrito.png" class="img-rounded" width=50px>
+      <img src="./img/carrito1.png" class="img-rounded" width=40px>
       </a>
     </li>
 
