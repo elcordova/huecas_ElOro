@@ -7,7 +7,7 @@
 
 
 
-<div class="col-md-3">
+<div class="col-md-1 text-center">
    <div class="container">
 			<div id="contienecarrito" class="center text-center">
 				<div id="carrito" style="background:rgb(200,200,200);color:black;">
@@ -24,6 +24,6 @@
 
 
 </div>
-  </div>
+</div>
 	</body>
 </html>

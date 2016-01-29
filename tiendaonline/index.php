@@ -51,4 +51,3 @@ mysqli_close($conexion);
 
 
 <?php include "php/piedepagina.inc" ?>
-<button class="img-responsive"></button>

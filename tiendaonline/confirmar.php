@@ -2,8 +2,6 @@
 <br>
 <?php include "php/config.inc" ?>
 
-
-  
 <style type="text/css"> 
 *{ 
     font-size: 14px; 
