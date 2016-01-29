@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-01-2016 a las 07:48:07
+-- Tiempo de generación: 29-01-2016 a las 02:42:53
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.5.12
 
@@ -112,19 +112,25 @@ CREATE TABLE IF NOT EXISTS `hueca` (
   `hue_abre` time DEFAULT NULL,
   `hue_cierra` time DEFAULT NULL,
   `dias` varchar(10) COLLATE utf8_spanish2_ci NOT NULL,
+  `latitud` varchar(30) COLLATE utf8_spanish2_ci NOT NULL,
+  `longitud` varchar(30) COLLATE utf8_spanish2_ci NOT NULL,
   `cat_id` int(11) NOT NULL,
   PRIMARY KEY (`hue_id`),
   KEY `fk_hueca_categoria_idx` (`cat_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=8 ;
 
 --
 -- Volcado de datos para la tabla `hueca`
 --
 
-INSERT INTO `hueca` (`hue_id`, `hue_nombre`, `hue_descripcion`, `hue_direccion`, `hue_horario`, `hue_logo`, `hue_banner`, `hue_menu`, `hue_video`, `hue_abre`, `hue_cierra`, `dias`, `cat_id`) VALUES
-(1, 'El Bollo que Arde', '', 'palmeras y cir. sur', '08:00 - 20:00', 'logoBollo.png', 'BannerBollo.png', NULL, NULL, '08:00:00', '20:00:00', '1-6', 1),
-(2, 'Don Hugo', '', 'Calle Colon frente a la Bahía', '07:00 - 14:30', 'logo-DonHugo.png', 'Banner Cevicheria.png', NULL, NULL, '07:00:00', '14:30:00', '', 1),
-(3, 'El Diamante Dorado', '', 'Urdesa Este Cuba e/ 7ma y 8va', '08:00 - 13:00', 'LogoCevicheria-dorado.png', 'banner_diamante_dorado.png', NULL, NULL, '08:00:00', '13:00:00', '', 1);
+INSERT INTO `hueca` (`hue_id`, `hue_nombre`, `hue_descripcion`, `hue_direccion`, `hue_horario`, `hue_logo`, `hue_banner`, `hue_menu`, `hue_video`, `hue_abre`, `hue_cierra`, `dias`, `latitud`, `longitud`, `cat_id`) VALUES
+(1, 'El Bollo que Arde', '', 'palmeras y cir. sur', '08:00 - 20:00', 'logoBollo.png', 'BannerBollo.png', NULL, NULL, '08:00:00', '19:00:00', '1-6', '-3.267559', '-79.927255', 5),
+(2, 'Don Hugo', '', 'Calle Colon frente a la Bahía', '07:00 - 14:30', 'logo-DonHugo.png', 'Banner Cevicheria.png', NULL, NULL, '07:00:00', '14:30:00', '', '', '', 1),
+(3, 'El Diamante Dorado', '', 'Urdesa Este Cuba e/ 7ma y 8va', '08:00 - 13:00', 'LogoCevicheria-dorado.png', 'banner_diamante_dorado.png', NULL, NULL, '08:00:00', '13:00:00', '', '', '', 1),
+(4, 'Hornado al Paso', 'El mejor hornado de Machala', 'Guayas e/ Bolívar y Pichincha', '08:00 - 15:00', 'Fritada.png', 'Banner-HP2.png', NULL, NULL, '08:00:00', '15:00:00', '1-7', '', '', 5),
+(5, 'Las Delicias de Miss', 'La mejor comida típica ', 'Municipalidad e/ Bolívar y Av. Azuay', '15:00 - 00:00', 'LOGOya.png', 'bannerDeliciasMiss.png', 'MenuMiss.png', NULL, '15:00:00', '00:00:00', '1-6', '', '', 5),
+(6, 'El Sorbetazo', 'Bocadillos que quitan el estrés.', '9 de Octubre y Bolívar (Esquina) ', '09:00 - 20:00', 'logoSorbetazo.png', 'bannerSorbetazo.png', 'MENUSorbetazo.png', NULL, '09:00:00', '20:00:00', '1-6', '-3.326343', '-79.805877', 4),
+(7, 'El Sabor de Carrillo', 'Caldo de Tubo - Fritada', 'Machala e/ Pichincha y Buenavista', '09:00 - 12:00', 'logoCarrillo.png', 'bannerCarrillo.png', 'menuCarrillo.png', NULL, '09:00:00', '12:00:00', '1-7', '-3.262029', '-79.959825', 5);
 
 -- --------------------------------------------------------
 
