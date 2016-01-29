@@ -17,13 +17,20 @@ if(!isset($_SESSION['contador'])){$_SESSION['contador'] = 0;}
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 
-
-    <script type="text/javascript" src="js/script.js"></script>
+		
+		
+		<script type="text/javascript" src="js/script.js"></script>
     
 
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="js/jquery.countdown.js"></script>
 		<script type="text/javascript" src="js/codigo.js"></script>
+		
+		
+		<script type="text/javascript" src="js/jquery.flipster.min.js"></script>
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+		
+		<script type="text/javascript" src="js/gmaps.js"></script>
 		
 	</head>
 		<body>
