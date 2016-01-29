@@ -3,51 +3,52 @@
 <?php include "php/config.inc" ?>
 
 <style type="text/css"> 
-*{ 
-    font-size: 14px; 
-} 
-body{ 
-background:#aaa; 
-} 
-form.login { 
-    background: none repeat scroll 0 0 #F1F1F1; 
-    border: 1px solid #DDDDDD; 
-    font-family: sans-serif; 
-    margin: 0 auto; 
-    padding: 20px; 
-    width: 278px; 
-    box-shadow:0px 0px 20px black; 
-    border-radius:10px; 
-} 
-form.login div { 
-    margin-bottom: 15px; 
-    overflow: hidden; 
-} 
-form.login div label { 
-    display: block; 
-    float: left; 
-    line-height: 25px; 
-} 
-form.login div input[type="text"], form.login div input[type="password"] { 
-    border: 1px solid #DCDCDC; 
-    float: right; 
-    padding: 4px; 
-} 
-form.login div input[type="submit"] { 
-    background: none repeat scroll 0 0 #DEDEDE; 
-    border: 1px solid #C6C6C6; 
-    float: right; 
-    font-weight: bold; 
-    padding: 4px 20px; 
-} 
-.error{ 
-    color: red; 
-    font-weight: bold; 
-    margin: 10px; 
-    text-align: center; 
-} 
+  *{ 
+      font-size: 14px; 
+  } 
+  body{ 
+  background:#aaa; 
+  } 
+  form.login { 
+      background: none repeat scroll 0 0 #F1F1F1; 
+      border: 1px solid #DDDDDD; 
+      font-family: sans-serif; 
+      margin: 0 auto; 
+      padding: 20px; 
+      width: 278px; 
+      box-shadow:0px 0px 20px black; 
+      border-radius:10px; 
+  } 
+  form.login div { 
+      margin-bottom: 15px; 
+      overflow: hidden; 
+  } 
+  form.login div label { 
+      display: block; 
+      float: left; 
+      line-height: 25px; 
+  } 
+  form.login div input[type="text"], form.login div input[type="password"] { 
+      border: 1px solid #DCDCDC; 
+      float: right; 
+      padding: 4px; 
+  } 
+  form.login div input[type="submit"] { 
+      background: none repeat scroll 0 0 #DEDEDE; 
+      border: 1px solid #C6C6C6; 
+      float: right; 
+      font-weight: bold; 
+      padding: 4px 20px; 
+  } 
+  .error{ 
+      color: red; 
+      font-weight: bold; 
+      margin: 10px; 
+      text-align: center; 
+  } 
 </style> 
   
+<h3>¿ya tienes Cuenta?</h3>
 <form class="login" action="php/logcliente.php" method="POST">
     <div><label>Username</label><input type="text" name="usuario" placeholder="Introduce tu nombre de usuario"></div> 
     <div><label>Password</label><input type="text" name="contrasena" placeholder="Introduce tu contraseña"></div> 
@@ -55,30 +56,94 @@ form.login div input[type="submit"] {
 </form> 
 
 
+<!-- registro modal -->
+
+
+
+
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <div class="modal-title" >NUEVO USUARIO</div>
+            </div>
+            <form role="form" action="" name="frmUsuario">
+              <div class="col-lg-12">
+                
+                <div class="form-group"  ><br>
+                  <label>NOMBRES</label>
+                  <input name="nombres" class="form-control disabled" required>
+                </div>
+
+                <div class="form-group"><br>
+                  <label>APELLIDOS</label>
+                  <input name="apellidos" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                  <label>NUMERO DE CEDULA </label>
+                  <input name="cedula" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                  <label>DIRECCIÓN</label>
+                  <input name="direccion" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                  <label>TELEFONO</label>
+                  <input name="telefono" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                  <label>CORREO ELECTRONICO</label>
+                  <input name="correo" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                  <label>CONTRASEÑA</label>
+                  <input name="contra" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                  <label>CONFIRME SU CONTRAEÑA</label>
+                  <input name="c_contra" class="form-control" required>
+                </div>
+                
+
+              </div>
+              
+            </form>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-info" onClick="Registrar(codigo,accion); return false">
+                  <span class="glyphicon glyphicon-save" aria-hidden="true"></span> Grabar
+              </button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+<!-- registro modal -->
 
 
 
 
 
 
+<h3>¿Eres nuevo usuario?</h3>
+<button class="btn btn-inverse" onclick="Nuevo();">
+<a href="#">REGISTRATE</a>
+</button>
 
 
 
 
 
 
-
-
-¿Ya eres usuario?<br>
-<form action="php/logcliente.php" method="POST">
-
-	<input type="text" name="usuario" placeholder="Introduce tu nombre de usuario">
-	<input type="text" name="contrasena" placeholder="Introduce tu contraseña">
-	<input type="submit">
-
-</form>
-
-¿Eres nuevo usuario?<br>
 
 
 
@@ -208,6 +273,20 @@ location = "index.php";
 }
 
 </script>
+
+<script type="text/javascript">
+    function Nuevo(){
+     
+      $('#modal').modal('show');
+    }
+
+</script>
+
+
+
+
+
+
 
 
 <!--Below we include the Login Button social plugin. This button uses the JavaScript SDK to

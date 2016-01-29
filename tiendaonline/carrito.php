@@ -34,7 +34,7 @@ if(isset($_SESSION['carrito'])){
 		echo "<div class='text-center col-xs-12 col-sm-12'><h2 class='strong' id='total'>Total: ".$suma." </h2></div>";
 		
 echo "<div class='panel-body'>";
-echo "<boton class='btn'>GENERAR PEDIDOO</boton>";
+echo "<boton class='btn'><a href='confirmar.php'>GENERAR PEDIDOO</a></boton>";
 echo "</div>";
 echo "</div>";
 		
