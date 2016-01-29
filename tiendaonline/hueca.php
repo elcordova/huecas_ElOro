@@ -223,7 +223,8 @@ mysqli_close($conexion);
 				}
 				
 				//alert("segundo"+ano+" "+mes+" "+dia);
-				if (diaa >= finall){ 
+				if (diaa > finall){ 
+				
 				//alert("priemro"+ano+" "+mes+" "+dia);
 					var diferencia = 7 - finall;
 					dia = dia + diferencia;
