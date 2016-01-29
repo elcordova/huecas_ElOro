@@ -55,7 +55,7 @@ right:0px;
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="//localhost/huecas_ElOro/tiendaonline" title="Volver al inicio">
-      <img src="./img/logo.png" class="img-rounded" width=100px>
+      <img src="./img/logohuecas.png" class="img-rounded" width=100px>
       </a>
     </div>
 
