@@ -175,7 +175,7 @@ mysqli_close($conexion);
 		 
 		}else {
 			
-			$("button[id^='boton']").hide();
+			//$("button[id^='boton']").hide();
 			
 			fecha=new Date();
 			ano = fecha.getFullYear();
