@@ -153,8 +153,10 @@ right:0px;
 
 <div class="row">
 
-   <div class=" col-xs-2 col-sm-2">.
-      <blockquote>
+
+
+   <div class=" col-md-2">.
+    <blockquote>
 
     <?php 
 
@@ -181,13 +183,14 @@ right:0px;
     mysqli_close($conexion);
     ?>
 
-</blockquote>
- </div>
+	</blockquote>
+	</div>
 		
-			<div id="contenedor" class="col-md-7" >
+			
+<div id="contenedor" class="col-md-10" >
 
-					<header>	
-						<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+ <header>	
+ <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -224,7 +227,8 @@ right:0px;
 </div> <!-- Carousel -->
 
 					
-				</header>
+</header>
+
 
 			
  				

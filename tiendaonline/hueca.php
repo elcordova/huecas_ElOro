@@ -49,7 +49,7 @@ while($hueca=mysqli_fetch_array($resultado1)){
 	
 	<div class='row center'>
 	<div class='col-md-12 text-center'>
-	<img src='galeria/banners/".$hueca['hue_banner']." ' width=750px   class='img-rounded'   > </div>  ";
+	<img src='galeria/banners/".$hueca['hue_banner']." ' width=720px   class='img-rounded'   > </div>  ";
 	echo "</div>
 	
 	<div class='row center' id='reloj'>
@@ -91,7 +91,7 @@ $resultado = mysqli_query($conexion, $peticion);
 	echo "</div>";
 while($fila = mysqli_fetch_array($resultado)) {
 	echo "<div class='container-fluid text-center' >";
-	echo "<pre><a href='plato.php?id=".$fila['pla_id']."'><h3> <strong> ".$fila['pla_nombre']." </strong></h3></a></pre>";
+	echo "<pre><a href='plato.php?id=".$fila['pla_id']."'><h4> <strong> ".$fila['pla_nombre']." </strong></h4></a></pre>";
 	
 	echo "<img src='galeria/platos/".$fila['pla_foto']."' width=200px class='text-center'>";
 	echo "<br>";
@@ -103,6 +103,10 @@ while($fila = mysqli_fetch_array($resultado)) {
 	
 
 } 
+
+	echo "<div class='container-fluid text-center'>";
+	echo "<pre></pre>";
+	echo "</div>";
 mysqli_close($conexion);
 ?>
 <div class="container-fluid row-fluid"></div>
