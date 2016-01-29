@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-01-2016 a las 14:37:37
+-- Tiempo de generación: 29-01-2016 a las 22:09:57
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.5.12
 
@@ -19,6 +19,86 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `huecas`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `categoria`
+--
+
+CREATE TABLE IF NOT EXISTS `categoria` (
+  `cat_id` int(11) NOT NULL AUTO_INCREMENT,
+  `cat_nombre` varchar(60) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `cat_descripcion` varchar(60) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  PRIMARY KEY (`cat_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=8 ;
+
+--
+-- Volcado de datos para la tabla `categoria`
+--
+
+INSERT INTO `categoria` (`cat_id`, `cat_nombre`, `cat_descripcion`) VALUES
+(1, 'Comida de Mar', 'los mejores mariscos de EL Oro para tu paladar'),
+(2, 'Piqueo', 'Tacos, Hamburguesas, Hot Dog, Papas Fritas, etc'),
+(3, 'Pizza', 'La mejor pizza de El Oro'),
+(4, 'Frutas', 'Los mejores jugos'),
+(5, 'Comida Tipica', 'La mejor comida tipica ecuatoriana'),
+(6, 'Parrilladas', 'Las mejores parrilladas'),
+(7, 'Helados', 'Los mejores helados');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cliente`
+--
+
+CREATE TABLE IF NOT EXISTS `cliente` (
+  `cli_cedula` varchar(13) COLLATE utf8_spanish2_ci NOT NULL,
+  `cli_nombre` varchar(45) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `cli_apellido` varchar(45) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `cli_direccion` varchar(90) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `cli_telefono` varchar(45) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `cli_correo` varchar(80) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `cli_contrasena` varchar(40) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  PRIMARY KEY (`cli_cedula`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `cliente`
+--
+
+INSERT INTO `cliente` (`cli_cedula`, `cli_nombre`, `cli_apellido`, `cli_direccion`, `cli_telefono`, `cli_correo`, `cli_contrasena`) VALUES
+('0706764115', 'Andres', 'Aguilar', 'Pasaje', '0987259406', 'carlos.andres.1994@hotmail.com', '1234');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `detallepedido`
+--
+
+CREATE TABLE IF NOT EXISTS `detallepedido` (
+  `pla_id` int(11) NOT NULL,
+  `ped_id` int(11) NOT NULL,
+  `det_cantidad` int(11) NOT NULL,
+  PRIMARY KEY (`pla_id`,`ped_id`),
+  KEY `fk_plato_has_pedido_pedido1_idx` (`ped_id`),
+  KEY `fk_plato_has_pedido_plato1_idx` (`pla_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `galeria`
+--
+
+CREATE TABLE IF NOT EXISTS `galeria` (
+  `gal_id` int(11) NOT NULL AUTO_INCREMENT,
+  `gal_foto` varchar(80) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `gal_tipo` varchar(45) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `hue_id` int(11) NOT NULL,
+  PRIMARY KEY (`gal_id`,`hue_id`),
+  KEY `fk_galeria_hueca1_idx` (`hue_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -74,15 +154,80 @@ INSERT INTO `hueca` (`hue_id`, `hue_nombre`, `hue_descripcion`, `hue_direccion`,
 (20, 'Picantería Caribe', 'Arroz - Ceviches - Melosos', 'Puerto Jelí  - Roberto Sorrosa', '0981179226', '07:00 - 18:30', 'logo-Picanteria.png', 'BANNERPICANTERIA.png', 'MENUPICANTERIAA.png', NULL, '07:00:00', '17:00:00', '1-7', '', '', 1),
 (21, 'La Takiza', 'Tacos - Hot Dogs - Hamburguesas', '25 de Junio e/ Ave. Las Palmeras y Vela', NULL, '17:00 - 00:00', 'Logotipo.png', 'banner-takiza.png', NULL, NULL, '17:00:00', '23:00:00', '1-6', '-3.25598', '-79.96216', 2);
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pedido`
+--
+
+CREATE TABLE IF NOT EXISTS `pedido` (
+  `ped_id` int(11) NOT NULL AUTO_INCREMENT,
+  `ped_preciot` double DEFAULT NULL,
+  `ped_fecha` date DEFAULT NULL,
+  `ped_estado` varchar(10) COLLATE utf8_spanish2_ci NOT NULL,
+  `cli_cedula` varchar(13) COLLATE utf8_spanish2_ci NOT NULL,
+  PRIMARY KEY (`ped_id`,`cli_cedula`),
+  KEY `fk_pedido_cliente1_idx` (`cli_cedula`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `plato`
+--
+
+CREATE TABLE IF NOT EXISTS `plato` (
+  `pla_id` int(11) NOT NULL AUTO_INCREMENT,
+  `pla_nombre` varchar(45) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `pla_precio` double DEFAULT NULL,
+  `pla_foto` varchar(80) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `hue_id` int(11) NOT NULL,
+  PRIMARY KEY (`pla_id`,`hue_id`),
+  KEY `fk_plato_hueca1_idx` (`hue_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=3 ;
+
+--
+-- Volcado de datos para la tabla `plato`
+--
+
+INSERT INTO `plato` (`pla_id`, `pla_nombre`, `pla_precio`, `pla_foto`, `hue_id`) VALUES
+(1, 'ceviche de camaron', 3.3, 'El Diamente Dorado/plato1.png', 3),
+(2, 'encebollado sencillo', 2.5, 'El Diamente Dorado/plato2.png', 3);
+
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `detallepedido`
+--
+ALTER TABLE `detallepedido`
+  ADD CONSTRAINT `fk_plato_has_pedido_pedido1` FOREIGN KEY (`ped_id`) REFERENCES `pedido` (`ped_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_plato_has_pedido_plato1` FOREIGN KEY (`pla_id`) REFERENCES `plato` (`pla_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `galeria`
+--
+ALTER TABLE `galeria`
+  ADD CONSTRAINT `fk_galeria_hueca1` FOREIGN KEY (`hue_id`) REFERENCES `hueca` (`hue_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `hueca`
 --
 ALTER TABLE `hueca`
   ADD CONSTRAINT `fk_hueca_categoria` FOREIGN KEY (`cat_id`) REFERENCES `categoria` (`cat_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `pedido`
+--
+ALTER TABLE `pedido`
+  ADD CONSTRAINT `fk_pedido_cliente1` FOREIGN KEY (`cli_cedula`) REFERENCES `cliente` (`cli_cedula`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `plato`
+--
+ALTER TABLE `plato`
+  ADD CONSTRAINT `fk_plato_hueca1` FOREIGN KEY (`hue_id`) REFERENCES `hueca` (`hue_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
