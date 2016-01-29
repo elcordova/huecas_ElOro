@@ -133,7 +133,6 @@
 
 
 
-
 <h3>¿Eres nuevo usuario?</h3>
 <button class="btn btn-inverse" onclick="Nuevo();">
 <a href="#">REGISTRATE</a>
@@ -293,6 +292,7 @@ location = "index.php";
 
 	present a graphical Login button that triggers the FB.login() function when clicked
  -->
+ <hr>
 <fb:login-button show-faces="true" width="200" max-rows="2"></fb:login-button>
 <div id="logout" style="display:none;" onclick="logOut();"><a href="#">Salir</a></div>
 

@@ -6,37 +6,38 @@ include "cabecera.inc";
 $contador = 0;
 $conexion = mysqli_connect($servidor,$usuario,$contrasena,$basededatos);
 mysqli_set_charset($conexion, "utf8");
-$peticion = "SELECT * FROM cliente WHERE cli_correo = '".$_POST['usuario']."' AND cli_contrasena = '".$_POST['contrasena']."'";
+$peticion = "SELECT * FROM cliente WHERE cli_cedula = '".$_POST['usuario']."' AND cli_contrasena = '".$_POST['contrasena']."'";
 $resultado = mysqli_query($conexion, $peticion);
 while($fila = mysqli_fetch_array($resultado)) {
 	$contador++;
 	$_SESSION['usuario'] = $fila['cli_cedula'];
 } 
+$total=0;
+if(isset($_SESSION['carrito'])){
+$datos=$_SESSION['carrito'];
+		for($i = 0;$i< count($datos);$i++){
+			$total+= $datos[$i]['Precio']*$datos[$i]['Cantidad'];
+		}
+
+}	
+	
+
 if($contador > 0){
 	
-	$peticion = "INSERT INTO pedido VALUES (NULL,".$_SESSION['usuario'].",'".date('U')."','0')";
+	$peticion = "INSERT INTO pedido VALUES (NULL,".$total.",'".date('U')."',".$_SESSION['usuario'].")";
 	$resultado = mysqli_query($conexion, $peticion);
 
 	$peticion = "SELECT * FROM pedido WHERE cli_cedula = '".$_SESSION['usuario']."' ORDER BY fecha DESC LIMIT 1";
 	$resultado = mysqli_query($conexion, $peticion);
 	while($fila = mysqli_fetch_array($resultado)) {
-	$_SESSION['idpedido'] = $fila['id'];
+	$_SESSION['idpedido'] = $fila['ped_id'];
 	} 
 	echo $_SESSION['idpedido'];
 
-	for($i = 0;$i< $_SESSION['contador'];$i++){
+	for($i = 0;$i<count($datos);$i++){
 		
-		$peticion = "INSERT INTO lineaspedido VALUES (NULL,'".$_SESSION['idpedido']."','".$_SESSION['producto'][$i]."','1')";
+		$peticion = "INSERT INTO detallepedido VALUES ('".$datos[$i]['Id']."','".$_SESSION['idpedido']."','".$datos[$i]['Cantidad']."')";
 		$resultado = mysqli_query($conexion, $peticion);
-
-		$peticion = "SELECT * FROM productos WHERE id='".$_SESSION['producto'][$i]."'";
-		$resultado = mysqli_query($conexion, $peticion);
-		while($fila = mysqli_fetch_array($resultado)) {
-			$existencias = $fila['existencias'];
-			$peticiondos = "UPDATE productos SET existencias = '".($existencias-1)."' WHERE id='".$_SESSION['producto'][$i]."'";
-			$resultadodos = mysqli_query($conexion, $peticiondos);
-			}
-
 
 	}
 
