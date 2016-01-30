@@ -52,7 +52,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Administrar</b><span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="clientesAdmin.php">Clientes</a></li>
+            <li><a href="cliente.php">Clientes</a></li>
             <li><a href="pedidosAdmin.php">Pedidos</a></li>
             <li><a href="huecasAdmin.php">Huecas</a></li>
           </ul>
