@@ -90,12 +90,12 @@ if(isset($_SESSION['carrito'])){
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
               <div class="modal-title" >NUEVO USUARIO</div>
             </div>
-            <form role="form" action="" name="frmCliente">
+            <form role="form" method="POST" name="frmCliente">
               <div class="col-lg-12">
                 
                 <div class="form-group"  ><br>
                   <label>NOMBRES</label>
-                  <input name="nombre" class="form-control disabled" required>
+                  <input name="nombre" class="form-control" required>
                 </div>
 
                 <div class="form-group"><br>
@@ -130,20 +130,20 @@ if(isset($_SESSION['carrito'])){
                 </div>
 
                 <div class="form-group">
-                  <label>CONFIRME SU CONTRAEÑA</label>
+                  <label>CONFIRME SU CONTRASEÑA</label>
                   <input name="c_contra" class="form-control" required>
                 </div>
                 
 
               </div>
               
-            </form>
+            
             <div class="modal-footer">
-              <button type="button" class="btn btn-info" onClick="Registrar_Cliente(); return false">
-                  <span class="glyphicon glyphicon-save" aria-hidden="true"></span> Grabar
-              </button>
+              <input name="new_user" class="btn" onclick="Registrar_Cliente()" value="REGISTRAR">
         <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Cancel</button>
+            
             </div>
+            </form>
           </div>
         </div>
       </div>
@@ -304,6 +304,8 @@ location = "index.php";
       document.frmCliente.correo.value = "";
       document.frmCliente.direccion.value = "";
       document.frmCliente.telefono.value = ""; 
+      document.frmCliente.contra.value = ""; 
+      document.frmCliente.c_contra.value = ""; 
       $('#modal').modal('show');
     }
 

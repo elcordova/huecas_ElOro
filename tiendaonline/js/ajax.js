@@ -14,19 +14,20 @@ function objetoAjax(){
 	}
 	return xmlhttp;
 }
+
+
 function Registrar_Cliente(){
-cedula = document.frmCliente.cedula.value;;	
+cedula = document.frmCliente.cedula.value;
 nombre = document.frmCliente.nombre.value;
 apellido = document.frmCliente.apellido.value;
 direccion = document.frmCliente.direccion.value;
 telefono = document.frmCliente.telefono.value;
-email = document.frmCliente.email.value;
-contrasena = document.frmCliente.contrasena.value;
+correo = document.frmCliente.correo.value;
+contra = document.frmCliente.contra.value;
 
 alert(cedula+nombre+apellido);
-
+alert(cedula);
 ajax = objetoAjax();
-if(accion=='N'){
 ajax.open("POST", "php/registrar_cliente.php", true);
 
 ajax.onreadystatechange=function() {
@@ -36,8 +37,8 @@ ajax.onreadystatechange=function() {
 		}
 	}
 ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-ajax.send("cedula="+cedula+"&nombre="+nombre+"&apellido="+apellido+"&direccion="+direccion+"&telefono="+telefono+"&email="+email+"&contrasena="+contrasena);
-}
+ajax.send("cedula="+cedula+"&nombre="+nombre+"&apellido="+apellido+"&direccion="+direccion+"&telefono="+telefono+"&correo="+correo+"&contra="+contra);
+
 }
 
 
