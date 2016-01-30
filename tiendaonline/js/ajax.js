@@ -41,4 +41,35 @@ ajax.send("cedula="+cedula+"&nombre="+nombre+"&apellido="+apellido+"&direccion="
 
 }
 
+function Ingresar_Cliente(){
+cedula = document.frmEquipos.cedula.value;
+nombre = document.frmEquipos.nombre.value;
+apellido = document.frmEquipos.apellido.value;
+direccion = document.frmEquipos.direccion.value;
+telefono = document.frmEquipos.telefono.value;
+correo = document.frmEquipos.correo.value;
+contra = document.frmEquipos.contra.value;
+
+alert(cedula+nombre+apellido+direccion+telefono+correo+contra);
+
+ajax = objetoAjax();
+
+
+if(accion=='N'){
+ajax.open("POST", "../php/ingresar_cliente.php", true);
+}else if(accion=='E'){
+ajax.open("POST", "../php/actualizar_cliente.php", true);
+}
+
+ajax.onreadystatechange=function() {
+		if (ajax.readyState==4) {
+			alert('Los datos fueron guardados con exito!');
+			window.location.reload(true);
+		}
+	}
+ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+ajax.send("cedula="+cedula+"&nombre="+nombre+"&apellido="+apellido+"&direccion="+direccion+"&telefono="+telefono+"&correo="+correo+"&contra="+contra);
+
+}
+
 

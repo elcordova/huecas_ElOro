@@ -9,7 +9,13 @@ session_start();
 
 <div class="panel panel-info">
         <div class="panel-heading">Lista de Clientes</div>
+		
         <div class="panel-body">
+		
+		<button type="button" onclick="Nuevo();" class="btn btn-primary btn-lg" >
+          Ingresar
+        </button>
+		
         <table class="table">
           <thead>
             <tr>
@@ -32,6 +38,7 @@ session_start();
 			
 			while($fila = mysqli_fetch_array($resultado)) {
 			
+			$editaaar = "".$fila['cli_cedula']."','".$fila['cli_nombre']."','".$fila['cli_apellido']."','".$fila['cli_direccion']."','".$fila['cli_telefono']."','".$fila['cli_correo']."','".$fila['cli_contrasena']."";
 
 			echo "<tr>
                 <td>".$fila['cli_cedula']."</td>
@@ -45,12 +52,15 @@ session_start();
             
                 <td>
                   <div class='btn-group'>
-                    <button type='button' class='btn btn-danger btn-xs'>Seleccione</button>
+                    <button type='button' class='btn btn-danger btn-xs'>Administrar</button>
                     <button type='button' class='btn btn-danger btn-xs dropdown-toggle' data-toggle='dropdown' aria-expanded='false'>
                       <span class='caret'></span>
                     </button>
                     <ul class='dropdown-menu' role='menu'>
-                          </ul>
+					
+							<li><a onclick=Editar('".$editaaar."') >Actualizar</a></li>
+						                  
+                    </ul>
                   </div>
                 </td>
               </tr> ";
@@ -68,7 +78,7 @@ session_start();
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-              <div class="modal-title" >Proveedor</div>
+              <div class="modal-title" >Cliente</div>
             </div>
             <form role="form" action="" name="frmEquipos">
               <div class="col-lg-12">
@@ -99,7 +109,12 @@ session_start();
 				
 				<div class="form-group">
                   <label>Correo</label>
-                  <input name="email" class="form-control" required>
+                  <input name="correo" class="form-control" required>
+                </div>
+				
+				<div class="form-group">
+                  <label>Contraseña</label>
+                  <input name="contra" class="form-control" required>
                 </div>
 				
 			            
@@ -108,10 +123,10 @@ session_start();
               
             </form>
             <div class="modal-footer">
-              <button type="button" class="btn btn-info" onClick="Registrar(idE,accion); return false">
-                  <span class="glyphicon glyphicon-save" aria-hidden="true"></span> Grabar
+              <button type="button" class="btn btn-info" onClick="Ingresar_Cliente(accion); return false">
+                   Guardar
               </button>
-				<button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Cancel</button>
+				<button type="button" class="btn btn-danger" data-dismiss="modal"> Cancelar</button>
             </div>
           </div>
         </div>
@@ -129,3 +144,36 @@ session_start();
 	}
 ?>
 <?php include('piepagina.php') ?>
+
+
+<script type="text/javascript">
+    var accion;
+    
+    function Nuevo(){
+      accion = 'N';
+		
+	  document.frmEquipos.cedula.value = "";
+      document.frmEquipos.nombre.value = "";
+      document.frmEquipos.apellido.value = "";
+	  document.frmEquipos.direccion.value = "";
+	  document.frmEquipos.telefono.value = "";
+	  document.frmEquipos.correo.value = "";
+	  document.frmEquipos.contra.value = "";	  
+     
+      $('#modal').modal('show');
+    }
+    function Editar(cedula,nombre,apellido,direccion,telefono,correo,contrasena){
+      accion = 'E';
+      
+      document.frmEquipos.cedula.value = cedula;
+      document.frmEquipos.nombre.value = nombre;
+      document.frmEquipos.apellido.value = apellido;
+	  document.frmEquipos.direccion.value = direccion;
+	  document.frmEquipos.telefono.value = telefono;
+	  document.frmEquipos.correo.value = correo;
+	  document.frmEquipos.contra.value = contrasena;
+  
+      $('#modal').modal('show');
+    }
+
+   </script>
