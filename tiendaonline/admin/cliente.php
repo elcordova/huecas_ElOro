@@ -29,7 +29,13 @@ session_start();
 			$peticion = "SELECT * FROM cliente";
 			$resultado = mysqli_query($conexion, $peticion);
 			
-			
+			while($fila = mysqli_fetch_array($resultado)) {
+			echo "<div class='container-fluid text-center'>";
+			echo "<pre><h4> <strong> HUECAS: ".$fila['cat_nombre']." </strong></h4></pre>";
+			echo "</div>";
+
+	
+			}
             
             foreach($resultado as $row){
               ?>
