@@ -8,17 +8,18 @@ session_start();
 
 
 <div class="panel panel-info">
-        <div class="panel-heading">Lista de Equipos</div>
+        <div class="panel-heading">Lista de Clientes</div>
         <div class="panel-body">
         <table class="table">
           <thead>
             <tr>
               <th>Cedula</th>
-              <th>Nombre</th>
-              <th>Apellido</th>
+              <th>Nombres</th>
+              <th>Apellidos</th>
               <th>Direccion</th>
               <th>Telefono</th>
               <th>Correo</th>
+			  <th>Contraseña</th>
             </tr>
           </thead>
           <tbody>
@@ -30,39 +31,33 @@ session_start();
 			$resultado = mysqli_query($conexion, $peticion);
 			
 			while($fila = mysqli_fetch_array($resultado)) {
-			echo "<div class='container-fluid text-center'>";
-			echo "<pre><h4> <strong> HUECAS: ".$fila['cat_nombre']." </strong></h4></pre>";
-			echo "</div>";
+			
 
-	
-			}
-            
-            foreach($resultado as $row){
-              ?>
-              <tr>
-                <td><?php print($row->cli_cedula); ?></td>
-                <td><?php print($row->cli_nombre); ?></td>
-                <td><?php print($row->cli_apellido); ?></td>
-                <td><?php print($row->cli_direccion); ?></td>
-				<td><?php print($row->cli_telefono); ?></td>
-				<td><?php print($row->cli_correo); ?></td>
-				<td><?php print($row->cli_contrasena); ?></td>
+			echo "<tr>
+                <td>".$fila['cli_cedula']."</td>
+                <td>".$fila['cli_nombre']."</td>
+                <td>".$fila['cli_apellido']."</td>
+				<td>".$fila['cli_direccion']."</td>
+				<td>".$fila['cli_telefono']."</td>
+				<td>".$fila['cli_correo']."</td>
+				<td>".$fila['cli_contrasena']."</td>
+               
             
                 <td>
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-danger btn-xs">Seleccione</button>
-                    <button type="button" class="btn btn-danger btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                      <span class="caret"></span>
+                  <div class='btn-group'>
+                    <button type='button' class='btn btn-danger btn-xs'>Seleccione</button>
+                    <button type='button' class='btn btn-danger btn-xs dropdown-toggle' data-toggle='dropdown' aria-expanded='false'>
+                      <span class='caret'></span>
                     </button>
-                    <ul class="dropdown-menu" role="menu">
-                      <li><a onclick="Eliminar('<?php print($row->cedula); ?>');">Eliminar</a></li>
-                      <li><a onclick="Editar('<?php print($row->cedula); ?>','<?php print($row->nombre); ?>','<?php print($row->apellido); ?>','<?php print($row->direccion); ?>','<?php print($row->telefono); ?>','<?php print($row->email); ?>');">Actualizar</a></li>
-                    </ul>
+                    <ul class='dropdown-menu' role='menu'>
+                          </ul>
                   </div>
                 </td>
-              </tr>
-              <?php
-            }
+              </tr> ";
+			
+			}
+            
+            
             ?>
           </tbody>
         </table>
