@@ -90,17 +90,17 @@ if(isset($_SESSION['carrito'])){
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
               <div class="modal-title" >NUEVO USUARIO</div>
             </div>
-            <form role="form" action="" name="frmUsuario">
+            <form role="form" action="" name="frmCliente">
               <div class="col-lg-12">
                 
                 <div class="form-group"  ><br>
                   <label>NOMBRES</label>
-                  <input name="nombres" class="form-control disabled" required>
+                  <input name="nombre" class="form-control disabled" required>
                 </div>
 
                 <div class="form-group"><br>
                   <label>APELLIDOS</label>
-                  <input name="apellidos" class="form-control" required>
+                  <input name="apellido" class="form-control" required>
                 </div>
                 <div class="row">
                 <div class="form-group col-xs-6">
@@ -139,7 +139,7 @@ if(isset($_SESSION['carrito'])){
               
             </form>
             <div class="modal-footer">
-              <button type="button" class="btn btn-info" onClick="Registrar(codigo,accion); return false">
+              <button type="button" class="btn btn-info" onClick="Registrar_Cliente(); return false">
                   <span class="glyphicon glyphicon-save" aria-hidden="true"></span> Grabar
               </button>
         <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Cancel</button>
@@ -158,7 +158,7 @@ if(isset($_SESSION['carrito'])){
 <div class="text-center">
 <h3 class="text-center">¿Eres nuevo usuario?</h3>
 <button class="btn btn-inverse" onclick="Nuevo();">
-<a href="#">REGISTRATE</a>
+<a>REGISTRATE</a>
 </button>
 </div>
 
@@ -298,7 +298,12 @@ location = "index.php";
 
 <script type="text/javascript">
     function Nuevo(){
-     
+      document.frmCliente.nombre.value="";
+      document.frmCliente.apellido.value ="";
+      document.frmCliente.cedula.value = "";
+      document.frmCliente.correo.value = "";
+      document.frmCliente.direccion.value = "";
+      document.frmCliente.telefono.value = ""; 
       $('#modal').modal('show');
     }
 

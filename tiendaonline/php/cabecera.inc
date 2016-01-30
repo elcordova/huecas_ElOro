@@ -16,13 +16,17 @@ if(!isset($_SESSION['contador'])){$_SESSION['contador'] = 0;}
 		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	
-
+		<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.18.custom.min.js"></script>
+		<script type="text/javascript" src="js/jquery.smooth-scroll.min.js"></script>
+		<script type="text/javascript" src="js/lightbox.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/lightbox.css">
+		
 		
 		
 		<script type="text/javascript" src="js/script.js"></script>
     
-
+		<script type="text/javascript" src="js/ajax.js"></script>
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/jquery.countdown.js"></script>
@@ -31,12 +35,9 @@ if(!isset($_SESSION['contador'])){$_SESSION['contador'] = 0;}
 		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true">
     </script>
 		<script type="text/javascript" src="js/gmaps.js"></script>
-		<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
-		<script type="text/javascript" src="js/jquery-ui-1.8.18.custom.min.js"></script>
-		<script type="text/javascript" src="js/jquery.smooth-scroll.min.js"></script>
-		<script type="text/javascript" src="js/lightbox.js"></script>
-		<link rel="stylesheet" type="text/css" href="css/lightbox.css">
 		
+		
+		  <script type="text/javascript" src="js/ajax.js"></script>
 
 		
 		  

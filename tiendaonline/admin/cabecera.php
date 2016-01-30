@@ -14,6 +14,7 @@
     	<script src="../js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="../js/jquery.countdown.js"></script>
     <script type="text/javascript" src="../js/funcion_fondo.js"></script>
+    <script type="text/javascript" src="../js/ajax.js"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
         
