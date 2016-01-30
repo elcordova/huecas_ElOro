@@ -35,19 +35,27 @@ while($hueca=mysqli_fetch_array($resultado1)){
 	
 	echo "<input type='hidden' name='latitud' id='latitud' value=".$hueca['latitud'].">";
 	echo "<input type='hidden' name='longitud' id='longitud' value=".$hueca['longitud'].">";
+	echo "</br> <div class='container-fluid text-center'>";
+	echo "<pre><h4> <strong>".$hueca['hue_nombre']." </strong></h4></pre>";
+	echo "</div>";
 	
-	echo "</br>
+	echo "
 	<div class='row center'>
 		<div class='col-md-1 text-center'>
 		</div>
 		<div class='col-md-11 text-center'>
-		<div id='pony' name='pony' style='width: 640px; height: 550px;'> </div>
+		<div id='pony' name='pony' style='width: 590px; height: 550px;'> </div>
 		</div>
 	</div>";
 	
 
 	
 } 
+echo "</br> <div class='container-fluid text-center'>";
+	echo "<pre></pre>";
+	echo "</div>";
+
+
 mysqli_close($conexion);
 ?>
 <div class="container-fluid row-fluid"></div>

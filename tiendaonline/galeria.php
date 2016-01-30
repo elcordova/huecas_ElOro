@@ -87,18 +87,20 @@
 			 if (file_exists("galeria/huecas/".$nombrehueca."/".$hueca['gal_foto'])){
 						echo"<a href='galeria/huecas/".$nombrehueca."/".$hueca['gal_foto']."' rel='lightbox[galeria]'><img src='galeria/huecas/".$nombrehueca."/".$hueca['gal_foto']."'/></a>";
 						
-
+						
 			   
 			   }                    
         }
    
 	echo "</div>";
+	
+	echo "<div class='container-fluid text-center'>";
+	echo "<pre></pre>";
+	echo "</div>";
 
-	echo "<div class='row'>";
-	echo "<div class='col-md-12 text-center'>";
-	echo "</div>";
-	echo "</div>";
-	echo "<div class='container-fluid row-fluid'></div>";
+mysqli_close($conexion);
+
+	
 
  ?>
 

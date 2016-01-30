@@ -10,7 +10,7 @@ if(!isset($_SESSION['contador'])){$_SESSION['contador'] = 0;}
 		<link rel=Stylesheet href="css/bootstrap.css"></script>
 		<link rel=Stylesheet href="css/cabecera.css"></script>
 		<link rel="stylesheet" type="text/css" href="css/imagenes.css">
-		<link rel="stylesheet" type="text/css" href="css/lightbox.css">
+		
 		<link rel=Stylesheet href="css/pcmac.css" media='screen and (min-width: 801px) and (max-width: 4000px)'>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -31,9 +31,14 @@ if(!isset($_SESSION['contador'])){$_SESSION['contador'] = 0;}
 		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true">
     </script>
 		<script type="text/javascript" src="js/gmaps.js"></script>
-		<script type="text/javascript" src="js/jquery-ui-1.10.4.custom.min.js"></script>
+		<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.18.custom.min.js"></script>
 		<script type="text/javascript" src="js/jquery.smooth-scroll.min.js"></script>
 		<script type="text/javascript" src="js/lightbox.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/lightbox.css">
+		
+
+		
 		  
 	</head>
 		<body>
