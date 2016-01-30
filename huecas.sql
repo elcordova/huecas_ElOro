@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-01-2016 a las 18:46:16
+-- Tiempo de generación: 30-01-2016 a las 23:45:31
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.5.12
 
@@ -68,7 +68,8 @@ CREATE TABLE IF NOT EXISTS `cliente` (
 --
 
 INSERT INTO `cliente` (`cli_cedula`, `cli_nombre`, `cli_apellido`, `cli_direccion`, `cli_telefono`, `cli_correo`, `cli_contrasena`) VALUES
-('0706764115', 'Andres', 'Aguilar', 'Pasaje', '0987259406', 'carlos.andres.1994@hotmail.com', '1234');
+('0706764115', 'Andres', 'Aguilar', 'Pasaje', '0987259406', 'carlos.andres.1994@hotmail.com', '1234'),
+('0706764117', 'ffffff', 'fffffff', 'fffffff', 'fffff', 'fffff', 'ffffff');
 
 -- --------------------------------------------------------
 
