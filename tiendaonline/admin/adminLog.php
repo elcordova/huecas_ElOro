@@ -1,6 +1,27 @@
+<html lang="es">
+	<head>
+		<title>Tienda</title>
+		<link rel=Stylesheet href="../css/bootstrap.css"></script>
+		<link rel=Stylesheet href="../css/cabecera.css"></script>
+		<link rel="stylesheet" type="text/css" href="../css/imagenes.css">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>	
+		<script type="text/javascript" src="../js/script.js"></script> 
+		<script type="text/javascript" src="../js/jquery.js"></script>
+    	<script src="../js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.countdown.js"></script>
+    <script type="text/javascript" src="../js/funcion_fondo.js"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        
+        
+    </head>
 
+    <body>
 
-<?php include('cabecera.php') ?>
+ 
+
     <!--     <form action="log.php" method="POST" id="formulario">
             <input type="text" placeholder="usuario" name="txtusuario" />
             <input type="password" placeholder="pass" name="txtpassword" />
