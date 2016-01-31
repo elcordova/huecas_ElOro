@@ -89,7 +89,7 @@ session_start();
 	include('../php/config.inc');
 	$conexion = mysqli_connect($servidor,$usuario,$contrasena,$basededatos);
 	mysqli_set_charset($conexion, "utf8");
-	$peticion = "SELECT pedido.ped_id,pedido.ped_fecha,cliente.cli_cedula, pedido.ped_preciot, cliente.cli_nombre, cliente.cli_apellido,cliente.cli_correo, cliente.cli_direccion, cliente.cli_telefono FROM pedido,cliente WHERE cliente.cli_cedula=pedido.cli_cedula and pedido.ped_id='".$_GET['ped_id']."' and pedido.ped_estado='por_atender'";
+	$peticion = "SELECT pedido.ped_id,pedido.ped_fecha,cliente.cli_cedula, pedido.ped_estado, pedido.ped_preciot, cliente.cli_nombre, cliente.cli_apellido,cliente.cli_correo, cliente.cli_direccion, cliente.cli_telefono FROM pedido,cliente WHERE cliente.cli_cedula=pedido.cli_cedula and pedido.ped_id='".$_GET['ped_id']."'";
 	$resultado = mysqli_query($conexion, $peticion);
 	echo "
 		<div class='panel panel-default'>
@@ -109,17 +109,26 @@ session_start();
 
 
 	while($fila = mysqli_fetch_array($resultado)) {
-		echo "<span class='col-xs-3'><h3>Pedido realizado por:</h3><h2>".$fila['cli_nombre']." ".$fila['cli_apellido']."</h2></span>";
-		echo "<span class='col-xs-3'><h3>con C.I. : </h3><h2>".$fila['cli_cedula']."</h2></span>";
-		echo "<span class='col-xs-3'><h3>el dia : </h3><h2>".$fila['ped_fecha']."</h2></span>";
-		echo "<span class='col-xs-3'><button class='btn btn-inverse' onclick=verCliente('".$fila['cli_nombre']."','".$fila['cli_apellido']."','".$fila['cli_cedula']."','".$fila['cli_correo']."','".$fila['cli_direccion']."','".$fila['cli_telefono']."')>
-			<a>detalles</a></button></span>";
-
+		echo "<div class='col-xs-3'><h4>Pedido realizado por:</h4><h3>".$fila['cli_nombre']." ".$fila['cli_apellido']."</h3></div>";
+		echo "<div class='col-xs-3'><h4>con C.I. : </h4><h3>".$fila['cli_cedula']."</h3></div>";
+		echo "<div class='col-xs-3'><h4>el dia : </h4><h3>".$fila['ped_fecha']."</h3></div>";
+    echo "<div class='col-xs-3'><h4>Estado : </h4><h3>".$fila['ped_estado']."</h3></div>";     
+    echo "<div class='col-xs-6'><button class='btn btn-inverse' onclick=verCliente('".$fila['cli_nombre']."','".$fila['cli_apellido']."','".$fila['cli_cedula']."','".$fila['cli_correo']."','".$fila['cli_direccion']."','".$fila['cli_telefono']."')>
+         <a>DETALLE DE CLIENTE</a></button></div>";
+    echo "<div class='dropdown col-xs-6'>
+  <button class='btn btn-primary dropdown-toggle' type='button' data-toggle='dropdown'>Cambiar a estado<span class='caret'></span></button>
+  <ul class='dropdown-menu'>
+    <li><a href='anulado.php?id=".$_GET['ped_id']."'>anulado</a></li>
+    <li><a href='servido.php?id=".$_GET['ped_id']."'>servido</a></li>
+    <li><a href='noservido.php?id=".$_GET['ped_id']."'>no servido</a></li>
+  </ul>
+</div>";
+  
 	}
 	echo "</div></div>"	;
 	echo "
 		<div class='panel panel-default'>
-  <div class='panel-heading'>DATOS DE PEDIDO # ".$_GET['ped_id']."</div>
+  <div class='panel-heading'>DETALLE DE PEDIDO # ".$_GET['ped_id']."</div>
   <div class='panel-body'>";
 	
 	echo "<table>";
@@ -164,9 +173,10 @@ session_start();
 	}else{
 
 		echo "<script language='javascript'>alert('AUN NO SE HA IDENTIFICADO');</script>";
-		echo "<meta http-equiv='Refresh' content='5;url=adminLog.php'>";
+		echo "<meta http-equiv='Refresh' content='2;url=adminLog.php'>";
 	}
 ?>
 
 <?php include('piepagina.php') ?>
    
+<div class="text-right"></div>
