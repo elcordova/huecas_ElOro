@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-01-2016 a las 23:45:31
+-- Tiempo de generación: 31-01-2016 a las 16:58:04
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.5.12
 
@@ -68,8 +68,7 @@ CREATE TABLE IF NOT EXISTS `cliente` (
 --
 
 INSERT INTO `cliente` (`cli_cedula`, `cli_nombre`, `cli_apellido`, `cli_direccion`, `cli_telefono`, `cli_correo`, `cli_contrasena`) VALUES
-('0706764115', 'Andres', 'Aguilar', 'Pasaje', '0987259406', 'carlos.andres.1994@hotmail.com', '1234'),
-('0706764117', 'ffffff', 'fffffff', 'fffffff', 'fffff', 'fffff', 'ffffff');
+('0706764115', 'Andres', 'Aguilar', 'Pasaje', '0987259406', 'carlos.andres.1994@hotmail.com', '1234');
 
 -- --------------------------------------------------------
 
@@ -136,7 +135,7 @@ CREATE TABLE IF NOT EXISTS `hueca` (
   `cat_id` int(11) NOT NULL,
   PRIMARY KEY (`hue_id`),
   KEY `fk_hueca_categoria_idx` (`cat_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=31 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=34 ;
 
 --
 -- Volcado de datos para la tabla `hueca`
@@ -144,13 +143,13 @@ CREATE TABLE IF NOT EXISTS `hueca` (
 
 INSERT INTO `hueca` (`hue_id`, `hue_nombre`, `hue_descripcion`, `hue_direccion`, `hue_telefono`, `hue_horario`, `hue_logo`, `hue_banner`, `hue_menu`, `hue_video`, `hue_abre`, `hue_cierra`, `dias`, `latitud`, `longitud`, `cat_id`) VALUES
 (1, 'El Bollo que Arde', 'El mejor bollo de Machala', 'Guayas y Boyaca', '', '07:00 - 14:00', 'logoBollo.png', 'BannerBollo.png', 'Menubollo.png', NULL, '07:00:00', '13:00:00', '1-7', '-3.2558962', '-79.957277', 5),
-(2, 'El Gran Combito', 'Hamburguesas - Batidas - Empanadas', 'Calle Colon frente a la Bahía', '', '08:00 - 18:00', 'Elcombito2.png', 'bannerHam2.png', 'menuhamb.png', NULL, '08:00:00', '17:00:00', '1-7', '-3.2614285', '79.9554009', 2),
+(2, 'El Gran Combito', 'Hamburguesas - Batidas - Empanadas', 'Calle Colon frente a la Bahía', '0987259406', '08:00 - 18:00', 'Elcombito2.png', 'bannerHam2.png', 'menuhamb.png', 'rr', '08:00:00', '17:00:00', '1-7', '-3.2614285', '-79.9554009', 2),
 (3, 'El Diamante Dorado', 'Ceviche Camaron y Pescado - Casuelas', 'Urdesa Este Cuba e/ 7ma y 8va', '', '08:00 - 13:00', 'LogoCevicheria-dorado.png', 'banner_diamante_dorado.png', 'menu_diamante_dorado.png', NULL, '08:00:00', '13:00:00', '1-7', '-3,265336', '-79,935703', 1),
 (4, 'Mi barquito', 'Ceviches Blanco - Concha - Camaron', 'Guayas e/ Bolívar y Pichincha', '', '08:00 - 15:00', 'LogoMiBarquito2.png', 'BannerMiBarquito3.png', 'menubarco.png', NULL, '08:00:00', '15:00:00', '1-7', '-3.259855', '-79.960888', 1),
 (5, 'La Proa', 'Ceviche - Encebollados', 'Guabo e/ Tarqui y Junín', '0995787332', '07:00 - 17:00', 'laproa.png', 'BANNERLAPROA.png', 'MENULAPROA.png', NULL, '07:00:00', '17:00:00', '1-7', '-3.258077', '-79.954198', 1),
 (6, 'Cangrejadas de Mary', 'El cangrejo como a Usted le gusta.', 'Av. 25 de Junio y Gran Colombia', '072961468', '11:00 - 22:30', '', '', '', NULL, '11:00:00', '21:00:00', '1-7', '-3.2547305', '-79.9631495', 1),
 (7, 'El Sabor de Carrillo', 'Caldo de Tubo - Fritada', 'Machala e/ Pichincha y Buenavista', '', '09:00 - 12:00', 'logoCarrillo.png', 'bannerCarrillo.png', 'menuCarrillo.png', NULL, '09:00:00', '12:00:00', '1-7', '-3.262029', '-79.959825', 5),
-(8, 'Sabrosito', 'Batidos - Tostadas', 'Colon y Bolívar ', '', '07:00 - 19:00', 'logoSabrosito.png', 'bannerSabrosito.png', 'menuSabrosito.png', NULL, '07:00:00', '19:00:00', '1-7', '-3.2628553', '-79.9571722', 4),
+(8, 'Sabrosito', 'Batidos-Tostadas', 'Colon_y_Bolívar', '', '07:00-19:00', 'logoSabrosito.png', 'bannerSabrosito.png', 'menuSabrosito.png', NULL, '07:00:00', '19:00:00', '1-7', '-3.2628553', '-79.9571722', 4),
 (9, 'Mr. Porky', 'Hornados - Sandwiches', 'Parque Lineal - Circunvalación Sur', '', '08:00 - 20:00', 'logo-porky.png', 'BANNERPORKY.png', 'menu-porky.png', NULL, '08:00:00', '19:00:00', '1-7', '-3.266058', '-79.974268', 5),
 (10, 'Bolones Express', 'Queso - Chicharron - Mixto', 'Parque Lineal', '', '08:00 - 20:00', '', 'bolon.png', 'menuexpress.png', NULL, '08:00:00', '19:00:00', '1-7', '-3.263770', '-79.272112', 5),
 (11, 'Empanadas La Boyaca', 'Empanadas Queso - Carne - Pollo ', 'Boyaca e/ Junín y Tarquí', '0997869059', '08:00 - 18:00', 'empanadas.png', 'empanadas_banner.png', 'empanadas_menu.png', NULL, '08:00:00', '17:00:00', '1-7', '-3.259045', '-79.954804', 5),
@@ -170,9 +169,12 @@ INSERT INTO `hueca` (`hue_id`, `hue_nombre`, `hue_descripcion`, `hue_direccion`,
 (25, 'El Rico Yapingacho', 'Yapingacho - Hornado - Chuleta', 'Parque Lineal', NULL, '19:00 - 23:00', 'logo-hornado.png', 'banner-hornado.png', 'menu-hornado.png', NULL, '19:00:00', '23:00:00', '1-7', '-3.263770', '-79.272112', 5),
 (26, 'Las Delicias de Miss', 'La mejor comida típica ', 'Municipalidad e/ Bolívar y Av. Azuay', NULL, '15:00 - 00:00', 'LOGOya.png', 'bannerDeliciasMiss.png', 'MenuMiss.png', NULL, '15:00:00', '23:00:00', '1-6', '-3.328222', '-79.807272', 5),
 (27, 'El Sorbetazo', 'Bocadillos que quitan el estrés.', '9 de Octubre y Bolívar (Esquina) ', NULL, '09:00 - 20:00', 'logoSorbetazo.png', 'bannerSorbetazo.png', 'MENUSorbetazo.png', NULL, '09:00:00', '19:00:00', '', '-3.326343', '-79.805877', 4),
-(28, 'Shola''o', 'Granizados - Hamburguesas', 'Parque Lineal', NULL, '16:00 - 22:00', 'logoSholaoF.png', 'bannerSh.png', 'menus.png', NULL, '16:00:00', '21:00:00', '1-7', '-3.264745', '-79.973190', 7),
-(29, 'Shola''o', 'Granizados - Hamburguesas', 'Parque Lineal', NULL, '16:00 - 22:00', 'logoSholaoF.png', 'bannerSh.png', 'menus.png', NULL, '16:00:00', '21:00:00', '1-7', '-3.264745', '-79.973190', 7),
-(30, 'Frutas Tropicales', 'Batidos - Jugos - Ensaladas', 'Parque Lineal', '', '08:00 - 12:00', 'logoFT.png', 'BannerFT.png', 'MenuFT.png', NULL, '08:00:00', '11:00:00', '1-7', '-3.264745', '-79.973190', 4);
+(28, 'Sholao', 'Granizados - Hamburguesas', 'Parque Lineal', NULL, '16:00 - 22:00', 'logoSholaoF.png', 'bannerSh.png', 'menus.png', NULL, '16:00:00', '21:00:00', '1-7', '-3.264745', '-79.973190', 7),
+(29, 'Sholao', 'Granizados - Hamburguesas', 'Parque Lineal', NULL, '16:00 - 22:00', 'logoSholaoF.png', 'bannerSh.png', 'menus.png', NULL, '16:00:00', '21:00:00', '1-7', '-3.264745', '-79.973190', 7),
+(30, 'Frutas Tropicales', 'Batidos - Jugos - Ensaladas', 'Parque Lineal', '', '08:00 - 12:00', 'logoFT.png', 'BannerFT.png', 'MenuFT.png', NULL, '08:00:00', '11:00:00', '1-7', '-3.264745', '-79.973190', 4),
+(31, 'fff', 'ff  f', 'ff  f', 'fff', 'fff', 'fff', 'ff', 'ff', 'ff', '18:00:00', '18:00:00', '1-7', '44', '444', 1),
+(32, 'g g', 'gdgd', 'd g', 'ddd', 'dd', 'dd', 'dd', 'dd', 'dd', '18:00:00', '18:00:00', '1-7', '55', '55', 6),
+(33, 'rrr', 'fff', 'ddd', 'dd', 'sss', 'ddd', 'dd', 'ddd', 'dd', '08:00:40', '18:00:40', '1-7', '333', '333', 4);
 
 -- --------------------------------------------------------
 
