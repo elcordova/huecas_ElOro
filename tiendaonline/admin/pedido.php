@@ -87,10 +87,11 @@ session_start();
 	include('cabecera.php');
 	if (isset($_SESSION['admin'])) {
 	include('../php/config.inc');
-	$conexion = mysqli_connect($servidor,$usuario,$contrasena,$basededatos);
-	mysqli_set_charset($conexion, "utf8");
+	$con = new PDO('mysql:host='.$servidor.';dbname='.$basededatos, $usuario, $contrasena);
 	$peticion = "SELECT pedido.ped_id,pedido.ped_fecha,cliente.cli_cedula, pedido.ped_estado, pedido.ped_preciot, cliente.cli_nombre, cliente.cli_apellido,cliente.cli_correo, cliente.cli_direccion, cliente.cli_telefono FROM pedido,cliente WHERE cliente.cli_cedula=pedido.cli_cedula and pedido.ped_id='".$_GET['ped_id']."'";
-	$resultado = mysqli_query($conexion, $peticion);
+	$stmt = $con->prepare($peticion);
+  $result = $stmt->execute();
+  $filas = $stmt->fetchAll(\PDO::FETCH_OBJ);
 	echo "
 		<div class='panel panel-default'>
   <div class='panel-heading'>DATOS DE PEDIDO # ".$_GET['ped_id']."</div>
@@ -108,13 +109,16 @@ session_start();
 
 
 
-	while($fila = mysqli_fetch_array($resultado)) {
-		echo "<div class='col-xs-3'><h4>Pedido realizado por:</h4><h3>".$fila['cli_nombre']." ".$fila['cli_apellido']."</h3></div>";
-		echo "<div class='col-xs-3'><h4>con C.I. : </h4><h3>".$fila['cli_cedula']."</h3></div>";
-		echo "<div class='col-xs-3'><h4>el dia : </h4><h3>".$fila['ped_fecha']."</h3></div>";
-    echo "<div class='col-xs-3'><h4>Estado : </h4><h3>".$fila['ped_estado']."</h3></div>";     
-    echo "<div class='col-xs-6'><button class='btn btn-inverse' onclick=verCliente('".$fila['cli_nombre']."','".$fila['cli_apellido']."','".$fila['cli_cedula']."','".$fila['cli_correo']."','".$fila['cli_direccion']."','".$fila['cli_telefono']."')>
-         <a>DETALLE DE CLIENTE</a></button></div>";
+	foreach($filas as $fila) {
+    ?>
+		<div class="col-xs-3"><h4>Pedido realizado por:</h4><h3><?php print($fila->cli_nombre); print($fila->cli_apellido); ?></h3></div>
+		<div class="col-xs-3"><h4>con C.I. : </h4><h3><?php print($fila->cli_cedula);?>"</h3></div>
+		<div class="col-xs-3"><h4>el dia : </h4><h3><?php print($fila->ped_fecha);?></h3></div>
+    <div class="col-xs-3"><h4>Estado : </h4><h3><?php print($fila->ped_estado);?></h3></div>     
+     <div class="col-xs-6"><button class="btn btn-inverse" onclick="verCliente('<?php print($fila->cli_nombre);?>','<?php print($fila->cli_apellido);?>','<?php print($fila->cli_cedula);?>','<?php print($fila->cli_correo);?>','<?php print($fila->cli_direccion);?>','<?php print($fila->cli_telefono);?>');">
+      <a>DETALLE DE CLIENTE</a></button></div>
+    
+  <?php
     echo "<div class='dropdown col-xs-6'>
   <button class='btn btn-primary dropdown-toggle' type='button' data-toggle='dropdown'>Cambiar a estado<span class='caret'></span></button>
   <ul class='dropdown-menu'>
@@ -132,9 +136,10 @@ session_start();
   <div class='panel-body'>";
 	
 	echo "<table>";
-	
+	$conexion1 = mysqli_connect($servidor,$usuario,$contrasena,$basededatos);
+  mysqli_set_charset($conexion, "utf8");
 	$peticion = "SELECT plato.pla_id,hueca.hue_nombre,plato.pla_nombre,plato.pla_precio,detallepedido.det_cantidad FROM detallepedido ,plato,hueca WHERE plato.hue_id=hueca.hue_id and detallepedido.pla_id=plato.pla_id and detallepedido.ped_id='".$_GET['ped_id']."'";
-	$resultado = mysqli_query($conexion, $peticion);
+	$resultado2 = mysqli_query($conexion1, $peticion);
 	echo "<div class='table-responsive'>
 <table class='text-center table table-hover'>
     <thead>
@@ -150,7 +155,7 @@ session_start();
     <tbody class=text-center>";
     $suma=0;
 	$cont=0;
-	while($fila = mysqli_fetch_array($resultado)) {
+	while($fila = mysqli_fetch_array($resultado2)) {
 		$cont++;
 		echo "<tr>
             <td>".$cont."</td>
