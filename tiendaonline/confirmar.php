@@ -90,7 +90,7 @@ if(isset($_SESSION['carrito'])){
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
               <div class="modal-title" >NUEVO USUARIO</div>
             </div>
-            <form role="form" method="POST" name="frmCliente">
+            <form role="form" method="POST" id="registro_nuevo" novalidate="novalidate" name="frmCliente">
               <div class="col-lg-12">
                 
                 <div class="form-group"  ><br>
@@ -161,15 +161,6 @@ if(isset($_SESSION['carrito'])){
 <a>REGISTRATE</a>
 </button>
 </div>
-
-
-
-
-
-
-
-
-
 
 
 <script>
@@ -295,6 +286,10 @@ location = "index.php";
 }
 
 </script>
+
+<!-- validando campos vacios -->
+
+
 
 <script type="text/javascript">
     function Nuevo(){

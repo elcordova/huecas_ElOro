@@ -25,16 +25,16 @@ echo "'".$_SESSION['usuario']."'";
 echo "-".$total."-";	
 echo "-".$contador."-";	
 if($contador > 0){
-	
-	$peticion = "INSERT INTO pedido VALUES (NULL,'".$total."','".date('U')."','por_atender','".$_SESSION['usuario']."')";
+	$fec= date('Y-m-d H:i:s');
+	$peticion = "INSERT INTO pedido VALUES (NULL,'".$total."','".$fec."','por_atender','".$_SESSION['usuario']."')";
 	$resultado = mysqli_query($conexion, $peticion);
 
-	$peticion = "SELECT * FROM pedido WHERE cli_cedula = '".$_SESSION['usuario']."' ORDER BY ped_fecha DESC LIMIT 1";
+	$peticion = "SELECT * FROM pedido WHERE cli_cedula = '".$_SESSION['usuario']."' ORDER BY pedido.ped_id DESC LIMIT 1";
 	$resultado = mysqli_query($conexion, $peticion);
 	while($fila = mysqli_fetch_array($resultado)) {
 	$_SESSION['idpedido'] = $fila['ped_id'];
 	} 
-	echo $_SESSION['idpedido'];
+	echo $_SESSION['idpedido']." ".$fec;
 
 	for($i = 0;$i<count($datos);$i++){
 		

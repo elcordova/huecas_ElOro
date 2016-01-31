@@ -19,6 +19,6 @@ mysqli_set_charset($conexion, "utf8");
 
 $sql = "INSERT INTO cliente (cli_cedula,cli_nombre, cli_apellido, cli_direccion, cli_telefono,cli_correo, cli_contrasena) VALUES ('".$cedula."','".$nombres."','".$apellidos."','".$direccion."','".$telefono."','".$correo."','".$contra."')";
 mysqli_query($conexion, $sql);
-echo '<script language="javascript">alert("juas");</script>'; 
+
 
 ?>

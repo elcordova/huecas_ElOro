@@ -61,7 +61,7 @@
       
 
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Notificaciones</b> <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Pedidos por atender</b> <span class="caret"></span></a>
          <ul id="login-dp" class="dropdown-menu">
           <?php
 
