@@ -351,22 +351,22 @@ function validar(){
 			cedulas = $("#cedulaval").val();
 			contras = $("#contraval").val();
 			
-			alert(cedulas);
-			alert(contras);
+			// alert(cedulas);
+			// alert(contras);
 
 			otra = cedulas.replace("[","");
 			otra1 = otra.replace("]","");
 
 			ya = otra1.split(",");
 			
-			alert("ya"+ya);
+			// alert("ya"+ya);
 			
 			otraa = contras.replace("[","");
 			otraa1 = otraa.replace("]","");
 
 			ya1 = otraa1.split(",");
 			
-			alert("ya1"+ya1);
+			// alert("ya1"+ya1);
 	
 			document.getElementById("login").onsubmit=function(){
 	
@@ -386,10 +386,10 @@ function validar(){
 					cedulacam = '"'+v1+'"';
 					contracam = '"'+v2+'"';
 					
-					alert(ya[i])
-					alert(ya1[i])
-					alert("cedulacam"+cedulacam);
-					alert("contracam"+contracam);
+					// alert(ya[i])
+					// alert(ya1[i])
+					// alert("cedulacam"+cedulacam);
+					// alert("contracam"+contracam);
 					
 					
 					
