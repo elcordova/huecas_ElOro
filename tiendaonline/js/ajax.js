@@ -1,3 +1,4 @@
+
 function objetoAjax(){
 	var xmlhttp=false;
 	try {
@@ -18,6 +19,7 @@ function objetoAjax(){
 
 function Registrar_Cliente(){
 var bandera="S";
+
 cedula = document.frmCliente.cedula.value;
 nombre = document.frmCliente.nombre.value;
 apellido = document.frmCliente.apellido.value;
@@ -26,13 +28,17 @@ telefono = document.frmCliente.telefono.value;
 correo = document.frmCliente.correo.value;
 contra = document.frmCliente.contra.value;
 ccontra = document.frmCliente.c_contra.value;
+val = document.frmCliente.cedulaval.value;
+
+otra = val.replace("[","");
+otra1 = otra.replace("]","");
+
+ya = otra1.split(",");
 
 
-
-
+		
 				
-				
-if(validar(cedula,nombre,apellido,direccion,telefono,correo,contra,ccontra,bandera)){
+if(validar(cedula,nombre,apellido,direccion,telefono,correo,contra,ccontra,bandera,ya)){
 alert(cedula+nombre+apellido);
 alert(cedula);
 ajax = objetoAjax();
@@ -51,8 +57,9 @@ ajax.send("cedula="+cedula+"&nombre="+nombre+"&apellido="+apellido+"&direccion="
 }
 
 
-function validar(cedula,nombre,apellido,direccion,telefono,correo,contra,ccontra,bandera){
+function validar(cedula,nombre,apellido,direccion,telefono,correo,contra,ccontra,bandera,ya){
 	
+			
 	
 				var v1 = nombre;
                 var v2 = apellido;
@@ -90,6 +97,18 @@ function validar(cedula,nombre,apellido,direccion,telefono,correo,contra,ccontra
 			  
 			  return false;
 			} 
+	
+	
+	for(var i = 0; i < ya.length ; i++){
+		cedulacam = '"'+cedula+'"';
+		
+		if(cedulacam==ya[i]){
+			var box = bootbox.alert("La cedula ya existe");
+                                    box.find('.modal-content').css({ color: '#0000', 'font-size': '1.5em'});
+			return false;
+		}
+		
+	}
 	
 	
 	if(cedula.length == 10){

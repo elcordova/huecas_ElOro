@@ -75,6 +75,8 @@ if(isset($_SESSION['carrito'])){
 
   <?php
 }
+
+
   
 
 ?>
@@ -97,6 +99,36 @@ if(isset($_SESSION['carrito'])){
                   <label>NOMBRES</label>
                   <input name="nombre" class="form-control" required>
                 </div>
+				
+				
+				<?php
+
+				$conexion = mysqli_connect($servidor,$usuario,$contrasena,$basededatos);
+							mysqli_set_charset($conexion, "utf8");
+							$peticion = "SELECT * FROM cliente";
+							$resultado = mysqli_query($conexion, $peticion);
+							
+							
+							$pila = array();
+							
+							
+							
+							while($fila = mysqli_fetch_array($resultado)) {
+								
+							
+								array_push($pila, $fila['cli_cedula']);
+								
+								
+									
+							}
+							$datos = json_encode($pila);
+							
+							
+							echo "<input type='hidden' name='cedulaval' value='".$datos."' id='cedulaval'>";	
+				  
+
+				?>
+				
 
                 <div class="form-group"><br>
                   <label>APELLIDOS</label>
@@ -105,7 +137,7 @@ if(isset($_SESSION['carrito'])){
                 <div class="row">
                 <div class="form-group col-xs-6">
                   <label>NUMERO DE CEDULA </label>
-                  <input name="cedula" class="form-control" required>
+                  <input name="cedula" id="cedula" class="form-control" required>
                 </div>
                 <div class="form-group col-xs-6">
                   <label>TELEFONO</label>
@@ -292,7 +324,8 @@ location = "index.php";
 
 
 <script type="text/javascript">
-    function Nuevo(){
+	
+	function Nuevo(){
       document.frmCliente.nombre.value="";
       document.frmCliente.apellido.value ="";
       document.frmCliente.cedula.value = "";
