@@ -8,7 +8,7 @@
   <li><a href='videos.php?id=".$_GET['id']."'>VIDEOS</a></li>
   <li><a href='galeria.php?id=".$_GET['id']."'>GALERIA</a></li>
   <li><a href='comollegar.php?id=".$_GET['id']."'>COMO LLEGAR</a></li>
-
+  <li><a href='menu.php?id=".$_GET['id']."'>MENU</a></li>
 		</ul>
 
 	";
@@ -92,8 +92,7 @@ while($fila = mysqli_fetch_array($resultado)) {
 	echo "<img src='galeria/platos/".$fila['pla_foto']."' width=200px class='text-center'>";
 	echo "<br>";
 	echo "<p class='lead'>Precio: ".$fila['pla_precio']." $</p>";
-	echo "<a href='plato.php?id=".$fila['pla_id']."'><button class='btn btn-primary'>Más información</button></a>";
-	echo "<button id='boton".$fila['pla_id']."' value='".$fila['pla_id']."' class='botoncompra btn btn-primary'>Comprar ahora</button>";
+	echo "<button id='boton".$fila['pla_id']."' value='".$fila['pla_id']."' class='botoncompra btn btn-primary'>Agregar al Carrito</button>";
 	echo "</div>";
 	echo "<br>";
 	

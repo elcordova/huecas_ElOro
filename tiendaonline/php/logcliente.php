@@ -21,9 +21,6 @@ if(isset($_SESSION['carrito'])){
 		}
 
 }
-echo "'".$_SESSION['usuario']."'";
-echo "-".$total."-";	
-echo "-".$contador."-";	
 if($contador > 0){
 	$fec= date('Y-m-d H:i:s');
 	$peticion = "INSERT INTO pedido VALUES (NULL,'".$total."','".$fec."','no servido','".$_SESSION['usuario']."')";
@@ -34,8 +31,6 @@ if($contador > 0){
 	while($fila = mysqli_fetch_array($resultado)) {
 	$_SESSION['idpedido'] = $fila['ped_id'];
 	} 
-	echo $_SESSION['idpedido']." ".$fec;
-
 	for($i = 0;$i<count($datos);$i++){
 		
 		$peticion = "INSERT INTO detallepedido VALUES ('".$datos[$i]['Id']."','".$_SESSION['idpedido']."','".$datos[$i]['Cantidad']."')";
@@ -44,25 +39,19 @@ if($contador > 0){
 	}
 
 	
-
-	 
-
-	echo "<br>Tu pedido se ha realizado satisfactoriamente. Redirigiendo a la página principal en 5 segundos...";
 	session_destroy();
 	echo '
-		<meta http-equiv="refresh" content="5; url=../index.php"> 
+		<meta http-equiv="refresh" content="0; url=../index.php"> 
 	';
 	 
 	
 	
 	
 }else{
-	echo "El usuario no existe. Volviendo a la tienda en 5 segundos...";
 	echo '
-		<meta http-equiv="refresh" content="5; url=../confirmar.php"> 
+		<meta http-equiv="refresh" content="0; url=../confirmar.php"> 
 	';
 }
 
 mysqli_close($conexion);
-include "piedepagina.inc"; 
 ?>

@@ -8,7 +8,7 @@
   <li><a href='videos.php?id=".$_GET['id']."'>VIDEOS</a></li>
   <li><a href='galeria.php?id=".$_GET['id']."'>GALERIA</a></li>
 <li class='active'><a href='#''>COMO LLEGAR</a></li>
-
+<li><a href='menu.php?id=".$_GET['id']."'>MENU</a></li>
 		</ul>
 
 

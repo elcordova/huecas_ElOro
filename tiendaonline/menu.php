@@ -5,10 +5,10 @@
 	echo "
 		<ul class='nav nav-tabs'>
   <li><a href='hueca.php?id=".$_GET['id']."'>PLATOS</a></li>
-  <li class='active'><a href='#'>VIDEOS</a></li>
+  <li><a href='#'>VIDEOS</a></li>
   <li><a href='galeria.php?id=".$_GET['id']."'>GALERIA</a></li>
-<li><a href='comollegar.php?id=".$_GET['id']."'>COMO LLEGAR</a></li>
-<li><a href='menu.php?id=".$_GET['id']."'>MENU</a></li>
+	<li><a href='comollegar.php?id=".$_GET['id']."'>COMO LLEGAR</a></li>
+	<li class='active'><a href='#'>MENU</a></li>
 		</ul>
 
 		";
@@ -19,14 +19,16 @@
 	$resultado1=mysqli_query($conexion, $peticion1);		
 
 	while($hueca=mysqli_fetch_array($resultado1)){
-		if($hueca['hue_video']==""){
-			echo "<br><br><div class='danger text-center'> <h2> NO EXISTE VIDEO ASOCIADO </h2> </div>";
+		if($hueca['hue_menu']==""){
+			echo "<br><br><div class='danger text-center'> <h2> NO EXISTE MENU ASOCIADO </h2> </div>";
 		}else
 		{
 			echo "
-			<div class='embed-container'>
- 			<iframe src='".$hueca['hue_video']."' frameborder='0'> </iframe>
-			</div>
+					<div class='container'>
+					<img src='galeria/menus/".$hueca['hue_menu']."' class='img-rounded' width=700px />
+					</div>
+
+
 			";	
 		}
 
