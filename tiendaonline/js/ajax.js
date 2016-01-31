@@ -41,7 +41,7 @@ ajax.send("cedula="+cedula+"&nombre="+nombre+"&apellido="+apellido+"&direccion="
 
 }
 
-function Ingresar_Cliente(){
+function Ingresar_Cliente(accion){
 cedula = document.frmEquipos.cedula.value;
 nombre = document.frmEquipos.nombre.value;
 apellido = document.frmEquipos.apellido.value;
@@ -50,15 +50,16 @@ telefono = document.frmEquipos.telefono.value;
 correo = document.frmEquipos.correo.value;
 contra = document.frmEquipos.contra.value;
 
-alert(cedula+nombre+apellido+direccion+telefono+correo+contra);
+
 
 ajax = objetoAjax();
 
-
+alert(accion);
 if(accion=='N'){
 ajax.open("POST", "../php/ingresar_cliente.php", true);
 }else if(accion=='E'){
 ajax.open("POST", "../php/actualizar_cliente.php", true);
+alert(cedula+nombre+apellido+direccion+telefono+correo+contra);
 }
 
 ajax.onreadystatechange=function() {

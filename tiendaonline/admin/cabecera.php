@@ -55,7 +55,7 @@
           <ul class="dropdown-menu" role="menu">
             <li><a href="cliente.php">Clientes</a></li>
             <li><a href="pedidosAdmin.php">Pedidos</a></li>
-            <li><a href="huecasAdmin.php">Huecas</a></li>
+            <li><a href="huecas.php">Huecas</a></li>
           </ul>
         </li>
       
