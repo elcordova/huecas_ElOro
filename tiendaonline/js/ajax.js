@@ -46,7 +46,7 @@ ajax.open("POST", "php/registrar_cliente.php", true);
 
 ajax.onreadystatechange=function() {
 		if (ajax.readyState==4) {
-			alert('Los datos fueron guardados con exito!');
+			//alert('Los datos fueron guardados con exito!');
       window.location.reload(true);
 		}
 	}

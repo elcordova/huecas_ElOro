@@ -58,8 +58,8 @@ if(isset($_SESSION['carrito'])){
 <form class="login" id="login" action="php/logcliente.php" method="POST">
     <div><label>No. Cédula:</label><input type="text" class="input-append" name="usuario" id="usuario" placeholder="ejm: 0705295863"></div> 
     <div><label>Contraseña:</label><input type="password" class="input-append" name="contrasena" id="contrasena" placeholder="***********"></div> 
-    <div><input name="login" class="password" type="submit" onclick="validar()" value="login"></div> 
-	<input id="grabar" name="grabar"  type="hidden" >
+    <div><input name="login" class="password" type="submit" onclick="validarregistro()" value="login"></div> 
+	
 </form> 
 </div>
 
@@ -345,7 +345,7 @@ location = "index.php";
 
 <script type="text/javascript">
 
-function validar(){
+function validarregistro(){
 	
 	
 			cedulas = $("#cedulaval").val();
@@ -404,7 +404,7 @@ function validar(){
 				
 				if(ajaa==0){
 					
-					var box = bootbox.alert("¡El usuario no existe!");
+					var box = bootbox.alert("¡El usuario o contraseña no son validos!");
                                     box.find('.modal-content').css({ color: '#0000', 'font-size': '1.5em'});
                                     
                     
