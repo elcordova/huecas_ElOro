@@ -39,6 +39,8 @@ if(!isset($_SESSION['contador'])){$_SESSION['contador'] = 0;}
 		
 		
 		  <script type="text/javascript" src="js/ajax.js"></script>
+		  <script type="text/javascript" src="js/bootbox.js"></script>
+		  <script type="text/javascript" src="js/bootbox.min.js"></script>
 
 		
 		  
