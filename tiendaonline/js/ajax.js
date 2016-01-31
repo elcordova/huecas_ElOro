@@ -73,4 +73,46 @@ ajax.send("cedula="+cedula+"&nombre="+nombre+"&apellido="+apellido+"&direccion="
 
 }
 
+function Ingresar_Huecas(accion){
+
+
+	id = document.frmEquipos.idhueca.value;
+	nombre = document.frmEquipos.nombre.value;
+    descripcion = document.frmEquipos.descripcion.value;
+	direccion = document.frmEquipos.direccion.value;
+	telefono = document.frmEquipos.telefono.value;
+	horario = document.frmEquipos.horario.value;
+	logo = document.frmEquipos.logo.value;
+	banner = document.frmEquipos.banner.value;
+	menu = document.frmEquipos.menu.value;
+	video = document.frmEquipos.video.value;
+	abre = document.frmEquipos.abre.value;
+	cierra = document.frmEquipos.cierra.value;
+	dias = document.frmEquipos.dias.value;
+	latitud = document.frmEquipos.latitud.value;
+	longitud = document.frmEquipos.longitud.value;
+	categoria = document.frmEquipos.categoria.value;
+
+
+ajax = objetoAjax();
+
+alert(accion);
+if(accion=='N'){
+ajax.open("POST", "../php/ingresar_huecas.php", true);
+}else if(accion=='E'){
+ajax.open("POST", "../php/actualizar_cliente.php", true);
+
+}
+
+ajax.onreadystatechange=function() {
+		if (ajax.readyState==4) {
+			alert('Los datos fueron guardados con exito!');
+			window.location.reload(true);
+		}
+	}
+ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+ajax.send("id="+id+"&nombre="+nombre+"&descripcion="+descripcion+"&direccion="+direccion+"&telefono="+telefono+"&horario="+horario+"&logo="+logo+"&banner="+banner+"&menu="+menu+"&video="+video+"&abre="+abre+"&cierra="+cierra+"&dias="+dias+"&latitud="+latitud+"&longitud="+longitud+"&categoria="+categoria);
+
+}
+
 

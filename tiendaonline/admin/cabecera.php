@@ -12,11 +12,15 @@
 		<script type="text/javascript" src="../js/script.js"></script> 
 		<script type="text/javascript" src="../js/jquery.js"></script>
     	<script src="../js/bootstrap.min.js"></script>
+		
 		<script type="text/javascript" src="../js/jquery.countdown.js"></script>
     <script type="text/javascript" src="../js/funcion_fondo.js"></script>
     <script type="text/javascript" src="../js/ajax.js"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
+		
+		<script type="text/javascript" src="../js/bootstrap-datetimepicker.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap-datetimepicker.css">
         
         
     </head>

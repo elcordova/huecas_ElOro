@@ -8,7 +8,7 @@ session_start();
 
 
 <div class="panel panel-info">
-        <div class="panel-heading">Lista de Clientes</div>
+        <div class="panel-heading"><h4>Lista de Huecas</h4></div>
 		
         <div class="panel-body">
 		
@@ -37,9 +37,29 @@ session_start();
 			$peticion = "SELECT * FROM hueca";
 			$resultado = mysqli_query($conexion, $peticion);
 			
-			while($fila = mysqli_fetch_array($resultado)) {
 			
-			$editaaar = "".$fila['hue_id']."','".$fila['hue_nombre']."','".$fila['hue_nombre']."','".$fila['hue_nombre']."','".$fila['hue_nombre']."','".$fila['hue_nombre']."','".$fila['hue_nombre']."";
+			
+			
+			while($fila = mysqli_fetch_array($resultado)) {
+				
+					
+			
+			$idd = $fila['hue_id']; 
+			$nombree = $fila['hue_nombre'];			
+			$descripcionn = $fila['hue_descripcion']; 
+			$direccionn = $fila['hue_direccion'];  
+			$telefonoo = $fila['hue_telefono'];  
+			$horarioo = $fila['hue_horario'];   
+			$logoo = $fila['hue_logo'];     
+			$bannerr = $fila['hue_banner'];   
+			$menuu = $fila['hue_menu'];      
+			$videoo = $fila['hue_video'];      
+			$abree = $fila['hue_abre'];    
+			$cierraa = $fila['hue_cierra'];     
+			$diass = $fila['dias'];           
+			$latitudd = $fila['latitud'];     
+			$longitudd = $fila['longitud'];        
+			$catee = $fila['cat_id'];
 
 			echo "<tr>
                
@@ -53,23 +73,12 @@ session_start();
 	
 				<td>".$fila['hue_abre']."</td>
 				<td>".$fila['hue_cierra']."</td>
+		
 				
 
                
             
-                <td>
-                  <div class='btn-group'>
-                    <button type='button' class='btn btn-danger btn-xs'>Administrar</button>
-                    <button type='button' class='btn btn-danger btn-xs dropdown-toggle' data-toggle='dropdown' aria-expanded='false'>
-                      <span class='caret'></span>
-                    </button>
-                    <ul class='dropdown-menu' role='menu'>
-					
-							<li><a onclick=Editar('".$editaaar."') >Actualizar</a></li>
-						                  
-                    </ul>
-                  </div>
-                </td>
+                
               </tr> ";
 			
 			}
@@ -89,6 +98,9 @@ session_start();
             </div>
             <form role="form" action="" name="frmEquipos">
               <div class="col-lg-12">
+			  
+				<input type='hidden' name='idhueca' id='idhueca'>
+				
                 <div class="form-group">
                   <label>Nombre</label>
                   <input name="nombre" class="form-control" required>
@@ -136,12 +148,19 @@ session_start();
 				
 				<div class="form-group">
                   <label>Abre</label>
-                  <input name="abre" class="form-control" required>
+                  
+				 
+				  <input name="abre" type="text" class="form-control" id="datetimepicker2">
+				  
                 </div>
 				
 				<div class="form-group">
                   <label>Cierra</label>
-                  <input name="cierra" class="form-control" required>
+                  
+				
+				  <input name="cierra" type="text" class="form-control" id="datetimepicker3">
+						
+				  
                 </div>
 				
 				<div class="form-group">
@@ -161,7 +180,15 @@ session_start();
 				
 				<div class="form-group">
                   <label>Categoria</label>
-                  <input name="categoria" class="form-control" required>
+                  <select  class="form-control"  name="categoria"  SIZE=1 >
+                    <option value="1">Comida de Mar</option>
+                    <option value="2">Piqueo</option>
+                    <option value="3">Pizza</option>
+					<option value="4">Frutas</option>
+                    <option value="5">Comita Tipica</option>
+                    <option value="6">Parrilladas</option>
+					<option value="7">Helados</option>
+                </select> 
                 </div>
 				
 			            
@@ -170,7 +197,7 @@ session_start();
               
             </form>
             <div class="modal-footer">
-              <button type="button" class="btn btn-info" onClick="Ingresar_Cliente(accion); return false">
+              <button type="button" class="btn btn-info" onClick="Ingresar_Huecas(accion); return false">
                    Guardar
               </button>
 				<button type="button" class="btn btn-danger" data-dismiss="modal"> Cancelar</button>
@@ -194,25 +221,69 @@ session_start();
 
 
 <script type="text/javascript">
-    var accion;
+    
+	
+
+	  $(function() {
+		$('#datetimepicker2').datetimepicker({
+		 format: 'hh:ii'
+		});
+		
+		$('#datetimepicker3').datetimepicker({
+		 format: 'hh:ii'
+		});
+		
+		
+	  });
+	  
+	  	  
+
+
+	
+	var accion;
     
     function Nuevo(){
       accion = 'N';
 		
+	  document.frmEquipos.idhueca.value = "";
+	  document.frmEquipos.nombre.value = "";
+      document.frmEquipos.descripcion.value = "";
+	  document.frmEquipos.direccion.value = "";
+	  document.frmEquipos.telefono.value = "";
+	  document.frmEquipos.horario.value = "";
+	  document.frmEquipos.logo.value = "";
+	  document.frmEquipos.banner.value = "";
+	  document.frmEquipos.menu.value = "";
+	  document.frmEquipos.video.value = "";
+	
+	  document.frmEquipos.dias.value = "";
+	  document.frmEquipos.latitud.value = "";
+	  document.frmEquipos.longitud.value = "";
+	  document.frmEquipos.categoria.value = "";
 	  	  
      
       $('#modal').modal('show');
     }
-    function Editar(cedula,nombre,apellido,direccion,telefono,correo,contrasena){
+    function Editar(id,nombre,descripcion,direccion,telefono,horario,logo,banner,menu,video,abre,cierra,dias,latitud,longitud,categoria){
       accion = 'E';
       
-      document.frmEquipos.cedula.value = cedula;
-      document.frmEquipos.nombre.value = nombre;
-      document.frmEquipos.apellido.value = apellido;
+      document.frmEquipos.idhueca.value = id;
+	  document.frmEquipos.nombre.value = nombre;
+      document.frmEquipos.descripcion.value = descripcion;
 	  document.frmEquipos.direccion.value = direccion;
 	  document.frmEquipos.telefono.value = telefono;
-	  document.frmEquipos.correo.value = correo;
-	  document.frmEquipos.contra.value = contrasena;
+	  document.frmEquipos.horario.value = horario;
+	  document.frmEquipos.logo.value = logo;
+	  document.frmEquipos.banner.value = banner;
+	  document.frmEquipos.menu.value = menu;
+	  document.frmEquipos.video.value = video;
+	  document.frmEquipos.abre.value = abre;
+	  document.frmEquipos.cierra.value = cierra;
+	  document.frmEquipos.dias.value = dias;
+	  document.frmEquipos.latitud.value = latitud;
+	  document.frmEquipos.longitud.value = longitud;
+	  document.frmEquipos.categoria.value = categoria;
+	  
   
       $('#modal').modal('show');
     }

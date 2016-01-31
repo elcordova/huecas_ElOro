@@ -8,7 +8,7 @@ session_start();
 
 
 <div class="panel panel-info">
-        <div class="panel-heading">Lista de Clientes</div>
+        <div class="panel-heading"><h4>Lista de Clientes</h4></div>
 		
         <div class="panel-body">
 		
