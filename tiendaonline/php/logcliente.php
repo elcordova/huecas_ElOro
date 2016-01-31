@@ -26,7 +26,7 @@ echo "-".$total."-";
 echo "-".$contador."-";	
 if($contador > 0){
 	$fec= date('Y-m-d H:i:s');
-	$peticion = "INSERT INTO pedido VALUES (NULL,'".$total."','".$fec."','por_atender','".$_SESSION['usuario']."')";
+	$peticion = "INSERT INTO pedido VALUES (NULL,'".$total."','".$fec."','no servido','".$_SESSION['usuario']."')";
 	$resultado = mysqli_query($conexion, $peticion);
 
 	$peticion = "SELECT * FROM pedido WHERE cli_cedula = '".$_SESSION['usuario']."' ORDER BY pedido.ped_id DESC LIMIT 1";
