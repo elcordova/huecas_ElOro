@@ -25,7 +25,7 @@
 		{
 			echo "
 					<div class='container'>
-					<img src='galeria/menus/".$hueca['hue_menu']."' class='img-rounded' width=700px />
+					<img src='galeria/menus/".$hueca['hue_menu']."' class='img-rounded' width=697px />
 					</div>
 
 
