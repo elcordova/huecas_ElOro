@@ -54,11 +54,12 @@ if(isset($_SESSION['carrito'])){
 ?>
 
 <div class="text-center">
-<h3>¿ya tienes Cuenta?</h3>
-<form class="login" action="php/logcliente.php" method="POST">
-    <div><label>Numero de Cédula</label><input type="text" class="input-append" name="usuario" placeholder="ejm: 0705295863"></div> 
-    <div><label>Contraseña</label><input type="password" class="input-append" name="contrasena" placeholder="*********"></div> 
-    <div><input name="login" class="password" type="submit" value="login"></div> 
+<h4>¿Ya tienes Cuenta?</h4>
+<form class="login" id="login" action="php/logcliente.php" method="POST">
+    <div><label>No. Cédula:</label><input type="text" class="input-append" name="usuario" id="usuario" placeholder="ejm: 0705295863"></div> 
+    <div><label>Contraseña:</label><input type="password" class="input-append" name="contrasena" id="contrasena" placeholder="***********"></div> 
+    <div><input name="login" class="password" type="submit" onclick="validar()" value="login"></div> 
+	<input id="grabar" name="grabar"  type="hidden" >
 </form> 
 </div>
 
@@ -69,7 +70,7 @@ if(isset($_SESSION['carrito'])){
   ?>
 <hr>
 <div class="text-center">
-<h3 class="text-center">debes agregar algo a tu pedido primero</h3>
+<h3 class="text-center">¡Debes agregar algo a tu pedido primero!</h3>
 </button>
 </div>
 
@@ -90,13 +91,13 @@ if(isset($_SESSION['carrito'])){
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-              <div class="modal-title" >NUEVO USUARIO</div>
+              <div class="modal-title" >Nuevo Usuario</div>
             </div>
             <form role="form" method="POST" id="registro_nuevo" novalidate="novalidate" name="frmCliente">
               <div class="col-lg-12">
                 
                 <div class="form-group"  ><br>
-                  <label>NOMBRES</label>
+                  <label>Nombres</label>
                   <input name="nombre" class="form-control" required>
                 </div>
 				
@@ -110,6 +111,7 @@ if(isset($_SESSION['carrito'])){
 							
 							
 							$pila = array();
+							$pila1 = array();
 							
 							
 							
@@ -117,52 +119,54 @@ if(isset($_SESSION['carrito'])){
 								
 							
 								array_push($pila, $fila['cli_cedula']);
+								array_push($pila1, $fila['cli_contrasena']);
 								
 								
 									
 							}
 							$datos = json_encode($pila);
+							$datos1 = json_encode($pila1);
 							
-							
-							echo "<input type='hidden' name='cedulaval' value='".$datos."' id='cedulaval'>";	
+							echo "<input type='hidden' name='cedulaval' value='".$datos."' id='cedulaval'>";
+							echo "<input type='hidden' name='contraval' value='".$datos1."' id='contraval'>";							
 				  
 
 				?>
 				
 
                 <div class="form-group"><br>
-                  <label>APELLIDOS</label>
+                  <label>Apellidos</label>
                   <input name="apellido" class="form-control" required>
                 </div>
                 <div class="row">
                 <div class="form-group col-xs-6">
-                  <label>NUMERO DE CEDULA </label>
+                  <label>No. Cedula</label>
                   <input name="cedula" id="cedula" class="form-control" required>
                 </div>
                 <div class="form-group col-xs-6">
-                  <label>TELEFONO</label>
+                  <label>Telefono</label>
                   <input name="telefono" class="form-control" required>
                 </div>
 
                 </div>
                 <div class="form-group">
-                  <label>DIRECCIÓN</label>
+                  <label>Direccion</label>
                   <input name="direccion" class="form-control" required>
                 </div>
 
                 
                 <div class="form-group">
-                  <label>CORREO ELECTRONICO</label>
+                  <label>Correo Electrónico</label>
                   <input name="correo" class="form-control" required>
                 </div>
 
                 <div class="form-group">
-                  <label>CONTRASEÑA</label>
+                  <label>Contraseña</label>
                   <input name="contra" class="form-control" required>
                 </div>
 
                 <div class="form-group">
-                  <label>CONFIRME SU CONTRASEÑA</label>
+                  <label>Confirme Contraseña</label>
                   <input name="c_contra" class="form-control" required>
                 </div>
                 
@@ -188,7 +192,7 @@ if(isset($_SESSION['carrito'])){
 
 <hr>
 <div class="text-center">
-<h3 class="text-center">¿Eres nuevo usuario?</h3>
+<h4 class="text-center">¿Eres nuevo usuario?</h4>
 <button class="btn btn-inverse" onclick="Nuevo();">
 <a>REGISTRATE</a>
 </button>
@@ -339,8 +343,82 @@ location = "index.php";
 
 </script>
 
+<script type="text/javascript">
 
+function validar(){
+	
+	
+			cedulas = $("#cedulaval").val();
+			contras = $("#contraval").val();
+			
+			alert(cedulas);
+			alert(contras);
 
+			otra = cedulas.replace("[","");
+			otra1 = otra.replace("]","");
+
+			ya = otra1.split(",");
+			
+			alert("ya"+ya);
+			
+			otraa = contras.replace("[","");
+			otraa1 = otraa.replace("]","");
+
+			ya1 = otraa1.split(",");
+			
+			alert("ya1"+ya1);
+	
+			document.getElementById("login").onsubmit=function(){
+	
+				var v1 = $("#usuario").val();
+                var v2 = $("#contrasena").val();
+                
+                if( v1 == null || v1.length == 0 || /^\s+$/.test(v1) || v2 == null || v2.length == 0 || /^\s+$/.test(v2)) {
+                    var box = bootbox.alert("¡Por favor llene los campos!");
+                                    box.find('.modal-content').css({ color: '#0000', 'font-size': '1.5em'});
+                                    
+                    
+					return false;
+				}
+				
+				var ajaa = 0;
+				for(var i = 0; i < ya.length ; i++){
+					cedulacam = '"'+v1+'"';
+					contracam = '"'+v2+'"';
+					
+					alert(ya[i])
+					alert(ya1[i])
+					alert("cedulacam"+cedulacam);
+					alert("contracam"+contracam);
+					
+					
+					
+					if(cedulacam==ya[i] && contracam==ya1[i]){
+						    
+							ajaa = ajaa + 1;
+					
+					}
+					
+				}
+				
+				
+				if(ajaa==0){
+					
+					var box = bootbox.alert("¡El usuario no existe!");
+                                    box.find('.modal-content').css({ color: '#0000', 'font-size': '1.5em'});
+                                    
+                    
+					return false;
+				}
+			
+						
+			}
+			
+		
+
+}
+
+</script>
 
 
 
