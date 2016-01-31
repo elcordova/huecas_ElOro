@@ -10,7 +10,6 @@ echo "
   <li><a href='pedidosAdmin.php'>PEDIDOS POR HUECA</a></li>
   <li class='active'><a href='#'>PEDIDOS POR ESTADO</a></li>
   <li><a href='pedidos_cliente.php'>PEDIDOS POR CLIENTE</a></li>
-  <li><a href='pedidos_plato.php'>PEDIDOS POR PLATO</a></li>
 		</ul>";
 
 		$conexion = mysqli_connect($servidor,$usuario,$contrasena,$basededatos);

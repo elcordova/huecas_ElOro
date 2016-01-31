@@ -112,7 +112,7 @@ session_start();
 	foreach($filas as $fila) {
     ?>
 		<div class="col-xs-3"><h4>Pedido realizado por:</h4><h3><?php print($fila->cli_nombre); print($fila->cli_apellido); ?></h3></div>
-		<div class="col-xs-3"><h4>con C.I. : </h4><h3><?php print($fila->cli_cedula);?>"</h3></div>
+		<div class="col-xs-3"><h4>con C.I. : </h4><h3><?php print($fila->cli_cedula);?></h3></div>
 		<div class="col-xs-3"><h4>el dia : </h4><h3><?php print($fila->ped_fecha);?></h3></div>
     <div class="col-xs-3"><h4>Estado : </h4><h3><?php print($fila->ped_estado);?></h3></div>     
      <div class="col-xs-6"><button class="btn btn-inverse" onclick="verCliente('<?php print($fila->cli_nombre);?>','<?php print($fila->cli_apellido);?>','<?php print($fila->cli_cedula);?>','<?php print($fila->cli_correo);?>','<?php print($fila->cli_direccion);?>','<?php print($fila->cli_telefono);?>');">
