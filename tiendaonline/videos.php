@@ -5,7 +5,7 @@
 	echo "
 		<ul class='nav nav-tabs'>
   <li><a href='hueca.php?id=".$_GET['id']."'>PLATOS</a></li>
-  <li class='active'><a href='#'>VIDEOS</a></li>
+  <li class='active'><a href='#'>VIDEO</a></li>
   <li><a href='galeria.php?id=".$_GET['id']."'>GALERIA</a></li>
 <li><a href='comollegar.php?id=".$_GET['id']."'>COMO LLEGAR</a></li>
 <li><a href='menu.php?id=".$_GET['id']."'>MENU</a></li>
@@ -20,7 +20,7 @@
 
 	while($hueca=mysqli_fetch_array($resultado1)){
 		if($hueca['hue_video']==""){
-			echo "<br><br><div class='danger text-center'> <h2> NO EXISTE VIDEO ASOCIADO </h2> </div>";
+			echo "<br><br><div class='danger text-center'><b> <h4> NO EXISTE VIDEO ASOCIADO </h4> </b></div>";
 		}else
 		{
 			echo "
