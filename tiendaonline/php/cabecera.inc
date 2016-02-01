@@ -65,7 +65,7 @@ right:0px;
       
        
 	    <ul class="nav navbar-nav navbar-left ">
-	   <li><a href="//localhost/huecas_ElOro/tiendaonline" title="Volver al inicio">
+	   <li><a href="index.php" title="Volver al inicio">
 		  <img src="./img/logohuecas.png" class="img-rounded" width=110px>
 		  </a>
 		</li>
@@ -81,23 +81,10 @@ right:0px;
           <div class="form-group">
           <input type="text" class="form-control" placeholder="Ingresar dato">
         </div>
-     
-
         </form>
 		
-		<form class="nav navbar-nav" role="search">
-      
-          <div class="form-group">
-          
-     
-        <button type="submit" class="btn btn-default">Buscar</button>
-		
-		</div>
-
-        </form>
-	  
-	  
         <li><a href="./admin/index.php"><b>Administrar</b></a></li>
+        <li><a href="./FLASH DE LA REVISTA/proyecto-revista.html" target="_blank"><b>Revista OroHucas</b></a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Soporte </b><span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
