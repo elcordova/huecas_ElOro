@@ -39,8 +39,7 @@ ya = otra1.split(",");
 		
 				
 if(validar(cedula,nombre,apellido,direccion,telefono,correo,contra,ccontra,bandera,ya)){
-alert(cedula+nombre+apellido);
-alert(cedula);
+
 ajax = objetoAjax();
 ajax.open("POST", "php/registrar_cliente.php", true);
 
@@ -52,6 +51,7 @@ ajax.onreadystatechange=function() {
 	}
 ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 ajax.send("cedula="+cedula+"&nombre="+nombre+"&apellido="+apellido+"&direccion="+direccion+"&telefono="+telefono+"&correo="+correo+"&contra="+contra);
+
 }
 
 }
@@ -115,7 +115,7 @@ function validar(cedula,nombre,apellido,direccion,telefono,correo,contra,ccontra
                     if(cedula==2222222222){
                         var box = bootbox.alert("No es un numero de cedula");
                                     box.find('.modal-content').css({ color: '#0000', 'font-size': '1.5em'});
-                                    box.find('.btn-primary').css({'background-color': '#33CF64','border': '#33CF64 1px solid'});
+                                  
                         return false;
                     }
                     //Obtenemos el digito de la region que sonlos dos primeros digitos
@@ -162,7 +162,7 @@ function validar(cedula,nombre,apellido,direccion,telefono,correo,contra,ccontra
                         }else{
                             var box = bootbox.alert("la cedula:" + cedula + " es incorrecta");
                             box.find('.modal-content').css({ color: '#0000', 'font-size': '1.5em'});
-                            box.find('.btn-primary').css({'background-color': '#33CF64','border': '#33CF64 1px solid'});
+                        
                             bandera="N"
 							return false;
                         }
@@ -170,7 +170,7 @@ function validar(cedula,nombre,apellido,direccion,telefono,correo,contra,ccontra
                         // imprimimos en consola si la region no pertenece
                         var box = bootbox.alert("Esta cedula no pertenece a ninguna region");
                         box.find('.modal-content').css({ color: '#0000', 'font-size': '1.5em'});
-                        box.find('.btn-primary').css({'background-color': '#33CF64','border': '#33CF64 1px solid'});
+                  
                         bandera="N"
 						return false;
                     }
@@ -178,7 +178,7 @@ function validar(cedula,nombre,apellido,direccion,telefono,correo,contra,ccontra
                     //imprimimos en consola si la cedula tiene mas o menos de 10 digitos
                     var box = bootbox.alert("Esta cedula tiene menos de 10 digitos");
                     box.find('.modal-content').css({ color: '#0000', 'font-size': '1.5em'});
-                    box.find('.btn-primary').css({'background-color': '#33CF64','border': '#33CF64 1px solid'});
+                    
                     bandera="N"
 					return false;
                 }
@@ -202,12 +202,12 @@ contra = document.frmEquipos.contra.value;
 
 ajax = objetoAjax();
 
-alert(accion);
+
 if(accion=='N'){
 ajax.open("POST", "../php/ingresar_cliente.php", true);
 }else if(accion=='E'){
 ajax.open("POST", "../php/actualizar_cliente.php", true);
-alert(cedula+nombre+apellido+direccion+telefono+correo+contra);
+
 }
 
 ajax.onreadystatechange=function() {

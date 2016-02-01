@@ -345,6 +345,14 @@ location = "index.php";
 
 <script type="text/javascript">
 
+var box = bootbox.alert("Para confirmar el pedido por favor ingresa con tu usuario.  \n Recuerda que no estan incluidos los valores de transporte.");
+                                    box.find('.modal-content').css({ color: '#0000', 'font-size': '1.5em'});
+
+			
+			
+									
+
+
 function validarregistro(){
 	
 	
@@ -410,6 +418,10 @@ function validarregistro(){
                     
 					return false;
 				}
+				
+				
+				var box = bootbox.alert("¡Registro Completo!.");
+                                    box.find('.modal-content').css({ color: '#0000', 'font-size': '1.5em'});
 			
 						
 			}

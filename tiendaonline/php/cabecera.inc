@@ -101,58 +101,20 @@ right:0px;
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Soporte </b><span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
+            <li><a href="#">Celular: 0980398960</a></li>
+			<li class="divider"></li>
+            <li><a href="#">Correo: carlos.andres.1994@hotmail.com</a></li>
             <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
+            <li><a href="#">Acerca de..</a></li>
             <li class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
+            
           </ul>
         </li>
       
-		<li><a href=""><b>¿Ya tienes una Cuenta?</b></a></li>
+		<li><a href="./carrito.php"><b>Carrito</b></a></li>
 
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Registro</b> <span class="caret"></span></a>
-			   <ul id="login-dp" class="dropdown-menu">
-				<li>
-					 <div class="row">
-							<div class="col-md-12">
-								Registrate usando
-								<div class="social-buttons">
-									<a href="#" class="btn btn-fb" id=""><i class="fa fa-facebook"></i> Facebook</a>
-									
-								</div>
-                                or
-								 <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
-										<div class="form-group">
-											 <label class="sr-only" for="exampleInputEmail2">Correo Electronico</label>
-											 <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Correo Electronico" required>
-										</div>
-										<div class="form-group">
-											 <label class="sr-only" for="exampleInputPassword2">Contraseña</label>
-											 <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Contraseña" required>
-                                             <div class="help-block text-right"><a href="">olvidaste tu contraseña ?</a></div>
-										</div>
-										<div class="form-group">
-											 <button type="submit" class="btn btn-primary btn-block">Sign in</button>
-										</div>
-										<div class="checkbox">
-											 <label>
-											 <input type="checkbox"> Mantenerme registrado
-											 </label>
-										</div>
-								 </form>
-							</div>
-							<div class="bottom text-center">
-								New here ? <a href="#"><b>Join Us</b></a>
-							</div>
-					 </div>
-				</li>
-			     </ul>
-        </li>
-    <li><a href="./carrito.php" title="ver carrito de compras">
+        
+    <li><a href="./carrito.php" title="Ver carrito de compras">
       <img src="./img/carrito1.png" class="img-rounded" width=40px>
       </a>
     </li>
