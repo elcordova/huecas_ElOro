@@ -73,11 +73,7 @@ right:0px;
       
 
       <ul class="nav navbar-nav navbar-right ">
-	  
-		
-	
-		
-		
+		<li><a href="busqueda.php"><b>Buscar</b></a></li>
         <li><a href="./admin/index.php"><b>Administrar</b></a></li>
         <li><a href="./FLASH DE LA REVISTA/proyecto-revista.html" target="_blank"><b>Revista OroHucas</b></a></li>
         <li class="dropdown">
