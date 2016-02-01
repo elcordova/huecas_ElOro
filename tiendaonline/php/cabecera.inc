@@ -92,7 +92,7 @@ right:0px;
 			<li class="divider"></li>
             <li><a href="#">Correo: carlos.andres.1994@hotmail.com</a></li>
             <li class="divider"></li>
-            <li><a href="#">Acerca de..</a></li>
+            <li><a href="quienesSomos.php">Acerca de..</a></li>
             <li class="divider"></li>
             
           </ul>
