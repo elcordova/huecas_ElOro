@@ -43,7 +43,9 @@
         
         <div class="panel panel-default" >
             <div class="panel-heading">
-                <div class="panel-title text-center">ADMINISTRACION</div>
+
+                <div class="panel-title text-center">Huecas El Oro</div>
+
             </div>     
 
             <div class="panel-body" >

@@ -10,7 +10,7 @@ session_start();
 
 <div class="jumbotron">
   <div class="container">
-  <h1>Sitio de Administracion</h1>
+  <b><h2>Sitio de Administración</h2></b>
     <p>Las Funcionalidades de el sitio de Administracion estan reservadas para usuarios Específicos. Los cambios que se realicen desde este sitio, afectaran a todos los formularios.</p>
     <p><a class="btn btn-primary btn-lg" href="../php/destruir.php" role="button">SALIR</a></p>
   </div>

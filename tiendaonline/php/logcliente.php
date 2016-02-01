@@ -41,7 +41,7 @@ if($contador > 0){
 	
 	session_destroy();
 	echo '
-		<meta http-equiv="refresh" content="0; url=../index.php"> 
+		<meta http-equiv="refresh" content="0; url=../confirmar.php"> 
 	';
 	 
 	
