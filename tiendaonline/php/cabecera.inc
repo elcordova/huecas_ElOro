@@ -76,12 +76,7 @@ right:0px;
 	  
 		
 	
-		<form class="nav navbar-nav" role="search">
-      
-          <div class="form-group">
-          <input type="text" class="form-control" placeholder="Ingresar dato">
-        </div>
-        </form>
+		
 		
         <li><a href="./admin/index.php"><b>Administrar</b></a></li>
         <li><a href="./FLASH DE LA REVISTA/proyecto-revista.html" target="_blank"><b>Revista OroHucas</b></a></li>

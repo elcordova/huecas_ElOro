@@ -14,11 +14,10 @@
 					Carrito
 				</div>
 					<a href='php/destruir.php'><button class="btn">Vaciar carrito</button></a>
-					<a href='confirmar.php'><button class="btn">Confirmar compra</button></a>
-			</div>
-   
+					<a href='confirmar.php'><button class="btn">Confirmar pedido</button></a>
+				</div>
+				   
   </div>
-
 </div>
 </div>
 	

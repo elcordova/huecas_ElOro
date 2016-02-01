@@ -79,7 +79,7 @@ if(isset($_SESSION['carrito'])){
 		echo "<tr><td>Subtotal</td><td>".number_format($suma,2)."</td></tr>";
 		
 }else{
-	echo '<tr><td><center>Sin platos en su lista</center></td><td>';
+	echo '<tr><td><center><p>Costos de trasnporte no incluidos en el total de su pedido</p></center></td><td>';
 
 }
 		echo "</table>";

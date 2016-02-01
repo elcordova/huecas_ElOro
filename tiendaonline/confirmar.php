@@ -55,6 +55,7 @@ if(isset($_SESSION['carrito'])){
 
 <div class="text-center">
 <h4>¿Ya tienes Cuenta?</h4>
+<h5>necesitamos tus credenciales para asignar tu pedido</h5>
 <form class="login" id="login" action="php/logcliente.php" method="POST">
     <div><label>No. Cédula:</label><input type="text" class="input-append" name="usuario" id="usuario" placeholder="ejm: 0705295863"></div> 
     <div><label>Contraseña:</label><input type="password" class="input-append" name="contrasena" id="contrasena" placeholder="***********"></div> 
