@@ -7,7 +7,7 @@
 <div class="page-header">
   <h1> QUIENES SOMOS <small> OROHUECAS </small></h1>
 </div>
-<h3>El portal OroHuecas.com permite realizar pedidos en la mayoria de los locales de comida mas reconicidos de la provincia de El Oro </h3>
+<h4>El portal OroHuecas.com permite realizar pedidos en la mayoria de los locales de comida mas reconicidos de la provincia de El Oro </h4>
 <p></p>
 </div>
 
