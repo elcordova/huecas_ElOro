@@ -12,7 +12,7 @@ session_start();
   <div class="container">
   <h1>Sitio de Administracion</h1>
     <p>Las Funcionalidades de el sitio de Administracion estan reservadas para usuarios Específicos. Los cambios que se realicen desde este sitio, afectaran a todos los formularios.</p>
-    <p><a class="btn btn-primary btn-lg" role="button">Leer mas</a></p>
+    <p><a class="btn btn-primary btn-lg" href="../php/destruir.php" role="button">SALIR</a></p>
   </div>
 </div>
 
