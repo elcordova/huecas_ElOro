@@ -46,7 +46,7 @@ echo "
     <?php
 
 	$peticion2="SELECT * from pedido where ped_estado='servido' and ped_id IN (SELECT ped_id from detallepedido where pla_id IN (SELECT pla_id from plato)) ORDER BY `pedido`.`ped_id` DESC";
-		$resultado2=mysqli_query($conexion, $peticion2);
+	$resultado2=mysqli_query($conexion, $peticion2);
 
 
 
@@ -59,7 +59,7 @@ echo "
      <?php 
 
      while($pedido1=mysqli_fetch_array($resultado2)){
-		echo "<li class='list-group-item'><a href=pedido.php?ped_id=".$pedido['ped_id'].">".$pedido1['ped_id']." realizado el  " .$pedido1['ped_fecha']." por: $".$pedido['ped_preciot']. "</a></li> ";
+		echo "<li class='list-group-item'><a href=pedido.php?ped_id=".$pedido1['ped_id'].">".$pedido1['ped_id']." realizado el  " .$pedido1['ped_fecha']." por: $".$pedido1['ped_preciot']. "</a></li> ";
 		}
 	?>	
 	</ul>

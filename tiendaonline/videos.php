@@ -23,11 +23,8 @@
 			echo "<br><br><div class='danger text-center'><b> <h4> NO EXISTE VIDEO ASOCIADO </h4> </b></div>";
 		}else
 		{
-			echo "
-			<div class='embed-container'>
- 			<iframe src='".$hueca['hue_video']."' frameborder='0'> </iframe>
-			</div>
-			";	
+			echo '<iframe width="100%" height="100%" src="'.$hueca['hue_video'].'" frameborder="0" allowfullscreen=""></iframe>
+</iframe>'; 
 		}
 
 	}
