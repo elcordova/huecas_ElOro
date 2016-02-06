@@ -1,4 +1,4 @@
-<?php
+<?php session_start();
 
 if(isset($_POST['txtusuario'])){
 $nombre= $_POST["txtusuario"];
@@ -6,7 +6,6 @@ $pass= $_POST["txtpassword"];
 print $nombre;
 
  if ($nombre=='huecas' && $pass=='eloro') { 
- 	session_start();
  	$_SESSION['admin']=$nombre;
  	echo '
 		<meta http-equiv="refresh" content="1; url=index.php"> 

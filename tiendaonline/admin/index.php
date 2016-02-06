@@ -1,8 +1,4 @@
-
-
-<?php
-
-session_start();
+<?php session_start();
 	include('cabecera.php');
 	if (isset($_SESSION['admin'])) {
 ?>

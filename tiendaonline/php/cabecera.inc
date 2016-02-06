@@ -50,110 +50,69 @@ if(!isset($_SESSION['contador'])){$_SESSION['contador'] = 0;}
 
 <style type="text/css">
   .flotante {
-display:scroll;
-position:fixed;
-bottom:320px;
-right:0px;
-}
-
+  display:scroll;
+  position:fixed;
+  bottom:320px;
+  right:0px;
+  }
 </style>
 <nav class=" navbar-fixed-top navbar-default navbar-inverse" role="navigation">
-  
-	
-  
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      
-       
-	    <ul class="nav navbar-nav navbar-left ">
-	   <li><a href="index.php" title="Volver al inicio">
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">  
+    <ul class="nav navbar-nav navbar-left ">
+      <li><a href="index.php" title="Volver al inicio">
 		  <img src="./img/logohuecas.png" class="img-rounded" width=110px>
 		  </a>
-		</li>
+		  </li>
 		</ul>
-      
-
-      <ul class="nav navbar-nav navbar-right ">
-<<<<<<< HEAD
-		<li><a href="busqueda.php"><b>Buscar</b></a></li>
-=======
-	  
-		
-	
-		<form class="nav navbar-nav" role="search">
-      
-          <div class="form-group">
-          <input type="text" class="form-control" placeholder="Ingresar dato">
-        </div>
-        </form>
-		
->>>>>>> d32d1bf8cf122da6f127b589d52671a2a5c3f30c
-        <li><a href="./admin/index.php"><b>Administrar</b></a></li>
-        <li><a href="./FLASH DE LA REVISTA/proyecto-revista.html" target="_blank"><b>Revista</b></a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Soporte </b><span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Celular: 0980398960</a></li>
-			<li class="divider"></li>
-            <li><a href="#">Correo: carlos.andres.1994@hotmail.com</a></li>
-            <li class="divider"></li>
-            <li><a href="quienesSomos.php">Acerca de..</a></li>
-            <li class="divider"></li>
-            
-          </ul>
-        </li>
-      
-		<li><a href="./carrito.php"><b>Carrito</b></a></li>
-
-        
-    <li><a href="./carrito.php" title="Ver carrito de compras">
-      <img src="./img/carrito1.png" class="img-rounded" width=40px>
-      </a>
-    </li>
-
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    <ul class="nav navbar-nav navbar-right ">
+      <li><a href="busqueda.php"><b>Buscar</b></a></li>
+      <li><a href="./admin/index.php"><b>Administrar</b></a></li>
+      <li><a href="./FLASH DE LA REVISTA/proyecto-revista.html" target="_blank"><b>Revista</b></a></li>
+      <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Soporte </b><span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#">Celular: 0980398960</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Correo: carlos.andres.1994@hotmail.com</a></li>
+          <li class="divider"></li>
+          <li><a href="quienesSomos.php">Acerca de..</a></li>
+          <li class="divider"></li>  
+        </ul>
+      </li>
+		  <li><a href="./carrito.php"><b>Carrito</b></a></li>
+      <li><a href="./carrito.php" title="Ver carrito de compras">
+        <img src="./img/carrito1.png" class="img-rounded" width=40px>
+        </a>
+      </li>
+    </ul>
+  </div><!-- /.navbar-collapse -->
 </nav>
 
-
-
 <div class="row">
-
-
-
    <div class=" col-md-2">.
-    <blockquote>
-
-    <?php 
-
-
-    $conexion = mysqli_connect($servidor,$usuario,$contrasena,$basededatos);
-    mysqli_set_charset($conexion, "utf8");
-    $peticion = "SELECT * FROM categoria";
-    $resultado = mysqli_query($conexion, $peticion);
-    echo "<table class='table table-hover'> <thead>
-        <tr>
-            <th>CATEGORIAS</th>
-        </tr>
-    </thead> 
-    <tbody>";
-  
-  
-    while($fila = mysqli_fetch_array($resultado)) {
-      echo "<tr>";
-      echo "<td><a href='categoria.php?id=".$fila['cat_id']."'>".$fila['cat_nombre']."</a></td>";
-      echo "</tr>";
-      } 
-      echo "</tbody>";
-      echo "</table>";
-    mysqli_close($conexion);
-    ?>
-
-	</blockquote>
-	</div>
+      <?php 
+      $conexion = mysqli_connect($servidor,$usuario,$contrasena,$basededatos);
+      mysqli_set_charset($conexion, "utf8");
+      $peticion = "SELECT * FROM categoria";
+      $resultado = mysqli_query($conexion, $peticion);
+      echo "<div class='panel panel-default'> 
+              <div class='panel-heading'>
+                CATEGORIAS
+              </div> 
+              <ul class='list-group'>";
+    
+    
+      while($fila = mysqli_fetch_array($resultado)) {
+        echo "  <li class='list-group-item'><a href='categoria.php?id=".$fila['cat_id']."'>".$fila['cat_nombre']."</a></li>";
+        } 
+        echo "</ul>";
+        echo "</div>";
+      mysqli_close($conexion);
+      ?>
+    </div>
 		
 			
-<div id="contenedor" class="col-md-10" >
+<div id="contenedor" class="col-md-8" >
 
  <header>	
  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">

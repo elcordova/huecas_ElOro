@@ -1,6 +1,4 @@
-<?php
-
-session_start();
+<?php session_start();
 	include('cabecera.php');
     include('../php/config.inc');
 	if (isset($_SESSION['admin'])) {

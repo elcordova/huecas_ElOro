@@ -1,7 +1,7 @@
 <?php include "php/cabecera.inc" ?>
 <?php include "php/config.inc" ?>
 
-<?php
+<?php 
 		$suma=0;
 		echo "<div class='row'>";
 if(isset($_SESSION['carrito'])){

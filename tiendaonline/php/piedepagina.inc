@@ -1,15 +1,11 @@
 
-			<footer>
-				<h6>(c) Universidad Tecnica de  Machala -12 ava Promoción - Ingenieria de Sistemas</h6>
-			</footer>
+			
 			</div>
 
-
-
-
-<div class="col-md-1">
-   <div class="container">
-			<div id="contienecarrito" class="center text-center">
+<script type="text/javascript" src="./js/script.js"></script>
+<div id="carro" class="col-md-2">
+   <div class="container-fluid" id="contienecarrito">
+			<div  class="center text-center">
 				<div id="carrito" style="background:rgb(200,200,200);color:black;">
 					Carrito
 				</div>
@@ -20,6 +16,12 @@
   </div>
 
 </div>
+
+
+<footer class="col-sm-12 col-md-12 col-xs-12">
+				<h6>(c) Universidad Tecnica de  Machala -12 ava Promoción - Ingenieria de Sistemas</h6>
+			</footer>
+
 
 
 		

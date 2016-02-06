@@ -73,10 +73,14 @@ if(isset($_SESSION['carrito'])){
 			
 
 		for($i = 0;$i< count($datos);$i++){
-			echo "<tr><td>".$datos[$i]['Nombre']."</td><td> ".$datos[$i]['Precio']."</td><td> ".$datos[$i]['Cantidad']."</td><td> ".$datos[$i]['Precio']*$datos[$i]['Cantidad']."</td></tr>";
+			echo "<tr><td>".$datos[$i]['Nombre']."</td><td> ".$datos[$i]['Precio']."</td><td> <input maxlength='2' size='1' class='cantidad' value='".$datos[$i]['Cantidad']."'
+			data-precio='".$datos[$i]['Precio']."'
+			data-id='".$datos[$i]['Id']."'
+			/></td><a class='divisor'><td class='subtotal".$datos[$i]['Id']."'>".$datos[$i]['Precio']*$datos[$i]['Cantidad']."</td></a></tr>";
+			
 			$suma += $datos[$i]['Precio']*$datos[$i]['Cantidad'];
 			}
-		echo "<tr><td>Subtotal</td><td>".number_format($suma,2)."</td></tr>";
+		echo "<tr><td>Subtotal</td><td id='total'>".number_format($suma,2)."</td></tr>";
 		
 }else{
 	echo '<tr><td><center><p>Costos de trasnporte no incluidos en el total de su pedido</p></center></td><td>';
