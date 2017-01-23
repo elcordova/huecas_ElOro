@@ -2,7 +2,7 @@
 <?php
 session_start();
 
-
+ 
 $contador = 0;
 
 $conexion = mysqli_connect($servidor,$usuario,$contrasena,$basededatos);

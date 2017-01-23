@@ -91,10 +91,18 @@ if(!isset($_SESSION['contador'])){$_SESSION['contador'] = 0;}
 <div class="row">
    <div class=" col-md-2">.
       <?php 
-      $conexion = mysqli_connect($servidor,$usuario,$contrasena,$basededatos);
-      mysqli_set_charset($conexion, "utf8");
-      $peticion = "SELECT * FROM categoria";
-      $resultado = mysqli_query($conexion, $peticion);
+      $conexion = oci_connect($usuario,$contrasena,$db);
+      if (!$conexion) {
+         echo "<script>alert('error al conectar')</script>";
+      }
+
+      $peticion = "begin GET_ALL_CATEGORIAS(:cursor_return); end;";
+      $resultado = oci_parse($conexion, $peticion);
+      $curs = oci_new_cursor($conexion);                 
+      //declara el contenedor del cursor devuelto por el procedimeinto GET_ALL_CATEGORIAS()
+      oci_bind_by_name($resultado, ':cursor_return', $curs, -1,OCI_B_CURSOR);
+      oci_execute($resultado);
+      oci_execute($curs);
       echo "<div class='panel panel-default'> 
               <div class='panel-heading'>
                 CATEGORIAS
@@ -102,12 +110,12 @@ if(!isset($_SESSION['contador'])){$_SESSION['contador'] = 0;}
               <ul class='list-group'>";
     
     
-      while($fila = mysqli_fetch_array($resultado)) {
-        echo "  <li class='list-group-item'><a href='categoria.php?id=".$fila['cat_id']."'>".$fila['cat_nombre']."</a></li>";
+      while (($fila = oci_fetch_array($curs, OCI_BOTH)) != false) {
+        echo "  <li class='list-group-item'><a href='categoria.php?id=".$fila['CAT_ID']."'>".$fila['CAT_NOMBRE']."</a></li>";
         } 
         echo "</ul>";
         echo "</div>";
-      mysqli_close($conexion);
+      oci_close($conexion);
       ?>
     </div>
 		

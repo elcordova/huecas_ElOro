@@ -3,8 +3,11 @@
 
 session_start();
 
-$conexion = mysqli_connect($servidor,$usuario,$contrasena,$basededatos);
-mysqli_set_charset($conexion, "utf8");
+$conexion = oci_connect($usuario,$contrasena,$db);
+      if (!$conexion) {
+         echo "<script>alert('error al conectar')</script>";
+      }
+
  
 $suma = 0;
 if(isset($_GET['p']))
@@ -26,12 +29,16 @@ if(isset($_GET['p']))
 			}else{
 				$nombre="";
 		$precio="";
-		$peticion="SELECT * FROM plato WHERE pla_id=".$_GET['p'];
-		$re=mysqli_query($conexion, $peticion);
-		while($f=mysqli_fetch_array($re)) {
-			$nombre=$f['pla_nombre'];
-			$precio=$f['pla_precio'];
-			$imagen=$f['pla_foto'];
+		$peticion= "begin get_plato_id(:datos_plato,".$_GET['p']."); end;";
+		$resultado = oci_parse($conexion, $peticion);
+		$curs = oci_new_cursor($conexion);                 
+      	oci_bind_by_name($resultado, ':datos_plato', $curs, -1,OCI_B_CURSOR);
+     	oci_execute($resultado);
+      	oci_execute($curs);		
+		while(($f = oci_fetch_array($curs, OCI_BOTH)) != false) {
+			$nombre=$f['PLA_NOMBRE'];
+			$precio=$f['PLA_PRECIO'];
+			$imagen=$f['PLA_FOTO'];
 		}
 			$arreglo_nuevo=array('Id'=>$_GET['p'],
 				'Nombre'=>$nombre,
@@ -47,12 +54,19 @@ if(isset($_GET['p']))
 
 		$nombre="";
 		$precio="";
-		$peticion="SELECT * FROM plato WHERE pla_id=".$_GET['p'];
-		$re=mysqli_query($conexion, $peticion);
-		while($f=mysqli_fetch_array($re)) {
-			$nombre=$f['pla_nombre'];
-			$precio=$f['pla_precio'];
-			$imagen=$f['pla_foto'];		
+		
+
+
+		$peticion= "begin get_plato_id(:datos_plato,".$_GET['p']."); end;";
+		$resultado = oci_parse($conexion, $peticion);
+		$curs = oci_new_cursor($conexion);                 
+      	oci_bind_by_name($resultado, ':datos_plato', $curs, -1,OCI_B_CURSOR);
+     	oci_execute($resultado);
+      	oci_execute($curs);		
+		while(($f = oci_fetch_array($curs, OCI_BOTH+OCI_RETURN_NULLS)) != false) {
+			$nombre=$f['PLA_NOMBRE'];
+			$precio=$f['PLA_PRECIO'];
+			$imagen=$f['PLA_FOTO'];		
 		}
 			$arreglo[]=array('Id'=>$_GET['p'],
 				'Nombre'=>$nombre,
