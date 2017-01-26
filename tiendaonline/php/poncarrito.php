@@ -35,7 +35,7 @@ if(isset($_GET['p']))
       	oci_bind_by_name($resultado, ':datos_plato', $curs, -1,OCI_B_CURSOR);
      	oci_execute($resultado);
       	oci_execute($curs);		
-		while(($f = oci_fetch_array($curs, OCI_BOTH)) != false) {
+		while(($f = oci_fetch_array($curs, OCI_BOTH+OCI_RETURN_NULLS)) != false) {
 			$nombre=$f['PLA_NOMBRE'];
 			$precio=$f['PLA_PRECIO'];
 			$imagen=$f['PLA_FOTO'];

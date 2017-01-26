@@ -247,10 +247,10 @@ ajax = objetoAjax();
 alert(accion);
 if(accion=='N'){
 ajax.open("POST", "../php/ingresar_huecas.php", true);
-}else if(accion=='E'){
-ajax.open("POST", "../php/actualizar_cliente.php", true);
+}//else if(accion=='E'){
+// ajax.open("POST", "../php/actualizar_cliente.php", true);
 
-}
+// }
 
 ajax.onreadystatechange=function() {
 		if (ajax.readyState==4) {

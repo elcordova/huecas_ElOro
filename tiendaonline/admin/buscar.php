@@ -1,7 +1,9 @@
 <?php
 include('../php/config.inc');
-$conexion = mysqli_connect($servidor,$usuario,$contrasena,$basededatos);
-	mysqli_set_charset($conexion, "utf8");
+	$conexion = oci_connect($usuario,$contrasena,$db);
+    if (!$conexion) {
+        echo "<script>alert('error al conectar')</script>";
+    }
 	$consultaBusqueda = $_POST['valorBusqueda'];
 
 	//Filtro anti-XSS
@@ -18,17 +20,15 @@ $conexion = mysqli_connect($servidor,$usuario,$contrasena,$basededatos);
 	//o el apellido sea igual a $consultaBusqueda, 
 	//o $consultaBusqueda sea igual a nombre + (espacio) + apellido
 	
-
-
-
-
-	$consulta = mysqli_query($conexion, "select * from pedido where cli_cedula in( select cli_cedula from cliente where CONCAT(cliente.cli_nombre,' ',cliente.cli_apellido)LIKE '%$consultaBusqueda%' or cli_cedula COLLATE UTF8_SPANISH2_CI LIKE '%$consultaBusqueda%')");
-
-		//Obtiene la cantidad de filas que hay en la consulta
-	$filas = mysqli_num_rows($consulta);
+	$peticion="BEGIN GET_PEDIDOS_LIKE(:datos_pedido,'".$consultaBusqueda."'); END;";
+	$resultado = oci_parse($conexion, $peticion);
+		$curs = oci_new_cursor($conexion);                 
+      	oci_bind_by_name($resultado, ':datos_pedido', $curs, -1,OCI_B_CURSOR);
+     	oci_execute($resultado);
+      	oci_execute($curs);		
 
 	//Si no existe ninguna fila que sea igual a $consultaBusqueda, entonces mostramos el siguiente mensaje
-	if ($filas === 0) {
+	if (($resultados = oci_fetch_array($curs, OCI_BOTH+OCI_RETURN_NULLS)) == false) {
 		$mensaje = "<p>No hay ningún usuario con ese nombre y/o apellido</p>";
 	} else {
 		//Si existe alguna fila que sea igual a $consultaBusqueda, entonces mostramos el siguiente mensaje
@@ -36,12 +36,12 @@ $conexion = mysqli_connect($servidor,$usuario,$contrasena,$basededatos);
 
 		//La variable $resultado contiene el array que se genera en la consulta, así que obtenemos los datos y los mostramos en un bucle
 
-		while($resultados = mysqli_fetch_array($consulta)) {
-			$id_pedido = $resultados['ped_id'];
-			$ped_fecha = $resultados['ped_fecha'];
-			$ped_pre = $resultados['ped_preciot'];
-			$ped_estado = $resultados['ped_estado'];
-			$cedula_c=$resultados['cli_cedula'];
+		while(($resultados = oci_fetch_array($curs, OCI_BOTH+OCI_RETURN_NULLS)) != false) {
+			$id_pedido = $resultados['PED_ID'];
+			$ped_fecha = $resultados['PED_FECHA'];
+			$ped_pre = $resultados['PED_PRECIOT'];
+			$ped_estado = $resultados['PED_ESTADO']; 
+			$cedula_c=$resultados['CLI_CEDULA'];
 
 			//Output
 			$mensaje .= "

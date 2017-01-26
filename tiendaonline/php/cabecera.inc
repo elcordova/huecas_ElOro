@@ -9,7 +9,8 @@ if(!isset($_SESSION['contador'])){$_SESSION['contador'] = 0;}
 		<title>Tienda</title>
 		<link rel=Stylesheet href="css/bootstrap.css"></script>
 		<link rel=Stylesheet href="css/cabecera.css"></script>
-		<link rel="stylesheet" type="text/css" href="css/imagenes.css">
+		<link rel="stylesheet" type="text/css" href="css/toastr/toastr.min.css">
+    <link rel="stylesheet" type="text/css" href="css/imagenes.css">
 		
 		<link rel=Stylesheet href="css/pcmac.css" media='screen and (min-width: 801px) and (max-width: 4000px)'>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -41,7 +42,7 @@ if(!isset($_SESSION['contador'])){$_SESSION['contador'] = 0;}
 		  <script type="text/javascript" src="js/ajax.js"></script>
 		  <script type="text/javascript" src="js/bootbox.js"></script>
 		  <script type="text/javascript" src="js/bootbox.min.js"></script>
-
+      <script type="text/javascript" src="js/toastr/toastr.min.js"></script>
 		
 		  
 	</head>

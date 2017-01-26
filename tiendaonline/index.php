@@ -3,7 +3,7 @@
 
 <?php
 
-$conexion = oci_connect($usuario,$contrasena,$db);
+	$conexion = oci_connect($usuario,$contrasena,$db);
       if (!$conexion) {
          echo "<script>alert('error al conectar')</script>";
       }

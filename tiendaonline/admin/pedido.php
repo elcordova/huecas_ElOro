@@ -87,11 +87,16 @@ session_start();
 	include('cabecera.php');
 	if (isset($_SESSION['admin'])) {
 	include('../php/config.inc');
-	$con = new PDO('mysql:host='.$servidor.';dbname='.$basededatos, $usuario, $contrasena);
-	$peticion = "SELECT pedido.ped_id,pedido.ped_fecha,cliente.cli_cedula, pedido.ped_estado, pedido.ped_preciot, cliente.cli_nombre, cliente.cli_apellido,cliente.cli_correo, cliente.cli_direccion, cliente.cli_telefono FROM pedido,cliente WHERE cliente.cli_cedula=pedido.cli_cedula and pedido.ped_id='".$_GET['ped_id']."'";
-	$stmt = $con->prepare($peticion);
-  $result = $stmt->execute();
-  $filas = $stmt->fetchAll(\PDO::FETCH_OBJ);
+	$conexion = oci_connect($usuario,$contrasena,$db);
+      if (!$conexion) {
+         echo "<script>alert('error al conectar')</script>";
+      }
+    $peticion= "begin GET_PEDIDO_ID(:datos_pedido,".$_GET['ped_id']."); end;";
+		$resultado = oci_parse($conexion, $peticion);
+		$curs = oci_new_cursor($conexion);                 
+      	oci_bind_by_name($resultado, ':datos_pedido', $curs, -1,OCI_B_CURSOR);
+     	oci_execute($resultado);
+      	oci_execute($curs);		
 	echo "
 		<div class='panel panel-default'>
   <div class='panel-heading'>DATOS DE PEDIDO # ".$_GET['ped_id']."</div>
@@ -109,13 +114,21 @@ session_start();
 
 
 
-	foreach($filas as $fila) {
+	while(($fila = oci_fetch_array($curs, OCI_BOTH+OCI_RETURN_NULLS)) != false) {
     ?>
-		<div class="col-xs-3"><h4>Pedido realizado por:</h4><h3><?php print($fila->cli_nombre); print($fila->cli_apellido); ?></h3></div>
-		<div class="col-xs-3"><h4>con C.I. : </h4><h3><?php print($fila->cli_cedula);?></h3></div>
-		<div class="col-xs-3"><h4>el dia : </h4><h3><?php print($fila->ped_fecha);?></h3></div>
-    <div class="col-xs-3"><h4>Estado : </h4><h3><?php print($fila->ped_estado);?></h3></div>     
-     <div class="col-xs-6"><button class="btn btn-inverse" onclick="verCliente('<?php print($fila->cli_nombre);?>','<?php print($fila->cli_apellido);?>','<?php print($fila->cli_cedula);?>','<?php print($fila->cli_correo);?>','<?php print($fila->cli_direccion);?>','<?php print($fila->cli_telefono);?>');">
+		<div class="col-xs-3"><h4>Pedido realizado por:</h4>
+		<h3>
+			<?php echo $fila[5]->load(),$fila[6]->load(); ?></h3></div>
+		<div class="col-xs-3"><h4>con C.I. : </h4><h3><?php echo($fila[2]);?></h3></div>
+		<div class="col-xs-3"><h4>el dia : </h4><h3><?php echo($fila[1]);?></h3></div>
+    <div class="col-xs-3"><h4>Estado : </h4><h3><?php echo($fila[3]);?></h3></div>     
+     <div class="col-xs-6"><button class="btn btn-inverse" 
+     onclick="verCliente('<?php echo($fila[5]->load());?>',
+					     '<?php echo($fila[6]->load());?>',
+					     '<?php echo($fila[2]);?>',
+					     '<?php echo($fila[7]);?>',
+					     '<?php echo($fila[8]->load());?>',
+					     '<?php echo($fila[9]);?>');">
       <a>DETALLE DE CLIENTE</a></button></div>
     
   <?php
@@ -136,10 +149,14 @@ session_start();
   <div class='panel-body'>";
 	
 	echo "<table>";
-	$conexion1 = mysqli_connect($servidor,$usuario,$contrasena,$basededatos);
-  mysqli_set_charset($conexion, "utf8");
-	$peticion = "SELECT plato.pla_id,hueca.hue_nombre,plato.pla_nombre,plato.pla_precio,detallepedido.det_cantidad FROM detallepedido ,plato,hueca WHERE plato.hue_id=hueca.hue_id and detallepedido.pla_id=plato.pla_id and detallepedido.ped_id='".$_GET['ped_id']."'";
-	$resultado2 = mysqli_query($conexion1, $peticion);
+
+ 
+	$peticion = "begin GET_PLATOS_PEDIDO(:datos_platos,".$_GET['ped_id']."); end;";
+	$resultado = oci_parse($conexion, $peticion);
+		$curs = oci_new_cursor($conexion);                 
+      	oci_bind_by_name($resultado, ':datos_platos', $curs, -1,OCI_B_CURSOR);
+     	oci_execute($resultado);
+      	oci_execute($curs);		
 	echo "<div class='table-responsive'>
 <table class='text-center table table-hover'>
     <thead>
@@ -155,18 +172,18 @@ session_start();
     <tbody class=text-center>";
     $suma=0;
 	$cont=0;
-	while($fila = mysqli_fetch_array($resultado2)) {
+	while(($fila = oci_fetch_array($curs, OCI_BOTH+OCI_RETURN_NULLS)) != false) {
 		$cont++;
 		echo "<tr>
             <td>".$cont."</td>
-            <td>".$fila['hue_nombre']."</td>
-            <td>".$fila['pla_nombre']."</td>
-            <td>".$fila['pla_precio']."</td>
-            <td>".$fila['det_cantidad']."</td>
-            <td>".$fila['pla_precio']*$fila['det_cantidad']."</td>
+            <td>".$fila['HUE_NOMBRE']."</td>
+            <td>".$fila['PLA_NOMBRE']."</td>
+            <td>".$fila['PLA_PRECIO']."</td>
+            <td>".$fila['DET_CANTIDAD']."</td>
+            <td>".$fila['PLA_PRECIO']*$fila['DET_CANTIDAD']."</td>
             
         </tr>";
-        $suma+=$fila['pla_precio']*$fila['det_cantidad'];
+        $suma+=$fila['PLA_PRECIO']*$fila['DET_CANTIDAD'];
 
 		}	
 		echo "<td></td><td></td><td></td><td></td><td></td><td><h3> Total del pedido: ".$suma."</h3></td>";
